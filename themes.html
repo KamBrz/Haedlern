@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Themed Workshops | Haedlern</title>
+<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav id="mainNav">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="apps.html">Apps</a></li>
+      <li><a href="themes.html" style="color:var(--blue)">Themes</a></li>
+      <li><a href="index.html#pricing">Packages</a></li>
+      <li><a href="calculator.html">Package Advisor</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Call</button>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="themes-hero section-glass">
+  <div class="tag">Themed Workshops</div>
+  <h1 class="themes-hero-title">Training built around outcomes, not just apps</h1>
+  <p class="themes-hero-sub">Multi-app sessions designed around a single business goal — your team leaves knowing exactly how to work better together, not just which buttons to press.</p>
+</section>
+
+<!-- CATEGORIES -->
+<section class="themes-section">
+  <p class="themes-grid-note">The themes below are examples of what can be delivered, organised by category. Click any section to expand. Don't see something that fits? Bring your own idea and we'll shape it together on the discovery call.</p>
+
+  <div class="theme-categories">
+
+    <!-- ─── FOUNDATIONS ─── -->
+    <details class="theme-category" open>
+      <summary class="theme-category-header">
+        <div class="theme-category-meta">
+          <div class="theme-category-label">Foundations</div>
+          <div class="theme-category-title">Get oriented and confident</div>
+          <div class="theme-category-sub">Entry-point sessions for teams new to Microsoft 365 or onboarding fresh starters.</div>
+        </div>
+        <div class="theme-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="themes-grid">
+
+        <div class="theme-card theme-card--featured">
+          <div class="theme-start-badge">Start Here</div>
+          <div class="theme-apps">
+            <span class="theme-app-pill">M365 Suite</span>
+          </div>
+          <h3 class="theme-name">Welcome to Microsoft 365</h3>
+          <p class="theme-desc">A high-level tour of the full M365 ecosystem — what's available, what each tool is for, and how they connect. Ideal for new starters or teams that have never had a structured introduction.</p>
+          <ul class="theme-outcomes">
+            <li>Understand what every M365 app is designed for</li>
+            <li>Know which tool to reach for in any situation</li>
+            <li>Feel confident navigating the Microsoft 365 environment</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Teams</span>
+            <span class="theme-app-pill">Outlook</span>
+            <span class="theme-app-pill">OneDrive</span>
+          </div>
+          <h3 class="theme-name">New Starter Essentials</h3>
+          <p class="theme-desc">Give new team members a confident start with the tools they'll use every day. No guesswork, no wasted first weeks — just practical skills from day one.</p>
+          <ul class="theme-outcomes">
+            <li>Navigate Teams, Outlook and OneDrive with confidence</li>
+            <li>Understand your organisation's communication norms</li>
+            <li>Pick up time-saving shortcuts and habits immediately</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- ─── AI & AUTOMATION (featured) ─── -->
+    <details class="theme-category theme-category--ai">
+      <summary class="theme-category-header">
+        <div class="theme-category-meta">
+          <div class="theme-category-label">AI &amp; Automation <span class="theme-category-tag">Most in demand</span></div>
+          <div class="theme-category-title">Let the tools do the boring work</div>
+          <div class="theme-category-sub">Sessions on Copilot, Power Automate and custom agents — practical AI and automation, not hype.</div>
+        </div>
+        <div class="theme-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="themes-grid">
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill theme-app-pill--ai">Copilot</span>
+            <span class="theme-app-pill">M365 Apps</span>
+          </div>
+          <h3 class="theme-name">AI in Daily Work</h3>
+          <p class="theme-desc">Unlock Microsoft Copilot across your everyday tools. From drafting emails to summarising meetings, this session shows where AI saves the most time in your specific role.</p>
+          <ul class="theme-outcomes">
+            <li>Use Copilot confidently across Teams, Outlook, Edge and M365 Copilot Chat</li>
+            <li>Prompt effectively to get accurate, useful outputs</li>
+            <li>Build habits that compound time savings week over week</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Power Automate</span>
+            <span class="theme-app-pill">Forms</span>
+            <span class="theme-app-pill">Lists</span>
+          </div>
+          <h3 class="theme-name">Automate the Boring Stuff</h3>
+          <p class="theme-desc">Spot the repetitive work that's eating your team's week — and wire up flows that handle it automatically. No code, just clear thinking and the right triggers.</p>
+          <ul class="theme-outcomes">
+            <li>Spot repetitive work that can safely be automated</li>
+            <li>Build flows for notifications, reminders and data collection</li>
+            <li>Connect Forms, Lists, Outlook and Teams together</li>
+            <li>Save hours each week without writing code</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Power Automate</span>
+            <span class="theme-app-pill">Outlook</span>
+            <span class="theme-app-pill">Teams</span>
+          </div>
+          <h3 class="theme-name">Creating Approvals in Power Automate</h3>
+          <p class="theme-desc">Replace email chains and "did you sign off on this?" with structured approval flows. Purchases, leave, content sign-off — anything that needs a yes or no, captured cleanly.</p>
+          <ul class="theme-outcomes">
+            <li>Build approval flows for purchases, leave, content and more</li>
+            <li>Route approvals via Teams or email with clear context</li>
+            <li>Track approval status and history in one place</li>
+            <li>Replace email chains with auditable, structured workflows</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill theme-app-pill--ai">Copilot Studio</span>
+            <span class="theme-app-pill theme-app-pill--ai">Agents</span>
+          </div>
+          <h3 class="theme-name">Build Your Own AI Helper</h3>
+          <p class="theme-desc">Custom Copilot agents for your team — internal Q&amp;A bots, role-specific assistants, knowledge-base helpers. Practical sessions on creating, deploying and governing agents.</p>
+          <ul class="theme-outcomes">
+            <li>Create custom Copilot agents for your team's workflows</li>
+            <li>Train an agent on your team's documents and processes</li>
+            <li>Deploy agents in Teams and SharePoint</li>
+            <li>Govern, update and retire agents responsibly</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- ─── COMMUNICATION ─── -->
+    <details class="theme-category">
+      <summary class="theme-category-header">
+        <div class="theme-category-meta">
+          <div class="theme-category-label">Communication</div>
+          <div class="theme-category-title">Talk, meet and write — better</div>
+          <div class="theme-category-sub">Sessions that sharpen how your team communicates internally and externally.</div>
+        </div>
+        <div class="theme-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="themes-grid">
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Teams</span>
+            <span class="theme-app-pill">Outlook</span>
+            <span class="theme-app-pill">Loop</span>
+          </div>
+          <h3 class="theme-name">Hybrid Collaboration</h3>
+          <p class="theme-desc">Break down the silos between meetings, email and real-time collaboration. Your team will leave knowing exactly which tool to use — and how they work together.</p>
+          <ul class="theme-outcomes">
+            <li>Run meetings and follow-ups more effectively in Teams</li>
+            <li>Manage communication clearly across Outlook and Teams</li>
+            <li>Use Loop for real-time co-creation and shared notes</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Outlook</span>
+            <span class="theme-app-pill">PowerPoint</span>
+            <span class="theme-app-pill">Word</span>
+          </div>
+          <h3 class="theme-name">Client-Ready Communications</h3>
+          <p class="theme-desc">For teams that communicate externally. This session sharpens how your people write, present and share — so every client touchpoint looks and feels professional.</p>
+          <ul class="theme-outcomes">
+            <li>Write clear, well-structured emails and documents</li>
+            <li>Build presentations in PowerPoint that land with clients</li>
+            <li>Share documents externally without exposing sensitive content</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Teams</span>
+            <span class="theme-app-pill">Outlook</span>
+          </div>
+          <h3 class="theme-name">Meeting Lifecycle</h3>
+          <p class="theme-desc">A full walk-through of meetings from scheduling to recap. Covers what happens before, during and after the call — so every meeting your team runs is intentional, productive and easy to follow up on.</p>
+          <ul class="theme-outcomes">
+            <li>Schedule meetings the right way, with the right meeting options</li>
+            <li>Configure lobby, recording and permission settings before the call</li>
+            <li>Run engaging meetings with chat, reactions, polls and breakout rooms</li>
+            <li>Use recordings, transcripts and recaps to drive follow-through</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Outlook</span>
+            <span class="theme-app-pill">To Do</span>
+          </div>
+          <h3 class="theme-name">Email Without the Overwhelm</h3>
+          <p class="theme-desc">Reach Inbox Zero — and stay there. This session gives your team a sustainable system for managing email so it stops running their day.</p>
+          <ul class="theme-outcomes">
+            <li>Apply Inbox Zero principles your team will actually keep up with</li>
+            <li>Use rules, categories and Focused Inbox to cut the noise</li>
+            <li>Turn emails into trackable tasks with To Do and flags</li>
+            <li>Master Outlook search and filters to find anything in seconds</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- ─── PRODUCTIVITY & ORGANISATION ─── -->
+    <details class="theme-category">
+      <summary class="theme-category-header">
+        <div class="theme-category-meta">
+          <div class="theme-category-label">Productivity & Organisation</div>
+          <div class="theme-category-title">Work without the chaos</div>
+          <div class="theme-category-sub">Bring structure to tasks, files and projects so the team spends less time searching and more time doing.</div>
+        </div>
+        <div class="theme-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="themes-grid">
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Planner</span>
+            <span class="theme-app-pill">To Do</span>
+            <span class="theme-app-pill">Loop</span>
+          </div>
+          <h3 class="theme-name">Work Without the Chaos</h3>
+          <p class="theme-desc">For teams drowning in tasks, sticky notes and missed deadlines. This session builds a simple, sustainable system for managing work — individually and as a team.</p>
+          <ul class="theme-outcomes">
+            <li>Organise personal and team tasks clearly in one place</li>
+            <li>Track projects without endless email back-and-forth</li>
+            <li>Build a workflow system your team will actually stick to</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">SharePoint</span>
+            <span class="theme-app-pill">OneDrive</span>
+            <span class="theme-app-pill">Teams</span>
+          </div>
+          <h3 class="theme-name">Your Files, Finally Under Control</h3>
+          <p class="theme-desc">Stop losing files, emailing attachments and working from the wrong version. This session brings structure and clarity to how your team stores, finds and shares documents.</p>
+          <ul class="theme-outcomes">
+            <li>Understand OneDrive vs SharePoint vs Teams files clearly</li>
+            <li>Set up a folder structure your team will actually use</li>
+            <li>Share and co-author without version confusion</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Planner</span>
+            <span class="theme-app-pill">Teams</span>
+            <span class="theme-app-pill">SharePoint</span>
+          </div>
+          <h3 class="theme-name">Project Delivery</h3>
+          <p class="theme-desc">From kickoff to completion — this session gives project teams a shared system for planning, communicating and delivering work on time.</p>
+          <ul class="theme-outcomes">
+            <li>Plan and track a project in Planner the whole team actually uses</li>
+            <li>Keep everyone aligned with the right Teams channel setup</li>
+            <li>Store and share project documents cleanly in SharePoint</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">OneNote</span>
+            <span class="theme-app-pill">Loop</span>
+            <span class="theme-app-pill">Teams</span>
+            <span class="theme-app-pill">SharePoint</span>
+          </div>
+          <h3 class="theme-name">Where to Post What</h3>
+          <p class="theme-desc">A practical session that ends the "where does this go?" question for good. Covers the difference between similar tools and helps your team build clear conventions for documentation, knowledge and announcements.</p>
+          <ul class="theme-outcomes">
+            <li>Decide between OneNote and Loop for personal vs collaborative notes</li>
+            <li>Know when to use Teams chat, channel posts or SharePoint pages</li>
+            <li>Pick the right home for FAQs, how-tos, project info and policies</li>
+            <li>Distinguish between SharePoint Intranet and team sites</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- ─── WORKING WITH DATA ─── -->
+    <details class="theme-category">
+      <summary class="theme-category-header">
+        <div class="theme-category-meta">
+          <div class="theme-category-label">Working with Data</div>
+          <div class="theme-category-title">From spreadsheets to insight</div>
+          <div class="theme-category-sub">Sessions that turn raw numbers into reports leadership reads and trackers the team actually uses.</div>
+        </div>
+        <div class="theme-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="themes-grid">
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Excel</span>
+            <span class="theme-app-pill">Forms</span>
+          </div>
+          <h3 class="theme-name">Data Made Simple</h3>
+          <p class="theme-desc">Turn raw numbers and collected responses into clear insight. From smarter spreadsheets to automated data collection, this session makes data work for any team.</p>
+          <ul class="theme-outcomes">
+            <li>Build cleaner, more useful Excel spreadsheets</li>
+            <li>Use Forms to collect data automatically</li>
+            <li>Analyse and present results without a data background</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Power BI</span>
+            <span class="theme-app-pill">Excel</span>
+          </div>
+          <h3 class="theme-name">From Numbers to Insights</h3>
+          <p class="theme-desc">Move beyond spreadsheets into proper dashboards. This session shows your team how to build reports that leadership will actually read — and act on.</p>
+          <ul class="theme-outcomes">
+            <li>Build dashboards leadership will actually read</li>
+            <li>Connect data sources without IT support</li>
+            <li>Translate Excel know-how into Power BI confidence</li>
+            <li>Share insights cleanly across the team</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Lists</span>
+            <span class="theme-app-pill">SharePoint</span>
+          </div>
+          <h3 class="theme-name">Trackers Without the Mess</h3>
+          <p class="theme-desc">Replace scattered spreadsheet trackers with proper Lists. Issue logs, asset registers, request queues — all in one place, with views and rules that keep them tidy.</p>
+          <ul class="theme-outcomes">
+            <li>Build clean Lists for issues, assets and requests</li>
+            <li>Use views, filters and conditional formatting to surface what matters</li>
+            <li>Replace shared Excel files with a real source of truth</li>
+            <li>Set permissions so the right people see the right rows</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- ─── CREATING CONTENT ─── -->
+    <details class="theme-category">
+      <summary class="theme-category-header">
+        <div class="theme-category-meta">
+          <div class="theme-category-label">Creating Content</div>
+          <div class="theme-category-title">Documents, decks and visuals that look the part</div>
+          <div class="theme-category-sub">Sessions that raise the bar on everything your team writes, designs or records.</div>
+        </div>
+        <div class="theme-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="themes-grid">
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Word</span>
+            <span class="theme-app-pill">PowerPoint</span>
+          </div>
+          <h3 class="theme-name">Polished Documents, Every Time</h3>
+          <p class="theme-desc">Templates, branding and structure that scales. This session helps your team produce documents that look professional by default — no last-minute design panic.</p>
+          <ul class="theme-outcomes">
+            <li>Use templates and styles for consistent branding</li>
+            <li>Structure long documents with TOCs, headings and sections</li>
+            <li>Insert visuals, charts and tables that look professional</li>
+            <li>Review and finalise documents collaboratively</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">PowerPoint</span>
+            <span class="theme-app-pill">Designer</span>
+            <span class="theme-app-pill theme-app-pill--ai">Copilot</span>
+          </div>
+          <h3 class="theme-name">Decks That Land</h3>
+          <p class="theme-desc">Persuasive, well-designed presentations — without the late-night tweaking. Your team will leave able to build slides that tell a story, not just present data.</p>
+          <ul class="theme-outcomes">
+            <li>Build slides with strong visual hierarchy</li>
+            <li>Use Designer and Copilot for fast, polished design</li>
+            <li>Tell a story across a deck, not just a sequence of points</li>
+            <li>Practise delivery with Speaker Coach</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Clipchamp</span>
+            <span class="theme-app-pill">PowerPoint</span>
+          </div>
+          <h3 class="theme-name">Visual Stories</h3>
+          <p class="theme-desc">Video and visual explainers without needing a creative agency. Short clips for training, announcements or onboarding — built fast, branded properly.</p>
+          <ul class="theme-outcomes">
+            <li>Record and edit short videos in Clipchamp</li>
+            <li>Create explainer animations and walk-throughs in PowerPoint</li>
+            <li>Add captions, voiceovers and consistent branding</li>
+            <li>Share videos through Stream and Teams</li>
+          </ul>
+          <a class="theme-cta" href="index.html#signup">Book This Workshop →</a>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- ─── CUSTOM ─── -->
+    <details class="theme-category theme-category--custom">
+      <summary class="theme-category-header">
+        <div class="theme-category-meta">
+          <div class="theme-category-label">Something Else</div>
+          <div class="theme-category-title">Build your own theme</div>
+          <div class="theme-category-sub">Don't see something that fits? Bring your own idea — we'll shape it together.</div>
+        </div>
+        <div class="theme-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="themes-grid">
+        <div class="theme-card theme-card--custom">
+          <div class="theme-apps">
+            <span class="theme-app-pill">Your choice</span>
+          </div>
+          <h3 class="theme-name">Something else entirely?</h3>
+          <p class="theme-desc">Looking for single-app training? The <a href="apps.html" style="color:var(--blue);font-weight:600;text-decoration:none;">Apps page</a> covers individual sessions across the full Microsoft 365 suite — from Teams and Outlook to Copilot and Power Automate. Prefer something built around your specific workflows or business goals? A fully custom workshop can be crafted together on a discovery call.</p>
+          <a class="theme-cta" href="index.html#signup">Book a Discovery Call →</a>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="themes-cta-section">
+  <div class="tag">Get Started</div>
+  <h2 class="title">Not sure which theme fits your team?</h2>
+  <p>Book a free 30-minute discovery call and we'll help you choose — or design something entirely bespoke.</p>
+  <a class="nav-cta" style="display:inline-block;margin-top:28px;font-size:15px;padding:14px 32px;text-decoration:none;" href="index.html#signup">Book a Free Discovery Call</a>
+</section>
+
+<footer>
+  <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
+  <p>© 2026 Haedlern. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

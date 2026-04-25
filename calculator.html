@@ -1,0 +1,852 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Package Advisor — Haedlern</title>
+<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
+<style>
+.calc-page{min-height:100vh;padding:120px 5% 80px;display:flex;flex-direction:column;align-items:center;}
+.calc-header{text-align:center;margin-bottom:48px;}
+.calc-header .tag{display:inline-flex;align-items:center;gap:6px;background:var(--tag-bg);border:1px solid var(--tag-border);color:var(--blue);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-pill);margin-bottom:16px;}
+.calc-header h1{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;color:var(--text);margin-bottom:12px;}
+.calc-header p{color:var(--muted);font-size:15px;max-width:500px;margin:0 auto;}
+.calc-container{width:100%;max-width:720px;}
+.calc-progress{display:flex;align-items:center;gap:6px;margin-bottom:28px;}
+.prog-step{flex:1;height:4px;border-radius:99px;background:var(--border);transition:background 0.3s;}
+.prog-step.done{background:var(--blue);}
+.prog-step.active{background:var(--blue);opacity:0.5;}
+.prog-label{font-size:12px;color:var(--muted);white-space:nowrap;margin-left:4px;}
+.q-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-xl);padding:36px 40px;box-shadow:var(--shadow-md);}
+.q-step-indicator{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
+.q-card h2{font-size:21px;font-weight:800;color:var(--text);margin-bottom:5px;letter-spacing:-0.4px;}
+.q-hint{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5;}
+.q-options{display:flex;flex-direction:column;gap:9px;margin-bottom:24px;}
+.q-option{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border:2px solid var(--card-border);border-radius:12px;cursor:pointer;transition:all 0.18s;background:var(--bg);}
+.q-option:hover{border-color:var(--blue);background:var(--tag-bg);}
+.q-option.selected{border-color:var(--blue);background:rgba(0,120,212,0.06);box-shadow:0 0 0 3px rgba(0,120,212,0.1);}
+.q-option-letter{width:26px;height:26px;border-radius:7px;background:var(--tag-bg);border:1px solid var(--border2);color:var(--blue);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.18s;}
+.q-option.selected .q-option-letter{background:var(--blue);color:#fff;border-color:var(--blue);}
+.q-option-content{flex:1;}
+.q-option-label{font-size:14px;font-weight:600;color:var(--text);display:block;margin-bottom:2px;}
+.q-option-desc{font-size:12px;color:var(--muted);line-height:1.45;}
+.q-checkboxes{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
+.q-checkbox-item{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border:2px solid var(--card-border);border-radius:12px;cursor:pointer;transition:all 0.18s;background:var(--bg);}
+.q-checkbox-item:hover{border-color:var(--blue);}
+.q-checkbox-item.checked{border-color:var(--blue);background:rgba(0,120,212,0.05);}
+.q-checkbox-box{width:20px;height:20px;border-radius:5px;border:2px solid var(--border2);background:var(--input-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.18s;margin-top:1px;position:relative;}
+.q-checkbox-item.checked .q-checkbox-box{background:var(--blue);border-color:var(--blue);}
+.q-checkbox-item.checked .q-checkbox-box::after{content:'';display:block;width:10px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-1px);}
+.q-checkbox-text{flex:1;}
+.q-checkbox-label{font-size:14px;font-weight:600;color:var(--text);display:block;}
+.q-checkbox-desc{font-size:12px;color:var(--muted);}
+.q-checkbox-price{font-size:13px;font-weight:700;color:var(--blue);white-space:nowrap;align-self:center;}
+.cur-row{display:flex;gap:8px;margin-bottom:24px;}
+.cur-opt{flex:1;padding:13px;border:2px solid var(--card-border);border-radius:11px;text-align:center;cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);background:var(--bg);transition:all 0.18s;font-family:inherit;}
+.cur-opt.selected{border-color:var(--blue);color:var(--blue);background:rgba(0,120,212,0.06);}
+/* result-page currency toggle */
+.result-cur-row{display:flex;justify-content:flex-end;gap:6px;margin-bottom:16px;}
+.result-cur-row .cur-opt{flex:0 0 auto;padding:8px 20px;font-size:13px;}
+.q-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.btn-back{background:none;border:1px solid var(--card-border);color:var(--muted);padding:9px 20px;border-radius:var(--r-pill);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.18s;font-family:inherit;}
+.btn-back:hover{color:var(--text);border-color:var(--border2);}
+.btn-next{background:var(--blue);color:#fff;border:none;padding:11px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 14px rgba(0,120,212,0.35);transition:all 0.2s;font-family:inherit;}
+.btn-next:hover:not(:disabled){background:var(--blue-dark);transform:translateY(-1px);}
+.btn-next:disabled{opacity:0.38;cursor:not-allowed;transform:none;}
+.q-step{display:none;}
+.q-step.active{display:block;}
+
+/* ── RESULT ── */
+.result-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-xl);padding:40px;box-shadow:var(--shadow-lg);}
+.result-top{text-align:center;padding-bottom:30px;border-bottom:1px solid var(--border);margin-bottom:30px;}
+.result-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,185,95,0.1);border:1px solid rgba(0,185,95,0.28);color:#00a855;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-pill);margin-bottom:16px;}
+.result-tier-name{font-size:34px;font-weight:900;letter-spacing:-1.2px;color:var(--text);margin-bottom:8px;}
+.result-tier-desc{font-size:14px;color:var(--muted);line-height:1.6;max-width:480px;margin:0 auto 22px;}
+.result-price-block{display:inline-flex;flex-direction:column;align-items:center;background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:18px 36px;}
+.result-price-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:3px;}
+.result-price-value{font-size:44px;font-weight:900;letter-spacing:-2px;color:var(--blue);line-height:1;}
+.result-price-period{font-size:13px;color:var(--muted);margin-top:3px;}
+.result-price-sub{font-size:12px;color:var(--muted);margin-top:5px;}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:10px;}
+.why-box{background:var(--bg2);border-radius:12px;padding:18px 20px;margin-bottom:22px;}
+.why-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.why-list li{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;line-height:1.45;}
+.why-list li::before{content:'✓';color:#00a855;font-weight:800;flex-shrink:0;}
+.includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:24px;}
+.inc-item{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 11px;line-height:1.3;}
+.inc-item::before{content:'✓';color:var(--blue);font-weight:800;font-size:11px;flex-shrink:0;}
+.addons-section{margin-bottom:20px;}
+.addon-row-result{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);}
+.addon-row-result:last-child{border-bottom:none;}
+.addon-price-result{font-weight:700;color:var(--blue);}
+.total-bar{display:flex;justify-content:space-between;align-items:center;background:var(--blue);color:#fff;border-radius:12px;padding:15px 20px;margin-bottom:26px;}
+.total-bar-label{font-size:13px;font-weight:700;}
+.total-bar-value{font-size:20px;font-weight:900;letter-spacing:-0.5px;}
+.alts-section{margin-bottom:28px;}
+.alt-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border:1px solid var(--border);border-radius:10px;margin-bottom:7px;}
+.alt-name{font-size:13px;font-weight:700;color:var(--text);}
+.alt-note{font-size:12px;color:var(--muted);flex:1;}
+.alt-price{font-size:12px;font-weight:700;color:var(--text2);white-space:nowrap;}
+.result-cta{text-align:center;}
+.result-cta-btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;border:none;padding:15px 38px;border-radius:var(--r-pill);font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(0,120,212,0.38);transition:all 0.2s;font-family:inherit;margin-bottom:10px;}
+.result-cta-btn:hover{background:var(--blue-dark);transform:translateY(-2px);}
+.result-cta-note{font-size:12px;color:var(--muted);margin-bottom:12px;}
+.btn-restart{background:none;border:1px solid var(--border);color:var(--muted);padding:9px 20px;border-radius:var(--r-pill);font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+.btn-restart:hover{color:var(--text);border-color:var(--text2);}
+.q-option-hidden{display:none !important;}
+@media(max-width:600px){
+  .q-card{padding:22px 18px;}
+  .result-card{padding:22px 18px;}
+  .includes-grid{grid-template-columns:1fr;}
+  .result-tier-name{font-size:26px;}
+  .result-price-value{font-size:36px;}
+}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div class="nav-wrap">
+  <nav id="mainNav">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="apps.html">Apps</a></li>
+      <li><a href="themes.html">Themes</a></li>
+      <li><a href="index.html#pricing">Packages</a></li>
+      <li><a href="calculator.html">Package Advisor</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Call</button>
+    </div>
+  </nav>
+</div>
+
+<div class="calc-page section-glass">
+  <div class="calc-header">
+    <div class="tag">Package Advisor</div>
+    <h1>Find your perfect training package</h1>
+    <p>Answer 7 quick questions and we'll recommend the right tier with a clear price estimate — no fluff.</p>
+  </div>
+
+  <div class="calc-container">
+    <div class="calc-progress">
+      <div class="prog-step" id="ps1"></div>
+      <div class="prog-step" id="ps2"></div>
+      <div class="prog-step" id="ps3"></div>
+      <div class="prog-step" id="ps4"></div>
+      <div class="prog-step" id="ps5"></div>
+      <div class="prog-step" id="ps6"></div>
+      <div class="prog-step" id="ps7"></div>
+      <span class="prog-label" id="prog-label">Step 1 of 7</span>
+    </div>
+
+    <!-- Q1 -->
+    <div class="q-step active" id="step-1">
+      <div class="q-card">
+        <div class="q-step-indicator">Step 1 of 7</div>
+        <h2>What's your primary training objective?</h2>
+        <p class="q-hint">This is the most important question — it shapes everything else.</p>
+        <div class="q-options">
+          <div class="q-option" onclick="selectOption(1,'A',this)">
+            <div class="q-option-letter">A</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Get a team skilled up on one specific M365 app</span>
+              <span class="q-option-desc">e.g. "Our people barely use Teams properly" or "Excel is all over the place"</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(1,'B',this)">
+            <div class="q-option-letter">B</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Improve how our team handles a key business process</span>
+              <span class="q-option-desc">e.g. "Hybrid working is broken" or "Too much time wasted on email and manual tasks"</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(1,'C',this)">
+            <div class="q-option-letter">C</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Build a sustained M365 learning culture across the organisation</span>
+              <span class="q-option-desc">e.g. "We want structured, ongoing training planned across departments for the year"</span>
+            </div>
+          </div>
+        </div>
+        <div class="q-nav">
+          <span></span>
+          <button class="btn-next" id="next-1" onclick="nextStep(1)" disabled>Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-step" id="step-2">
+      <div class="q-card">
+        <div class="q-step-indicator">Step 2 of 7</div>
+        <h2>How many M365 apps do you want covered per session?</h2>
+        <p class="q-hint">All sessions are 90 minutes — more apps means a workflow-themed approach to keep things focused.</p>
+        <div class="q-options">
+          <div class="q-option" onclick="selectOption(2,'A',this)">
+            <div class="q-option-letter">A</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Just one app</span>
+              <span class="q-option-desc">Deep dive into a single tool — Teams, Excel, SharePoint, Copilot, Power BI, etc.</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(2,'B',this)">
+            <div class="q-option-letter">B</div>
+            <div class="q-option-content">
+              <span class="q-option-label">2–3 apps with a connected workflow theme</span>
+              <span class="q-option-desc">e.g. Teams + Outlook + Loop for hybrid working, or SharePoint + OneDrive + Teams for files</span>
+            </div>
+          </div>
+          <div class="q-option" data-value="C" onclick="selectOption(2,'C',this)">
+            <div class="q-option-letter">C</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Many apps — spread across multiple sessions over time</span>
+              <span class="q-option-desc">A broader programme covering the full M365 ecosystem</span>
+            </div>
+          </div>
+        </div>
+        <div class="q-nav">
+          <button class="btn-back" onclick="prevStep(2)">← Back</button>
+          <button class="btn-next" id="next-2" onclick="nextStep(2)" disabled>Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-step" id="step-3">
+      <div class="q-card">
+        <div class="q-step-indicator">Step 3 of 7</div>
+        <h2>Does Copilot or AI feature in your training needs?</h2>
+        <p class="q-hint">Copilot sessions carry a small premium due to specialist content. Standard M365 pricing applies otherwise.</p>
+        <div class="q-options">
+          <div class="q-option" onclick="selectOption(3,'A',this)">
+            <div class="q-option-letter">A</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Yes — Copilot is the primary focus</span>
+              <span class="q-option-desc">Sessions centred on Copilot across M365, Copilot Agents, or the M365 Copilot App</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(3,'B',this)">
+            <div class="q-option-letter">B</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Some AI elements alongside standard apps</span>
+              <span class="q-option-desc">e.g. Copilot woven into a broader Teams, Outlook or M365 workshop</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(3,'C',this)">
+            <div class="q-option-letter">C</div>
+            <div class="q-option-content">
+              <span class="q-option-label">No — standard M365 apps only</span>
+              <span class="q-option-desc">Teams, Excel, SharePoint, Outlook, Planner, Power Platform, etc.</span>
+            </div>
+          </div>
+        </div>
+        <div class="q-nav">
+          <button class="btn-back" onclick="prevStep(3)">← Back</button>
+          <button class="btn-next" id="next-3" onclick="nextStep(3)" disabled>Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-step" id="step-4">
+      <div class="q-card">
+        <div class="q-step-indicator">Step 4 of 7</div>
+        <h2>How many training sessions are you planning?</h2>
+        <p class="q-hint">More sessions unlock better per-session pricing — this is the biggest lever on value.</p>
+        <div class="q-options">
+          <div class="q-option" data-value="A" onclick="selectOption(4,'A',this)">
+            <div class="q-option-letter">A</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Just 1 session</span>
+              <span class="q-option-desc">One targeted event to address a specific need</span>
+            </div>
+          </div>
+          <div class="q-option" data-value="B" onclick="selectOption(4,'B',this)">
+            <div class="q-option-letter">B</div>
+            <div class="q-option-content">
+              <span class="q-option-label">2–3 sessions</span>
+              <span class="q-option-desc">A small run — rolling training across teams or covering a few topics</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(4,'C',this)">
+            <div class="q-option-letter">C</div>
+            <div class="q-option-content">
+              <span class="q-option-label">4–11 sessions</span>
+              <span class="q-option-desc">A meaningful programme spread across several months</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(4,'D',this)">
+            <div class="q-option-letter">D</div>
+            <div class="q-option-content">
+              <span class="q-option-label">12+ sessions — regular ongoing training (2 per month)</span>
+              <span class="q-option-desc">A sustained programme running for at least 6 months</span>
+            </div>
+          </div>
+        </div>
+        <div class="q-nav">
+          <button class="btn-back" onclick="prevStep(4)">← Back</button>
+          <button class="btn-next" id="next-4" onclick="nextStep(4)" disabled>Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-step" id="step-5">
+      <div class="q-card">
+        <div class="q-step-indicator">Step 5 of 7</div>
+        <h2>Do you need to train multiple separate groups or departments?</h2>
+        <p class="q-hint">Each session accommodates up to 30 participants. More people means multiple runs.</p>
+        <div class="q-options">
+          <div class="q-option" onclick="selectOption(5,'A',this)">
+            <div class="q-option-letter">A</div>
+            <div class="q-option-content">
+              <span class="q-option-label">No — one group, one session per topic</span>
+              <span class="q-option-desc">15 people or fewer per training event</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(5,'B',this)">
+            <div class="q-option-letter">B</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Yes — same content needs to reach multiple groups</span>
+              <span class="q-option-desc">Rolling the same training across different teams, shifts or departments</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(5,'C',this)">
+            <div class="q-option-letter">C</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Yes — different content for different groups</span>
+              <span class="q-option-desc">e.g. Power Platform for IT, Teams for Sales, Copilot for Leadership</span>
+            </div>
+          </div>
+        </div>
+        <div class="q-nav">
+          <button class="btn-back" onclick="prevStep(5)">← Back</button>
+          <button class="btn-next" id="next-5" onclick="nextStep(5)" disabled>Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-step" id="step-6">
+      <div class="q-card">
+        <div class="q-step-indicator">Step 6 of 7</div>
+        <h2>How important is post-session support and strategic guidance?</h2>
+        <p class="q-hint">Every tier includes a recording, completion cert, skills survey and ROI report. This is about what's on top.</p>
+        <div class="q-options">
+          <div class="q-option" onclick="selectOption(6,'A',this)">
+            <div class="q-option-letter">A</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Basic — a recording and 7-day Q&amp;A is enough</span>
+              <span class="q-option-desc">Staff can rewatch and ask follow-up questions for a week after</span>
+            </div>
+          </div>
+          <div class="q-option" onclick="selectOption(6,'B',this)">
+            <div class="q-option-letter">B</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Extended — 30-day Q&amp;A and a discovery call to shape content</span>
+              <span class="q-option-desc">More time to embed the learning; a pre-session call to make sure the content is right</span>
+            </div>
+          </div>
+          <div class="q-option" data-value="C" onclick="selectOption(6,'C',this)">
+            <div class="q-option-letter">C</div>
+            <div class="q-option-content">
+              <span class="q-option-label">Strategic — phased calendar and priority scheduling</span>
+              <span class="q-option-desc">A structured programme designed upfront, not assembled session by session</span>
+            </div>
+          </div>
+        </div>
+        <div class="q-nav">
+          <button class="btn-back" onclick="prevStep(6)">← Back</button>
+          <button class="btn-next" id="next-6" onclick="nextStep(6)" disabled>Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="q-step" id="step-7">
+      <div class="q-card">
+        <div class="q-step-indicator">Step 7 of 7</div>
+        <h2>Would you like any add-ons?</h2>
+        <p class="q-hint">Add-ons can be applied to any session. Select any that interest you — you can decide for certain after booking.</p>
+        <div class="q-checkboxes">
+          <div class="q-checkbox-item" onclick="toggleAddon(this,'office-hours')">
+            <div class="q-checkbox-box"></div>
+            <div class="q-checkbox-text">
+              <span class="q-checkbox-label">Office Hours</span>
+              <span class="q-checkbox-desc">1hr live Q&amp;A — attendees bring real problems from their work</span>
+            </div>
+            <span class="q-checkbox-price" id="oh-price">£200</span>
+          </div>
+          <div class="q-checkbox-item" id="no-addon" onclick="toggleNone(this)">
+            <div class="q-checkbox-box"></div>
+            <div class="q-checkbox-text">
+              <span class="q-checkbox-label">No add-ons for now</span>
+              <span class="q-checkbox-desc">I'll decide after booking if I want anything extra</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <p class="section-label">Preferred currency</p>
+          <div class="cur-row">
+            <div class="cur-opt selected" id="gbp-opt" onclick="selectCurrency('gbp')">£ GBP</div>
+            <div class="cur-opt" id="eur-opt" onclick="selectCurrency('eur')">€ EUR</div>
+          </div>
+        </div>
+        <div class="q-nav">
+          <button class="btn-back" onclick="prevStep(7)">← Back</button>
+          <button class="btn-next" id="next-7" onclick="showResult()">See my recommendation →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="q-step" id="step-result">
+      <div class="result-card" id="result-output"></div>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section" id="advisor-signup">
+  <div class="cta-dots"></div>
+  <div class="cta-rings"><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div></div>
+  <div class="cta-inner">
+    <h2>Ready to move forward?</h2>
+    <p>Book a free 30-minute discovery call. We'll confirm your package and build the programme around your team.</p>
+    <div class="signup-card" style="max-width:660px;margin:40px auto 0;text-align:left;">
+      <div id="a-fw">
+        <form class="s-form" name="advisor-call" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return sendAdvisor(event)">
+          <input type="hidden" name="form-name" value="advisor-call"/>
+          <p style="position:absolute;left:-9999px;"><label>Do not fill this in: <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+          <div class="f-group"><label>Full name</label><input type="text" id="a-fn" name="name" placeholder="Jane Smith" required minlength="2" maxlength="100" pattern="[A-Za-z\u00C0-\u024F\s\-\']+" title="Please enter your full name"/><span class="f-error" id="a-fn-err">Please enter your full name (letters only)</span></div>
+          <div class="f-group"><label>Job title</label><input type="text" id="a-jt" name="job-title" placeholder="L&amp;D Manager" required minlength="2" maxlength="100"/><span class="f-error" id="a-jt-err">Please enter your job title</span></div>
+          <div class="f-group"><label>Company name</label><input type="text" id="a-co" name="company" placeholder="Acme Corporation" required minlength="2" maxlength="150"/><span class="f-error" id="a-co-err">Please enter your company name</span></div>
+          <div class="f-group"><label>Work email</label><input type="email" id="a-em" name="email" placeholder="jane@acme.com" required maxlength="254"/><span class="f-error" id="a-em-err">Please enter a valid work email address</span></div>
+          <div class="f-group full"><label>Message</label><textarea id="a-msg" name="message" rows="6" maxlength="3000" placeholder="Complete the advisor above — your answers will appear here automatically."></textarea></div>
+          <div class="f-submit"><button type="submit">Book My Discovery Call</button></div>
+          <div class="f-note">🔒 Your details are safe with us. No spam, ever.</div>
+        </form>
+      </div>
+      <div class="success-msg" id="a-sm"><div class="s-icon">✅</div><h3>You're booked in!</h3><p>Thanks for reaching out. One of our team will be in touch within one business day.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
+  <p>© 2026 Haedlern. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+const answers = {1:null,2:null,3:null,4:null,5:null,6:null};
+const addons = new Set();
+let currency = 'gbp';
+let currentStep = 1;
+
+const P = {
+  tier1_std:  {gbp:395,  eur:470 },
+  tier1_cop:  {gbp:450,  eur:535 },
+  tier2_std:  {gbp:500,  eur:595 },
+  tier2_cop:  {gbp:650,  eur:770 },
+  tier3_mo:   {gbp:550,  eur:650 },
+  tier3_upg:  {gbp:175,  eur:210 },
+  bundle3:    {gbp:949,  eur:1129},
+  addon_oh:   {gbp:200,  eur:240 },
+  addon_cd:   {gbp:300,  eur:360 },
+};
+const SYM = {gbp:'£',eur:'€'};
+const f = k => SYM[currency] + P[k][currency].toLocaleString();
+const fn = n => SYM[currency] + n.toLocaleString();
+
+function selectOption(step, val, el) {
+  el.closest('.q-options').querySelectorAll('.q-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[step] = val;
+  document.getElementById('next-'+step).disabled = false;
+}
+
+function toggleAddon(el, key) {
+  document.getElementById('no-addon').classList.remove('checked');
+  addons.delete('none');
+  el.classList.contains('checked') ? (el.classList.remove('checked'), addons.delete(key)) : (el.classList.add('checked'), addons.add(key));
+}
+
+function toggleNone(el) {
+  document.querySelectorAll('.q-checkbox-item:not(#no-addon)').forEach(i=>i.classList.remove('checked'));
+  addons.clear();
+  el.classList.contains('checked') ? el.classList.remove('checked') : (el.classList.add('checked'), addons.add('none'));
+}
+
+function selectCurrency(c) {
+  currency = c;
+  document.getElementById('gbp-opt').classList.toggle('selected', c==='gbp');
+  document.getElementById('eur-opt').classList.toggle('selected', c==='eur');
+  document.getElementById('oh-price').textContent = f('addon_oh');
+  document.getElementById('cd-price').textContent = f('addon_cd');
+}
+
+// ── Filter rules: hide options that contradict earlier answers ─────────────
+function applyFilters(step) {
+  if (step === 2) {
+    // Q1='A' (one specific app) → Q2-C (many apps) is contradictory
+    setOptionHidden(2, 'C', answers[1] === 'A');
+  }
+  if (step === 4) {
+    // Q2='C' (many apps / multiple sessions) OR Q1='C' (sustained culture) → Q4-A (just 1 session) is contradictory
+    setOptionHidden(4, 'A', answers[2] === 'C' || answers[1] === 'C');
+  }
+  if (step === 6) {
+    // Q4='A' or 'B' (1–3 sessions total) → Q6-C (phased calendar / strategic) is contradictory
+    setOptionHidden(6, 'C', answers[4] === 'A' || answers[4] === 'B');
+  }
+}
+
+function setOptionHidden(step, val, shouldHide) {
+  const opt = document.querySelector(`#step-${step} .q-option[data-value="${val}"]`);
+  if (!opt) return;
+  opt.classList.toggle('q-option-hidden', shouldHide);
+  // If this option was previously selected and is now hidden, clear it
+  if (shouldHide && answers[step] === val) {
+    opt.classList.remove('selected');
+    answers[step] = null;
+    document.getElementById('next-'+step).disabled = true;
+  }
+}
+
+function nextStep(cur) {
+  if (!answers[cur]) return;
+  document.getElementById('step-'+cur).classList.remove('active');
+  currentStep = cur+1;
+  applyFilters(currentStep);
+  document.getElementById('step-'+currentStep).classList.add('active');
+  updateProg(currentStep);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function prevStep(cur) {
+  document.getElementById('step-'+cur).classList.remove('active');
+  currentStep = cur-1;
+  document.getElementById('step-'+currentStep).classList.add('active');
+  updateProg(currentStep);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateProg(s) {
+  for(let i=1;i<=7;i++){
+    const el=document.getElementById('ps'+i);
+    el.className='prog-step'+(i<s?' done':i===s?' active':'');
+  }
+  document.getElementById('prog-label').textContent = s<=7?`Step ${s} of 7`:'Complete';
+}
+
+function score() {
+  const s={t1:0,t2:0,t3:0,bun:0};
+  const a=answers;
+  if(a[1]==='A'){s.t1+=3;}
+  if(a[1]==='B'){s.t2+=3;}
+  if(a[1]==='C'){s.t3+=4;}
+  if(a[2]==='A'){s.t1+=3;}
+  if(a[2]==='B'){s.t2+=3;}
+  if(a[2]==='C'){s.t3+=3;s.t2+=1;}
+  if(a[4]==='A'){s.t1+=2;s.t2+=1;}
+  if(a[4]==='B'){s.bun+=4;s.t1+=1;s.t2+=2;}
+  if(a[4]==='C'){s.t3+=2;s.t2+=2;s.bun+=1;}
+  if(a[4]==='D'){s.t3+=5;}
+  if(a[5]==='A'){s.t1+=1;s.t2+=1;}
+  if(a[5]==='B'){s.bun+=3;s.t3+=1;}
+  if(a[5]==='C'){s.t3+=2;s.t2+=1;}
+  if(a[6]==='A'){s.t1+=2;}
+  if(a[6]==='B'){s.t2+=3;}
+  if(a[6]==='C'){s.t3+=4;}
+  return s;
+}
+
+function getBest(s) {
+  return [['t1',s.t1],['t2',s.t2],['t3',s.t3],['bun',s.bun]].sort((a,b)=>b[1]-a[1])[0][0];
+}
+
+const META = {
+  t1:{
+    label:'Tier 1',name:'Focus Session',
+    desc:"A sharp, single-app session built entirely around your team's real workflows. Perfect when you know exactly what needs fixing and want to see results fast.",
+    includes:['Session recording within 24h','Completion certificate','Pre-session skills survey','Post-session ROI report','Up to 30 participants','Sector-tailored examples','Live via Microsoft Teams','7-day async Q&A'],
+  },
+  bun:{
+    label:'Bundle',name:'3-Session Bundle',
+    desc:'Three Focus Sessions booked upfront at a ~20% saving vs booking individually. The smart play when you need to roll the same training across multiple departments.',
+    includes:['Session recording within 24h (all 3)','Completion certificate','Pre-session skills survey','Post-session ROI report','Up to 30 participants per session','Sector-tailored examples','Live via Microsoft Teams','~20% saving vs 3 individual bookings'],
+  },
+  t2:{
+    label:'Tier 2',name:'Custom Workshop',
+    desc:"A 90-minute, outcome-led workshop covering 2–3 connected apps — built around a specific business challenge, not a tool checklist. Includes 30-day Q&A and a discovery call to shape the content.",
+    includes:['Session recording within 24h','Completion certificate','Pre-session skills survey','Post-session ROI report','Up to 30 participants','Sector-tailored examples','Live via Microsoft Teams','15-min discovery call included','30-day async Q&A support'],
+  },
+  t3:{
+    label:'Tier 3',name:'Ongoing Programme',
+    desc:'2 sessions per month across a minimum of 3 months — with a phased M365 learning calendar and priority scheduling locked in advance.',
+    includes:['Session recording within 24h (every session)','Completion certificate','Pre-session skills survey','Post-session ROI report','Up to 30 participants per session','Sector-tailored examples','Live via Microsoft Teams','Phased M365 learning calendar','Priority scheduling locked upfront'],
+  },
+};
+
+function getReasons(t) {
+  const a=answers, r=[];
+  if(t==='t1'){
+    if(a[1]==='A') r.push('Your goal is targeted skill-building on one specific app');
+    if(a[2]==='A') r.push('You want to deep-dive into a single tool per session');
+    if(a[4]==='A') r.push("You're planning just one session");
+    if(a[6]==='A') r.push('Basic post-session support is all you need');
+  } else if(t==='bun'){
+    if(a[4]==='B') r.push('You need 2–3 sessions — the bundle saves ~20% vs booking individually');
+    if(a[5]==='B') r.push('Same content needs to reach multiple groups or departments');
+    r.push(`Saves vs 3 individual Focus Sessions`);
+  } else if(t==='t2'){
+    if(a[1]==='B') r.push('Your goal is improving a specific business process, not just one app');
+    if(a[2]==='B') r.push('2–3 connected apps in one themed session fits your scope');
+    if(a[6]==='B') r.push('30-day Q&A and a discovery call to tailor the content');
+    if(a[3]==='A'||a[3]==='B') r.push('Copilot / AI content woven in or leading the session');
+  } else if(t==='t3'){
+    if(a[1]==='C') r.push('Your goal is sustained, organisation-wide capability — not a one-off');
+    if(a[4]==='D') r.push('You need 12+ sessions at 2 per month across 6+ months');
+    if(a[6]==='C') r.push('Phased calendar, priority scheduling and quarterly coaching included');
+    if(a[5]==='C') r.push('Different content for different groups fits a planned programme');
+  }
+  return r.slice(0,4);
+}
+
+function calcPrice(t) {
+  const cop = answers[3]==='A', mixedCop = answers[3]==='B';
+  let base=0, period='', sub='', breakdown=[];
+  if(t==='t1'){
+    base = cop ? P.tier1_cop[currency] : P.tier1_std[currency];
+    period='per session';
+    sub = cop ? 'Copilot session rate' : 'Standard session rate';
+    breakdown=['Single 90-min session · 1 app · up to 30 participants'];
+    if(cop) breakdown.push('Copilot premium applied');
+  } else if(t==='bun'){
+    base = P.bundle3[currency];
+    period='for 3 sessions';
+    sub = `${fn(Math.round(base/3))} per session — ~20% saving`;
+    breakdown=['3× Focus Sessions booked upfront','Ideal for rolling same content to multiple groups'];
+  } else if(t==='t2'){
+    base = (cop||mixedCop) ? P.tier2_cop[currency] : P.tier2_std[currency];
+    period='per session';
+    sub = (cop||mixedCop) ? 'Copilot-focused / multi-AI theme rate' : 'Standard workshop rate';
+    breakdown=['90-min themed workshop · 2–3 apps · up to 30 participants'];
+    if(cop||mixedCop) breakdown.push('Copilot/AI premium applied');
+  } else if(t==='t3'){
+    base = P.tier3_mo[currency];
+    period='per month';
+    sub=`= ${fn(base/2)} per session · 3-month minimum · 6 sessions total`;
+    breakdown=['2 Focus Sessions/month','Custom Workshop upgrade available at '+f('tier3_upg')+'/session'];
+  }
+  const addonItems=[];
+  let addonTotal=0;
+  if(addons.has('office-hours')){addonItems.push({name:'Office Hours',price:P.addon_oh[currency]});addonTotal+=P.addon_oh[currency];}
+  return {base,period,sub,breakdown,addonItems,addonTotal};
+}
+
+// Store last scored best tier so re-renders don't re-score
+let lastBest = null;
+
+function showResult() {
+  document.getElementById('step-7').classList.remove('active');
+  document.getElementById('step-result').classList.add('active');
+  updateProg(8);
+  window.scrollTo({top:0,behavior:'smooth'});
+  const s=score();
+  lastBest = getBest(s);
+  renderResult();
+}
+
+function renderResult() {
+  const best=lastBest, m=META[best], pr=calcPrice(best), reasons=getReasons(best);
+  const allTiers=['t1','bun','t2','t3'];
+  const altPriceStr = {
+    t1:`From ${f('tier1_std')} per session`,
+    bun:`${f('bundle3')} for 3 sessions`,
+    t2:`From ${f('tier2_std')} per session`,
+    t3:`${f('tier3_mo')}/month`
+  };
+  const altNote = {
+    t1:'Best for one-off, single-app targeted training',
+    bun:'Best for rolling same content across 3 groups',
+    t2:'Best for business-process-led, multi-app workshops',
+    t3:'Best for sustained, structured training programmes'
+  };
+
+  const alts = allTiers.filter(t=>t!==best).map(t=>`
+    <div class="alt-row">
+      <div><div class="alt-name">${META[t].label}: ${META[t].name}</div><div class="alt-note">${altNote[t]}</div></div>
+      <div class="alt-price">${altPriceStr[t]}</div>
+    </div>`).join('');
+
+  const whyHtml = reasons.length ? `
+    <div class="why-box" style="margin-bottom:22px;">
+      <p class="section-label">Why this fits your answers</p>
+      <ul class="why-list">${reasons.map(r=>`<li>${r}</li>`).join('')}</ul>
+    </div>` : '';
+
+  const incHtml = m.includes.map(i=>`<div class="inc-item">${i}</div>`).join('');
+
+  const addonHtml = pr.addonItems.length ? `
+    <div class="addons-section">
+      <p class="section-label">Add-ons selected</p>
+      ${pr.addonItems.map(a=>`<div class="addon-row-result"><span>${a.name}</span><span class="addon-price-result">${fn(a.price)}</span></div>`).join('')}
+    </div>` : '';
+
+  const totalHtml = pr.addonItems.length ? `
+    <div class="total-bar">
+      <span class="total-bar-label">Estimated total (base + add-ons)</span>
+      <span class="total-bar-value">${fn(pr.base+pr.addonTotal)}</span>
+    </div>` : '';
+
+  document.getElementById('result-output').innerHTML = `
+    <div class="result-cur-row">
+      <button id="res-gbp" class="cur-opt${currency==='gbp'?' selected':''}" onclick="switchResultCurrency('gbp')">£ GBP</button>
+      <button id="res-eur" class="cur-opt${currency==='eur'?' selected':''}" onclick="switchResultCurrency('eur')">€ EUR</button>
+    </div>
+    <div class="result-top">
+      <div class="result-badge">Your Recommendation</div>
+      <div class="result-tier-name">${m.label}: ${m.name}</div>
+      <div class="result-tier-desc">${m.desc}</div>
+      <div class="result-price-block">
+        <div class="result-price-label">Starting from</div>
+        <div class="result-price-value">${fn(pr.base)}</div>
+        <div class="result-price-period">${pr.period}</div>
+        ${pr.sub?`<div class="result-price-sub">${pr.sub}</div>`:''}
+      </div>
+    </div>
+
+    ${whyHtml}
+
+    <div style="margin-bottom:22px;">
+      <p class="section-label">What's included</p>
+      <div class="includes-grid">${incHtml}</div>
+    </div>
+
+    ${addonHtml}
+    ${totalHtml}
+
+    <div class="alts-section">
+      <p class="section-label">Other options to consider</p>
+      ${alts}
+    </div>
+
+    <div class="result-cta">
+      <button class="result-cta-btn" onclick="document.getElementById('advisor-signup').scrollIntoView({behavior:'smooth'})">Book a Free Discovery Call</button>
+      <div class="result-cta-note">No commitment. Our team will confirm the right package with you on the call.</div>
+      <br>
+      <button class="btn-restart" onclick="restartCalc()">↺ Start over</button>
+    </div>
+  `;
+
+  // Sync result currency toggle buttons to current state
+  const rgbp = document.getElementById('res-gbp');
+  const reur = document.getElementById('res-eur');
+  if (rgbp && reur) {
+    rgbp.classList.toggle('selected', currency === 'gbp');
+    reur.classList.toggle('selected', currency === 'eur');
+  }
+
+  fillAdvisorForm(best);
+}
+
+function switchResultCurrency(c) {
+  currency = c;
+  renderResult();
+}
+
+// ── Advisor form ───────────────────────────────────────────────────────────
+const aRules = [
+  {id:'a-fn', errId:'a-fn-err', test: v => /^[A-Za-z\u00C0-\u024F][\u00C0-\u024FA-Za-z\s\-\']{1,}$/.test(v)},
+  {id:'a-jt', errId:'a-jt-err', test: v => v.length >= 2},
+  {id:'a-co', errId:'a-co-err', test: v => v.length >= 2},
+  {id:'a-em', errId:'a-em-err', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)},
+];
+
+function valAdvisor(rule, show) {
+  const el = document.getElementById(rule.id);
+  const err = document.getElementById(rule.errId);
+  if (!el) return true;
+  const ok = rule.test(el.value.trim());
+  el.classList.toggle('input-valid', ok && el.value.trim().length > 0);
+  el.classList.toggle('input-error', !ok && show);
+  if (err) err.classList.toggle('visible', !ok && show);
+  return ok;
+}
+
+function sendAdvisor(e) {
+  e.preventDefault();
+  let valid = true;
+  aRules.forEach(r => { if (!valAdvisor(r, true)) valid = false; });
+  if (!valid) {
+    const first = aRules.find(r => !document.getElementById(r.id)?.classList.contains('input-valid'));
+    if (first) document.getElementById(first.id)?.focus();
+    return false;
+  }
+  fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(e.target)).toString()})
+    .finally(() => {
+      document.getElementById('a-fw').style.display = 'none';
+      document.getElementById('a-sm').style.display = 'block';
+    });
+  return false;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  aRules.forEach(rule => {
+    const el = document.getElementById(rule.id);
+    if (!el) return;
+    el.addEventListener('blur', () => { if (el.value.trim().length > 0) valAdvisor(rule, true); });
+    el.addEventListener('input', () => { if (el.classList.contains('input-error') || el.classList.contains('input-valid')) valAdvisor(rule, el.value.trim().length > 0); });
+  });
+});
+
+function fillAdvisorForm(best) {
+  const q1Map = {A:'Get a team skilled up on one specific M365 app', B:'Improve how our team handles a key business process', C:'Build a sustained M365 learning culture across the organisation'};
+  const q2Map = {A:'Just one app per session', B:'2–3 apps with a connected workflow theme', C:'Many apps — spread across multiple sessions'};
+  const q3Map = {A:'Yes — Copilot is the primary focus', B:'Some AI elements alongside standard apps', C:'No — standard M365 apps only'};
+  const q4Map = {A:'Just 1 session', B:'2–3 sessions', C:'4–11 sessions', D:'12+ sessions (2 per month)'};
+  const q5Map = {A:'No — one group per topic', B:'Yes — same content for multiple groups', C:'Yes — different content for different groups'};
+  const q6Map = {A:'Basic — recording and 7-day Q&A', B:'Extended — 30-day Q&A and discovery call to shape content', C:'Strategic — phased calendar and priority scheduling'};
+  const addonMap = {'office-hours':'Office Hours'};
+  const selectedAddons = [...addons].filter(a => a !== 'none').map(a => addonMap[a]).filter(Boolean);
+
+  const lines = [
+    `Recommended package: ${META[best].label}: ${META[best].name}`,
+    ``,
+    `My answers:`,
+    answers[1] ? `Training objective: ${q1Map[answers[1]]}` : '',
+    answers[2] ? `Apps per session: ${q2Map[answers[2]]}` : '',
+    answers[3] ? `Copilot / AI: ${q3Map[answers[3]]}` : '',
+    answers[4] ? `Number of sessions: ${q4Map[answers[4]]}` : '',
+    answers[5] ? `Training groups: ${q5Map[answers[5]]}` : '',
+    answers[6] ? `Post-session support: ${q6Map[answers[6]]}` : '',
+    `Add-ons: ${selectedAddons.length ? selectedAddons.join(', ') : 'None'}`,
+  ].filter(s => s !== null && s !== undefined);
+
+  const msg = document.getElementById('a-msg');
+  if (msg) msg.value = lines.join('\n');
+}
+
+function restartCalc() {
+  for(let k in answers) answers[k]=null;
+  addons.clear(); currency='gbp'; currentStep=1;
+  document.querySelectorAll('.q-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step-1').classList.add('active');
+  document.querySelectorAll('.q-option').forEach(o=>o.classList.remove('selected'));
+  document.querySelectorAll('.q-checkbox-item').forEach(i=>i.classList.remove('checked'));
+  for(let i=1;i<=6;i++) document.getElementById('next-'+i) && (document.getElementById('next-'+i).disabled=true);
+  document.getElementById('gbp-opt').classList.add('selected');
+  document.getElementById('eur-opt').classList.remove('selected');
+  document.getElementById('oh-price').textContent='£200';
+  document.getElementById('cd-price').textContent='£300';
+  updateProg(1);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+updateProg(1);
+</script>
+</body>
+</html>

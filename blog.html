@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Haedlern</title>
+<meta name="description" content="Notes on Microsoft 365 adoption, Copilot rollouts, and what actually works inside large organisations.">
+<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── BLOG INDEX ── */
+.blog-hero{padding:140px 8% 40px;position:relative;overflow:hidden;}
+.blog-hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 100% at 50% 30%,black 10%,transparent 70%);pointer-events:none;opacity:0.3;z-index:0;}
+.blog-hero-inner{max-width:1200px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.blog-hero h1{font-size:clamp(34px,4.5vw,56px);font-weight:900;letter-spacing:-1.6px;line-height:1.06;color:var(--text);margin:14px 0 14px;}
+.blog-hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.blog-hero p{font-size:16px;color:var(--muted);max-width:640px;margin:0 auto;line-height:1.7;}
+
+.blog-section{padding:40px 8% 100px;}
+.blog-inner{max-width:1200px;margin:0 auto;}
+
+/* Featured post (large) */
+.blog-featured{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-2xl);padding:0;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:48px;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;text-decoration:none;color:inherit;}
+.blog-featured:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border2);}
+.blog-featured-img{position:relative;min-height:340px;background:linear-gradient(135deg,rgba(0,120,212,0.18),rgba(0,180,216,0.14));display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.blog-featured-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.blog-featured-img-placeholder{font-size:64px;font-weight:900;color:var(--blue);opacity:0.45;letter-spacing:-3px;}
+.blog-featured-body{padding:40px 44px;display:flex;flex-direction:column;gap:14px;justify-content:center;}
+.blog-featured-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);font-weight:500;}
+.blog-featured-meta .pill{background:var(--tag-bg);border:1px solid var(--tag-border);color:var(--blue);padding:3px 10px;border-radius:var(--r-pill);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+.blog-featured h2{font-size:clamp(22px,2.6vw,32px);font-weight:900;color:var(--text);letter-spacing:-0.8px;line-height:1.18;margin:0;}
+.blog-featured-excerpt{color:var(--muted);font-size:15px;line-height:1.75;margin:0;}
+.blog-featured-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+.blog-tag{display:inline-flex;align-items:center;background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:3px 10px;border-radius:var(--r-pill);font-size:11px;font-weight:600;}
+.blog-featured-cta{font-size:13px;font-weight:700;color:var(--blue);margin-top:6px;display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s;}
+.blog-featured:hover .blog-featured-cta{gap:10px;}
+
+/* Card grid */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+.blog-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform 0.22s,box-shadow 0.22s,border-color 0.22s;text-decoration:none;color:inherit;display:flex;flex-direction:column;}
+.blog-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--border2);}
+.blog-card-img{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,rgba(0,120,212,0.16),rgba(0,180,216,0.1));display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.blog-card-img-placeholder{font-size:42px;font-weight:900;color:var(--blue);opacity:0.4;letter-spacing:-2px;}
+.blog-card-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.blog-card-meta{font-size:11.5px;color:var(--muted);font-weight:500;}
+.blog-card h3{font-size:18px;font-weight:800;color:var(--text);letter-spacing:-0.4px;line-height:1.3;margin:0;}
+.blog-card-excerpt{color:var(--muted);font-size:13.5px;line-height:1.7;margin:0;flex:1;}
+.blog-card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+.blog-card-cta{font-size:12.5px;font-weight:700;color:var(--blue);margin-top:6px;display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s;}
+.blog-card:hover .blog-card-cta{gap:10px;}
+
+/* Empty state */
+.blog-empty{text-align:center;padding:80px 20px;color:var(--muted);}
+.blog-empty h3{color:var(--text);font-size:20px;margin-bottom:10px;}
+
+/* Loading skeleton */
+.blog-loading{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
+
+/* CTA below */
+.blog-bottom-cta{margin-top:80px;padding:50px 40px;text-align:center;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-2xl);transition:background 0.4s;}
+.blog-bottom-cta h3{font-size:clamp(20px,2.4vw,28px);font-weight:900;color:var(--text);letter-spacing:-0.6px;margin-bottom:10px;}
+.blog-bottom-cta p{color:var(--muted);font-size:14px;margin-bottom:22px;}
+.blog-bottom-cta .btn-primary{display:inline-block;text-decoration:none;}
+
+/* Responsive */
+@media(max-width:840px){
+  .blog-featured{grid-template-columns:1fr;}
+  .blog-featured-img{min-height:220px;}
+  .blog-featured-body{padding:28px 26px;}
+  .blog-hero{padding:120px 5% 30px;}
+  .blog-section{padding:30px 5% 80px;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav id="mainNav">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="apps.html">Apps</a></li>
+      <li><a href="themes.html">Themes</a></li>
+      <li><a href="index.html#pricing">Packages</a></li>
+      <li><a href="calculator.html">Package Advisor</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html" style="color:var(--blue)">Blog</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Call</button>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="blog-hero section-glass">
+  <div class="blog-hero-grid"></div>
+  <div class="blog-hero-inner">
+    <div class="tag sa">Blog</div>
+    <h1 class="sa" style="--delay:60ms"><em>Field notes</em><br>from inside enterprise M365.</h1>
+    <p class="sa" style="--delay:120ms">Practical writing on Microsoft 365 adoption, Copilot rollouts, and what actually works when you're trying to change how a large organisation gets its work done.</p>
+  </div>
+</section>
+
+<!-- BLOG LIST -->
+<section class="blog-section">
+  <div class="blog-inner">
+    <div id="blog-list" class="blog-loading">Loading posts…</div>
+
+    <div class="blog-bottom-cta sa">
+      <h3>Want training built around real workflows like these?</h3>
+      <p>Book a free 30-minute discovery call. No commitment, no pressure.</p>
+      <a href="index.html#signup" class="btn-primary" style="background:var(--blue);color:#fff;border:none;padding:12px 26px;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 16px rgba(0,120,212,0.35);">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
+  <p>© 2026 Haedlern. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// ── Blog index renderer ──
+(function() {
+  const listEl = document.getElementById('blog-list');
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    try {
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function readingTime(body) {
+    const words = String(body || '').split(/\s+/).filter(Boolean).length;
+    const mins = Math.max(1, Math.round(words / 220));
+    return mins + ' min read';
+  }
+
+  function getInitials(title) {
+    return String(title || 'B').trim().split(/\s+/).slice(0, 2).map(w => w[0] || '').join('').toUpperCase() || 'B';
+  }
+
+  function tagsHtml(tags) {
+    if (!Array.isArray(tags) || !tags.length) return '';
+    return '<div class="blog-card-tags">' + tags.slice(0, 3).map(t => '<span class="blog-tag">' + escapeHtml(t) + '</span>').join('') + '</div>';
+  }
+
+  function featuredCard(p) {
+    const href = 'post.html?slug=' + encodeURIComponent(p.slug);
+    const img = p.image
+      ? '<img src="' + escapeHtml(p.image) + '" alt="' + escapeHtml(p.title) + '"/>'
+      : '<div class="blog-featured-img-placeholder">' + escapeHtml(getInitials(p.title)) + '</div>';
+    const tagsBlock = Array.isArray(p.tags) && p.tags.length
+      ? '<div class="blog-featured-tags">' + p.tags.slice(0, 4).map(t => '<span class="blog-tag">' + escapeHtml(t) + '</span>').join('') + '</div>'
+      : '';
+    return [
+      '<a class="blog-featured sa" href="' + href + '">',
+        '<div class="blog-featured-img">' + img + '</div>',
+        '<div class="blog-featured-body">',
+          '<div class="blog-featured-meta">',
+            '<span class="pill">Featured</span>',
+            '<span>' + escapeHtml(fmtDate(p.date)) + '</span>',
+            '<span>·</span>',
+            '<span>' + readingTime(p.body) + '</span>',
+          '</div>',
+          '<h2>' + escapeHtml(p.title) + '</h2>',
+          '<p class="blog-featured-excerpt">' + escapeHtml(p.excerpt || '') + '</p>',
+          tagsBlock,
+          '<span class="blog-featured-cta">Read post →</span>',
+        '</div>',
+      '</a>'
+    ].join('');
+  }
+
+  function postCard(p, i) {
+    const href = 'post.html?slug=' + encodeURIComponent(p.slug);
+    const img = p.image
+      ? '<img src="' + escapeHtml(p.image) + '" alt="' + escapeHtml(p.title) + '"/>'
+      : '<div class="blog-card-img-placeholder">' + escapeHtml(getInitials(p.title)) + '</div>';
+    return [
+      '<a class="blog-card sa" href="' + href + '" style="--delay:' + (i * 80) + 'ms">',
+        '<div class="blog-card-img">' + img + '</div>',
+        '<div class="blog-card-body">',
+          '<div class="blog-card-meta">' + escapeHtml(fmtDate(p.date)) + ' &nbsp;·&nbsp; ' + readingTime(p.body) + '</div>',
+          '<h3>' + escapeHtml(p.title) + '</h3>',
+          '<p class="blog-card-excerpt">' + escapeHtml(p.excerpt || '') + '</p>',
+          tagsHtml(p.tags),
+          '<span class="blog-card-cta">Read post →</span>',
+        '</div>',
+      '</a>'
+    ].join('');
+  }
+
+  function render(posts) {
+    if (!Array.isArray(posts) || !posts.length) {
+      listEl.className = '';
+      listEl.innerHTML = '<div class="blog-empty"><h3>No posts yet</h3><p>The first post will appear here once it\'s published from the content manager.</p></div>';
+      return;
+    }
+    // Sort: newest first
+    posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+    const featured = posts.find(p => p.featured) || posts[0];
+    const rest = posts.filter(p => p !== featured);
+
+    listEl.className = '';
+    let html = '';
+    if (featured) html += featuredCard(featured);
+    if (rest.length) {
+      html += '<div class="blog-grid stagger">' + rest.map(postCard).join('') + '</div>';
+    }
+    listEl.innerHTML = html;
+
+    // Re-trigger scroll-animate observer if defined in script.js
+    if (typeof window.observeScrollAnimate === 'function') {
+      window.observeScrollAnimate();
+    } else {
+      // Fallback — just remove the .sa state so cards are visible immediately
+      document.querySelectorAll('.blog-card.sa, .blog-featured.sa').forEach(el => el.classList.add('in'));
+    }
+  }
+
+  fetch('content/blog.json', { cache: 'no-cache' })
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(data => render((data && data.posts) || []))
+    .catch(err => {
+      console.error('Blog load failed:', err);
+      listEl.className = '';
+      listEl.innerHTML = '<div class="blog-empty"><h3>Couldn\'t load the blog</h3><p>If you\'re viewing this by double-clicking the file, browsers block fetch() from <code>file://</code>. Run a tiny local server (e.g. <code>npx serve</code>) or deploy to see it work.</p></div>';
+    });
+})();
+</script>
+</body>
+</html>

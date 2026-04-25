@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apps | Haedlern</title>
+<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
+<style>
+/* ── APPS PAGE HERO ── */
+.apps-page-hero {
+  min-height: 44vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 140px 5% 60px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, #eef4ff 0%, #f7f9ff 40%, #e8f6ff 100%);
+}
+[data-theme="dark"] .apps-page-hero {
+  background: radial-gradient(ellipse 70% 55% at 20% 20%, rgba(0,80,180,0.22), transparent 60%),
+              radial-gradient(ellipse 60% 50% at 80% 80%, rgba(0,120,212,0.14), transparent 60%),
+              var(--bg);
+}
+.apps-page-hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+  pointer-events: none; opacity: 0.4;
+}
+.apps-page-hero-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+.apps-page-hero h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900; letter-spacing: -2px;
+  line-height: 1.08; margin-bottom: 16px; color: var(--text);
+}
+.apps-page-hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.apps-page-hero p {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--muted); line-height: 1.7;
+  max-width: 600px; margin: 0 auto;
+}
+
+/* Back CTA banner */
+.apps-back-banner {
+  background: linear-gradient(160deg, #004fa3 0%, #0078d4 55%, #00a4d4 100%);
+  padding: 60px 5%; text-align: center; position: relative; overflow: hidden;
+}
+[data-theme="dark"] .apps-back-banner {
+  background: linear-gradient(160deg, #001a3d 0%, #003a7a 55%, #005a9e 100%);
+}
+.apps-back-banner h2 {
+  font-size: clamp(22px, 3vw, 36px); font-weight: 900;
+  color: #fff; margin-bottom: 10px; letter-spacing: -1px;
+}
+.apps-back-banner p { color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 28px; }
+.apps-back-banner-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.apps-back-banner .btn-white {
+  background: #fff; color: var(--blue);
+  padding: 12px 24px; border-radius: var(--r-pill);
+  font-size: 14px; font-weight: 800; border: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  text-decoration: none; display: inline-block;
+  transition: all 0.22s;
+}
+.apps-back-banner .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+.apps-back-banner .btn-ghost {
+  background: rgba(255,255,255,0.15); color: #fff;
+  padding: 12px 24px; border-radius: var(--r-pill);
+  font-size: 14px; font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.3);
+  text-decoration: none; display: inline-block;
+  transition: all 0.22s; backdrop-filter: blur(10px);
+}
+.apps-back-banner .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav id="mainNav">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="apps.html" style="color:var(--blue)">Apps</a></li>
+      <li><a href="themes.html">Themes</a></li>
+      <li><a href="index.html#pricing">Packages</a></li>
+      <li><a href="calculator.html">Package Advisor</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Call</button>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="apps-page-hero section-glass">
+  <div class="apps-page-hero-grid"></div>
+  <div class="apps-page-hero-content">
+    <h1 class="sa"><em>Training</em> for every Microsoft 365 app</h1>
+    <p class="sa" style="--delay:100ms">Purpose-built training sessions across the full M365 ecosystem — grouped by how your teams actually work. Click any category to explore the apps and what's covered.</p>
+  </div>
+</section>
+
+<!-- APPS — accordion categories -->
+<section class="apps-section">
+  <div class="apps-categories">
+
+    <!-- ─── COPILOT & AI (featured) ─── -->
+    <details class="apps-category apps-category--ai" open>
+      <summary class="apps-category-header">
+        <div class="apps-category-meta">
+          <div class="apps-category-label">Microsoft Copilot &amp; AI <span class="apps-category-tag">Most in demand</span></div>
+          <div class="apps-category-title">Practical AI for daily knowledge work</div>
+          <div class="apps-category-sub">From the standalone Copilot app to embedded Copilot across M365 and custom agents — train your teams to actually use it.</div>
+        </div>
+        <div class="apps-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="apps-grid-rich">
+
+        <a href="apps/copilot-m365.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="Copilot across M365"/></div>
+            <div>
+              <div class="app-name">Copilot across M365</div>
+              <div class="app-tagline">AI embedded inside Teams, Outlook, Word, Excel and PowerPoint</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">Copilot's AI layer sits directly inside the apps your teams already use every day. Instead of switching to a separate tool, users get context-aware AI grounded in their own files, emails, chats and meetings — perfect for the high-frequency tasks that eat up the working day: summarising threads, drafting responses and analysing data.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/copilot-app.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="M365 Copilot App"/></div>
+            <div>
+              <div class="app-name">M365 Copilot App</div>
+              <div class="app-tagline">Microsoft's standalone AI hub for daily knowledge work</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">A dedicated home for Copilot — where people start prompts, browse AI-generated suggestions, search across organisational knowledge and work with shared agents. Best suited to drafting, summarising, researching and quickly building first-pass deliverables. The biggest gains tend to land with knowledge workers, managers, executives and analysts.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/copilot-agents.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="M365 Copilot Agents"/></div>
+            <div>
+              <div class="app-name">M365 Copilot Agents</div>
+              <div class="app-tagline">Custom AI assistants built on top of Copilot</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">Go beyond default Copilot and build custom agents scoped to a team or SharePoint content, triggered inside the apps your people already use. Ideal for HR helpdesks, IT support triage, onboarding assistants and policy lookup tools — automating specific business processes and answering role-specific questions grounded in your own content.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+      </div>
+    </details>
+
+    <!-- ─── COMMUNICATION & COLLABORATION ─── -->
+    <details class="apps-category">
+      <summary class="apps-category-header">
+        <div class="apps-category-meta">
+          <div class="apps-category-label">Communication &amp; Collaboration</div>
+          <div class="apps-category-title">How teams actually talk and work together</div>
+          <div class="apps-category-sub">Chat, meetings, email and shared canvases — the daily fabric of a hybrid workforce.</div>
+        </div>
+        <div class="apps-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="apps-grid-rich">
+
+        <a href="apps/teams.html" class="app-card-rich" style="--app-glow:rgba(98,100,167,0.38)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Teams-Icon-FY26.png" alt="Microsoft Teams"/></div>
+            <div>
+              <div class="app-name">Microsoft Teams</div>
+              <div class="app-tagline">M365's collaboration and communication hub</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">Combines persistent chat, meetings, calls, channels, files, apps and webinars in one platform. For most M365 organisations, Teams is the digital front door to daily work — the delivery surface for M365 apps, Copilot and custom agents.</p>
+          <div class="app-card-rich-sessions">
+            <span class="app-card-rich-sessions-label">5 sessions:</span>
+            <span class="session-pill">Teams for Beginners</span>
+            <span class="session-pill">Chats &amp; Channels</span>
+            <span class="session-pill">Meetings &amp; Webinars</span>
+            <span class="session-pill">Teams Phone &amp; Calling</span>
+            <span class="session-pill">Managers &amp; Owners</span>
+          </div>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/outlook.html" class="app-card-rich" style="--app-glow:rgba(0,114,198,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Outlook-Icon-FY26.png" alt="Outlook"/></div>
+            <div>
+              <div class="app-name">Outlook</div>
+              <div class="app-tagline">Email mastery, calendar control and productivity shortcuts</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's email and calendar hub — now powered by Copilot, with deep integrations into Teams, To Do and SharePoint. Modern Outlook is far more than an inbox; it's where most people manage their day, triage communication and turn email into action. Ideal for disciplined inbox management, meeting prep and group mailbox handling.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/loop.html" class="app-card-rich" style="--app-glow:rgba(116,74,196,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Loop-Icon-FY26.png" alt="Microsoft Loop"/></div>
+            <div>
+              <div class="app-name">Microsoft Loop</div>
+              <div class="app-tagline">Real-time collaborative components that stay live everywhere</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's real-time collaborative canvas — pages, tables, task lists and polls that stay in sync everywhere they're pasted. Drop a Loop component into a Teams chat, Outlook email or OneNote page and every copy updates simultaneously. Best used for meeting notes, action tracking and decision logs that normally go stale once emailed around.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/whiteboard.html" class="app-card-rich" style="--app-glow:rgba(0,188,242,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Whiteboard-Icon-FY26.png" alt="Whiteboard"/></div>
+            <div>
+              <div class="app-name">Whiteboard</div>
+              <div class="app-tagline">Infinite digital canvas for visual collaboration</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's infinite digital canvas for collaborative thinking — a visual space for brainstorms, retrospectives, workshops and design sprints. Works in Teams meetings, on touch devices and in the browser, with templates, sticky notes, inking and real-time co-authoring. Ideal for any meeting where "whiteboard in the room" is part of the pattern.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+      </div>
+    </details>
+
+    <!-- ─── FILE & KNOWLEDGE MANAGEMENT ─── -->
+    <details class="apps-category">
+      <summary class="apps-category-header">
+        <div class="apps-category-meta">
+          <div class="apps-category-label">File &amp; Knowledge Management</div>
+          <div class="apps-category-title">Where your team's content lives and grows</div>
+          <div class="apps-category-sub">Files, notes, lists and intranets — the structured side of M365.</div>
+        </div>
+        <div class="apps-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="apps-grid-rich">
+
+        <a href="apps/onedrive.html" class="app-card-rich" style="--app-glow:rgba(0,120,212,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/OneDrive-Icon-FY26.png" alt="OneDrive"/></div>
+            <div>
+              <div class="app-name">OneDrive</div>
+              <div class="app-tagline">Personal cloud home for files — secure, synced and shareable</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">A secure, always-available file store that syncs across every device, handles versioning automatically and keeps documents accessible offline. The backbone for personal work files, Outlook attachments and any file shared from a 1:1 Teams chat. Best used for any work file that doesn't yet belong to a team.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/sharepoint-docs.html" class="app-card-rich" style="--app-glow:rgba(3,131,135,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/SharePoint-Icon-FY26.png" alt="SharePoint Document Libraries"/></div>
+            <div>
+              <div class="app-name">SharePoint Document Libraries</div>
+              <div class="app-tagline">Structured team file libraries with metadata and co-authoring</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's structured home for team and project files — far more capable than shared drives, with metadata, versioning, permissions, co-authoring and automated retention. Every M365 Group and Teams channel is backed by a SharePoint library. Ideal for project deliverables, contracts, policies and client files.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/sharepoint-intranet.html" class="app-card-rich" style="--app-glow:rgba(3,131,135,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/SharePoint-Icon-FY26.png" alt="SharePoint Intranet"/></div>
+            <div>
+              <div class="app-name">SharePoint Intranet</div>
+              <div class="app-tagline">Modern intranet sites people actually use</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">The communication layer of M365 — a platform for building modern intranet sites, hub sites and the Viva Connections employee experience. Pages can be designed without code and personalised per audience. Best used for company intranets, department hubs, leadership blogs and policy centres that need to reach all employees consistently.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/onenote.html" class="app-card-rich" style="--app-glow:rgba(119,27,170,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/OneNote-Icon-FY26.png" alt="OneNote"/></div>
+            <div>
+              <div class="app-name">OneNote</div>
+              <div class="app-tagline">Digital notebooks for meetings, projects and team knowledge</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's digital notebook — a flexible, free-form space for structured notes, meeting records, handbooks and team knowledge. Notebooks can be personal, shared with a team or embedded inside SharePoint and Teams. Best used for meeting notes, project documentation, SOPs and any living document that needs to be edited regularly.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/lists.html" class="app-card-rich" style="--app-glow:rgba(210,70,20,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Lists-Icon-FY26.png" alt="Lists"/></div>
+            <div>
+              <div class="app-name">Lists</div>
+              <div class="app-tagline">Track projects, assets, issues and requests with structured data</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's structured tracking tool — a modern evolution of SharePoint lists, built to give teams a flexible way to record, organise and act on assets, issues, requests, inventories and project trackers. Lives inside Teams, SharePoint and the Lists app, with custom views, forms, rules and Power Automate triggers built in. Ideal anywhere a team is currently tracking work in spreadsheets.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+      </div>
+    </details>
+
+    <!-- ─── PRODUCTIVITY & PLANNING ─── -->
+    <details class="apps-category">
+      <summary class="apps-category-header">
+        <div class="apps-category-meta">
+          <div class="apps-category-label">Productivity &amp; Planning</div>
+          <div class="apps-category-title">Get more done in less time</div>
+          <div class="apps-category-sub">Spreadsheets, tasks, plans, forms and the browser — the workhorses of daily output.</div>
+        </div>
+        <div class="apps-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="apps-grid-rich">
+
+        <a href="apps/excel.html" class="app-card-rich" style="--app-glow:rgba(33,115,70,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Excel-Icon-FY26.png" alt="Excel"/></div>
+            <div>
+              <div class="app-name">Excel</div>
+              <div class="app-tagline">Power Query, PivotTables, dynamic formulas and Copilot analysis</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">The backbone of business data work — a spreadsheet platform that now spans formulas, dynamic arrays, Power Query, PivotTables and Copilot-powered natural-language analysis. Modern Excel is far more than a grid of numbers; it's a self-service data tool capable of pulling from dozens of sources. Ideal for financial modelling, budgeting and operational reporting.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/planner.html" class="app-card-rich" style="--app-glow:rgba(86,20,124,0.25)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Planner-Icon-FY26.png" alt="Planner"/></div>
+            <div>
+              <div class="app-name">Planner</div>
+              <div class="app-tagline">Visual task management for team projects and recurring work</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's visual task-management tool — a shared board where teams plan, assign and track work across buckets, schedules and timelines. The new Planner unifies To Do, Project for the Web and Loop tasks, so personal, team and plan-level work all live in one view. Best used for team projects, recurring operations and campaign planning.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/todo.html" class="app-card-rich" style="--app-glow:rgba(0,120,212,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/ToDo-Icon-FY26.png" alt="To Do"/></div>
+            <div>
+              <div class="app-name">To Do</div>
+              <div class="app-tagline">Personal task manager that pulls in Outlook flags and Planner tasks</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's personal task-management app — a simple, smart home for individual tasks and priorities that pulls in flagged Outlook emails, assigned Planner tasks and personal lists across every device. Becomes the single place a person decides "what am I doing today?" Best used for personal daily planning, a My Day focus list and tracking follow-ups.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/forms.html" class="app-card-rich" style="--app-glow:rgba(0,140,90,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Forms-Icon-FY26.png" alt="Forms"/></div>
+            <div>
+              <div class="app-name">Forms</div>
+              <div class="app-tagline">Build surveys, quizzes and request forms in minutes</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's built-in survey, quiz and data-collection tool — a lightweight web app for designing forms that work on any device and plug directly into the M365 stack. Responses flow into Excel, Teams channels and Power Automate flows with no extra setup. Best used for staff surveys, customer feedback, event registrations and training quizzes.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/visio.html" class="app-card-rich" style="--app-glow:rgba(0,70,160,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Visio-Icon-FY26.png" alt="Visio on the Web"/></div>
+            <div>
+              <div class="app-name">Visio on the Web</div>
+              <div class="app-tagline">Browser-based diagramming for processes and org charts</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's browser-based diagramming tool — a lightweight but capable way to build flowcharts, process diagrams, org charts, network diagrams and basic floor plans directly in the browser. Diagrams are stored in OneDrive or SharePoint. Ideal for mapping business processes, documenting workflows and visualising any system that's easier to understand as a diagram.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/edge.html" class="app-card-rich" style="--app-glow:rgba(0,120,212,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Edge-Icon-FY26.png" alt="Microsoft Edge"/></div>
+            <div>
+              <div class="app-name">Microsoft Edge for Business</div>
+              <div class="app-tagline">Secure enterprise browser with M365 integrations and AI built-in</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">A secure, enterprise-grade browser purpose-built to work with Microsoft 365. Integrates with Entra ID, enforces policies through Intune and surfaces Copilot, Teams, Outlook and SharePoint features natively. Best used as the everyday browser for any M365-licensed workforce, where speed, security and AI-assisted research matter.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+      </div>
+    </details>
+
+    <!-- ─── CONTENT & CREATIVITY ─── -->
+    <details class="apps-category">
+      <summary class="apps-category-header">
+        <div class="apps-category-meta">
+          <div class="apps-category-label">Content &amp; Creativity</div>
+          <div class="apps-category-title">Polished documents, decks and visuals</div>
+          <div class="apps-category-sub">The tools your team uses to write, design and present.</div>
+        </div>
+        <div class="apps-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="apps-grid-rich">
+
+        <a href="apps/word.html" class="app-card-rich" style="--app-glow:rgba(43,87,154,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Word-Icon-FY26.png" alt="Word"/></div>
+            <div>
+              <div class="app-name">Word</div>
+              <div class="app-tagline">Documents, templates, styles and Copilot-powered writing</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's document platform — a writing, formatting and collaboration tool that combines professional-publishing depth with modern co-authoring, Editor, Designer and Copilot features. Far more than a typewriter replacement; it's where most written business output is created. Best used for reports, contracts, proposals, policies and any long-form document that needs structure.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/powerpoint.html" class="app-card-rich" style="--app-glow:rgba(210,52,22,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/PowerPoint-Icon-FY26.png" alt="PowerPoint"/></div>
+            <div>
+              <div class="app-name">PowerPoint</div>
+              <div class="app-tagline">Storytelling, design and AI-assisted slide creation</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">The standard for business presentations — now enhanced with Designer for automatic layouts, Presenter Coach and Copilot for generating entire decks. Modern PowerPoint is far more than bullet lists on slides; it's a storytelling, design and live-presenting platform. Best used for leadership updates, sales pitches and internal training.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/clipchamp.html" class="app-card-rich" style="--app-glow:rgba(180,0,158,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/Clipchamp-Icon-FY26.png" alt="Clipchamp"/></div>
+            <div>
+              <div class="app-name">Clipchamp (Stream)</div>
+              <div class="app-tagline">Browser-based video editor for internal comms and training</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">Microsoft 365's built-in video editor — a browser-based tool for recording, editing and sharing professional video content without specialist software. Replaces the older Stream Classic experience and sits alongside OneDrive and SharePoint, so exports stay within your secure M365 environment. Ideal for internal communications, training videos and polished highlights from Teams meeting recordings.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+      </div>
+    </details>
+
+    <!-- ─── POWER PLATFORM ─── -->
+    <details class="apps-category apps-category--power">
+      <summary class="apps-category-header">
+        <div class="apps-category-meta">
+          <div class="apps-category-label">Power Platform</div>
+          <div class="apps-category-title">Low-code automation and reporting</div>
+          <div class="apps-category-sub">Connect, automate and visualise — without writing code.</div>
+        </div>
+        <div class="apps-category-toggle" aria-hidden="true">+</div>
+      </summary>
+      <div class="apps-grid-rich">
+
+        <a href="apps/power-automate.html" class="app-card-rich power-card" style="--app-glow:rgba(0,120,212,0.22)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/PowerAutomate-Icon-FY26.png" alt="Power Automate"/></div>
+            <div>
+              <div class="app-name">Power Automate</div>
+              <div class="app-tagline">Low-code automation that connects apps and replaces manual work</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's low-code automation platform — a workflow tool for connecting apps, automating approvals and replacing repetitive manual work with triggered flows. Talks to hundreds of services and supports both cloud flows and desktop/RPA automation. Best used for approval routing, form-to-email workflows, document generation and any task that has an obvious pattern.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+        <a href="apps/power-bi.html" class="app-card-rich power-card" style="--app-glow:rgba(240,180,0,0.28)">
+          <div class="app-card-rich-head">
+            <div class="app-icon-img"><img src="img/PowerBi-Icon-FY26.png" alt="Power BI"/></div>
+            <div>
+              <div class="app-name">Power BI</div>
+              <div class="app-tagline">Interactive dashboards and reports — turn data into decisions</div>
+            </div>
+          </div>
+          <p class="app-card-rich-desc">M365's business-intelligence platform — a tool for pulling data from dozens of sources, modelling it and publishing interactive dashboards that stay live and governed. Covers everything from quick personal reports to enterprise-scale data models, with row-level security and scheduled refresh. Best used for KPI dashboards, executive reporting, finance and operations reporting.</p>
+          <span class="app-card-rich-cta">Explore training →</span>
+        </a>
+
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="apps-back-banner">
+  <div>
+    <h2>Not sure which session fits your team?</h2>
+    <p>Book a free 30-minute discovery call. No commitment, no pressure.</p>
+    <div class="apps-back-banner-btns">
+      <a class="btn-white" href="index.html#signup">Book a Discovery Call</a>
+      <a class="btn-ghost" href="calculator.html">Try the Package Advisor →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
+  <p>© 2026 Haedlern. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

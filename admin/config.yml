@@ -1,0 +1,96 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Allow running the CMS locally via `npx decap-server`
+# (so you can test edits before deploying to Netlify)
+local_backend: true
+
+# Where uploaded images go. Relative to the repo root.
+media_folder: "img/blog"
+public_folder: "/img/blog"
+
+# Show editorial workflow (draft / in-review / published) so you can save
+# drafts without publishing them straight to the live site.
+publish_mode: editorial_workflow
+
+site_url: https://your-site.netlify.app
+display_url: https://your-site.netlify.app
+logo_url: /img/haedlern-ladder-iso-cobalt.svg
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    description: "Manage the posts shown on the Blog page. Add a new post by clicking 'Add Post' inside the Blog Posts entry."
+    files:
+      - name: "posts"
+        label: "Blog Posts"
+        file: "content/blog.json"
+        format: "json"
+        editor:
+          preview: false
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.date}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - {
+                  label: "Slug (URL-friendly identifier, e.g. 'getting-started-with-copilot')",
+                  name: "slug",
+                  widget: "string",
+                  pattern:
+                    [
+                      "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+                      "Lowercase letters, numbers and hyphens only",
+                    ],
+                }
+              - { label: "Publish date", name: "date", widget: "datetime" }
+              - {
+                  label: "Author name",
+                  name: "author",
+                  widget: "string",
+                  default: "Kamil Brzezinski",
+                }
+              - {
+                  label: "Author role",
+                  name: "authorRole",
+                  widget: "string",
+                  default: "Microsoft 365 Trainer & Adoption Specialist",
+                  required: false,
+                }
+              - {
+                  label: "Cover image",
+                  name: "image",
+                  widget: "image",
+                  required: false,
+                  hint: "Optional. Used as the hero image on the post and the card image on the blog index.",
+                }
+              - {
+                  label: "Excerpt (1–2 sentence summary shown on the index)",
+                  name: "excerpt",
+                  widget: "text",
+                }
+              - {
+                  label: "Tags",
+                  name: "tags",
+                  widget: "list",
+                  required: false,
+                  default: [],
+                  hint: "Optional. Short keywords like 'Copilot', 'Adoption', 'Teams'.",
+                }
+              - {
+                  label: "Featured",
+                  name: "featured",
+                  widget: "boolean",
+                  default: false,
+                  required: false,
+                  hint: "If on, this post is shown larger at the top of the blog index.",
+                }
+              - {
+                  label: "Body",
+                  name: "body",
+                  widget: "markdown",
+                  hint: "The main article. Use headings (##), lists, links, and images as needed.",
+                }

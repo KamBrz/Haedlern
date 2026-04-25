@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Haedlern</title>
+<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
+<style>
+/* ── HERO ── */
+.about-hero{padding:120px 8% 80px;position:relative;overflow:hidden;}
+.about-hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 100% at 10% 50%,black 10%,transparent 65%);pointer-events:none;opacity:0.35;z-index:0;}
+.about-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:180px 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.about-photo-wrap{position:relative;}
+.about-photo-glow{position:absolute;inset:-12px;border-radius:28px;z-index:0;background:linear-gradient(135deg,rgba(0,120,212,0.18),rgba(0,180,216,0.1));filter:blur(20px);}
+.about-photo{position:relative;z-index:1;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:20px;box-shadow:0 16px 48px rgba(0,120,212,0.15);border:1px solid var(--border2);display:block;}
+.about-content{display:flex;flex-direction:column;gap:14px;}
+.about-name{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;color:var(--text);margin:0;}
+.about-name em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.about-role-label{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:0.1px;margin:0;}
+.about-tagline{font-size:15px;color:var(--muted);line-height:1.85;margin:0;}
+.about-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px;}
+.about-li{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--r-pill);background:var(--card);border:1px solid var(--border);color:var(--text2);font-size:13px;font-weight:600;text-decoration:none;transition:transform 0.2s,border-color 0.2s,color 0.2s;}
+.about-li:hover{transform:translateY(-2px);border-color:var(--border2);color:var(--blue);}
+.about-li img{width:16px;height:16px;object-fit:contain;}
+
+/* ── STORY (merged into hero) ── */
+.about-divider{max-width:1200px;margin:52px auto;border:none;border-top:1px solid var(--border);}
+.about-story-inner{max-width:1200px;margin:0 auto 40px;}
+.about-story-title{font-size:clamp(22px,2.8vw,34px);font-weight:900;color:var(--text);letter-spacing:-0.8px;margin:12px 0 14px;line-height:1.2;}
+.about-story-text{font-size:15px;color:var(--muted);line-height:1.85;}
+.about-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);max-width:1200px;margin:0 auto;border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;}
+.about-hl{background:var(--card);padding:28px 26px;transition:background 0.4s;}
+.about-hl::before{content:'';display:block;width:36px;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:2px;margin-bottom:14px;}
+.about-hl-label{font-size:13px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-0.2px;}
+.about-hl-text{font-size:13px;color:var(--muted);line-height:1.75;}
+
+/* ── CERTS ── */
+.certs-section{padding:80px 8%;background:var(--bg);transition:background 0.4s;}
+.certs-section .s-header{max-width:1200px;margin:0 auto 40px;}
+.certs-section .s-header .title{font-size:clamp(22px,2.8vw,34px);}
+.certs-section .s-header .sub{margin-left:0;max-width:100%;}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;max-width:1200px;margin:0 auto;}
+.cert-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-xl);padding:18px 20px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;transition:transform 0.22s,box-shadow 0.22s,border-color 0.22s;}
+.cert-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border2);}
+.cert-logo{width:36px;height:36px;border-radius:8px;flex-shrink:0;object-fit:contain;padding:4px;background:var(--bg2);border:1px solid var(--border);transition:background 0.4s;}
+.cert-info{flex:1;min-width:0;}
+.cert-name{font-size:12.5px;font-weight:700;color:var(--text);line-height:1.35;}
+.cert-issuer{font-size:11px;color:var(--muted);font-weight:500;margin-top:2px;}
+.cert-tag{display:inline-flex;align-items:center;background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:var(--r-pill);padding:2px 8px;font-size:10px;font-weight:700;color:var(--blue);margin-top:5px;white-space:nowrap;}
+.cert-links{display:flex;gap:8px;margin-top:7px;flex-wrap:wrap;}
+.cert-link{font-size:11px;font-weight:700;color:var(--blue);text-decoration:none;opacity:0.8;transition:opacity 0.2s;}
+.cert-link:hover{opacity:1;text-decoration:underline;}
+
+/* ── CTA ── */
+.about-cta{padding:90px 8%;text-align:center;background:var(--bg2);border-top:1px solid var(--border);transition:background 0.4s;position:relative;overflow:hidden;}
+.about-cta h2{font-size:clamp(22px,2.8vw,34px);font-weight:900;color:var(--text);margin-bottom:12px;letter-spacing:-0.8px;}
+.about-cta p{color:var(--muted);font-size:15px;margin-bottom:28px;max-width:600px;margin-left:auto;margin-right:auto;}
+.about-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.about-cta-outline{background:transparent;color:var(--text2);padding:12px 22px;border-radius:var(--r-pill);font-size:14px;font-weight:600;border:1px solid var(--border);text-decoration:none;display:inline-block;transition:all 0.22s;}
+.about-cta-outline:hover{border-color:var(--blue);color:var(--blue);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:760px){
+  .about-hero-inner{grid-template-columns:1fr;gap:28px;}
+  .about-photo{aspect-ratio:1/1;max-width:160px;}
+  .about-photo-wrap{display:flex;justify-content:center;}
+  .about-highlights{grid-template-columns:1fr;}
+  .about-divider{margin:36px auto;}
+}
+@media(max-width:600px){
+  .certs-grid{grid-template-columns:1fr;}
+  .about-hero{padding:100px 5% 60px;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<div class="nav-wrap">
+  <nav id="mainNav">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="apps.html">Apps</a></li>
+      <li><a href="themes.html">Themes</a></li>
+      <li><a href="index.html#pricing">Packages</a></li>
+      <li><a href="calculator.html">Package Advisor</a></li>
+      <li><a href="about.html" style="color:var(--blue)">About</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Call</button>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="about-hero section-glass">
+  <div class="about-hero-grid"></div>
+  <div class="about-hero-inner">
+
+    <div class="about-photo-wrap sa">
+      <div class="about-photo-glow"></div>
+      <img src="img/Profile.png" alt="Kamil Brzezinski" class="about-photo"/>
+    </div>
+
+    <div class="about-content">
+      <div class="tag sa">About</div>
+      <h1 class="about-name sa" style="--delay:60ms"><em>Kamil</em><br>Brzezinski</h1>
+      <p class="about-role-label sa" style="--delay:80ms">Microsoft 365 Trainer &amp; Adoption Specialist</p>
+      <p class="about-tagline sa" style="--delay:100ms">At Microsoft in London, I trained enterprise teams across government, education, and corporate organisations — delivering M365 sessions and webinars at scale. After years on the delivery side, I wanted to understand how adoption actually works from the inside — the L&D strategy, the internal buy-in, the reality of rolling this out across a large company. So I went and did exactly that. I now lead M365 and AI adoption at a large multinational, which means everything I teach is shaped by what I'm seeing on the ground today.</p>
+      <div class="about-actions sa" style="--delay:140ms">
+        <a class="about-li" href="https://www.linkedin.com/in/kamilbrz/" target="_blank" rel="noopener">
+          <img src="img/LinkedIn_Logo.png" alt="LinkedIn"/>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="about-divider"></div>
+
+  <div class="about-story-inner sa">
+    <div class="tag">Why it's different</div>
+    <h2 class="about-story-title">Training built on real experience, not off-the-shelf slides.</h2>
+    <p class="about-story-text">Every session I run is shaped by what I see working — and not working — inside large organisations right now. I don't sell generic workshops. I build training around your teams, your tools, and the specific friction points holding people back. The goal is always the same: lasting behaviour change, not just a feature demonstration.</p>
+  </div>
+  <div class="about-highlights">
+    <div class="about-hl sa">
+      <div class="about-hl-label">Delivery across every type of organisation</div>
+      <p class="about-hl-text">From 500-person government departments to small school leadership teams to global corporate rollouts — that range builds instincts you can't get from a fixed curriculum or a single industry.</p>
+    </div>
+    <div class="about-hl sa" style="--delay:80ms">
+      <div class="about-hl-label">The insider view on adoption</div>
+      <p class="about-hl-text">Leading adoption from inside a large company means understanding what training actually has to overcome — the change fatigue, the resistance, the gap between "we deployed it" and "people actually use it."</p>
+    </div>
+    <div class="about-hl sa" style="--delay:160ms">
+      <div class="about-hl-label">Personalised to your team</div>
+      <p class="about-hl-text">Not a recycled template. I design each engagement around the tools your team actually uses, the outcomes you need, and the people in the room.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs-section">
+  <div class="s-header sa">
+    <div class="tag">Credentials</div>
+    <h2 class="title">Certified across the Microsoft ecosystem</h2>
+    <p class="sub">Backed by industry-recognised certifications spanning Microsoft 365, Azure, Power Platform, security, and change management.</p>
+  </div>
+  <div class="certs-grid">
+
+    <div class="cert-card sa" style="--delay:0ms">
+      <img class="cert-logo" src="img/Prosci-logo.png" alt="Prosci"/>
+      <div class="cert-info">
+        <div class="cert-name">Change Management Practitioner</div>
+        <div class="cert-issuer">Prosci</div>
+        <div class="cert-links"><a class="cert-link" href="https://www.credly.com/badges/3022559e-b9f3-4eeb-8812-d7148d4f37d9" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:0ms">
+      <img class="cert-logo" src="img/MCT-Icon-FY26.png" alt="Microsoft Certified Trainer"/>
+      <div class="cert-info">
+        <div class="cert-name">Microsoft Certified Trainer (MCT)</div>
+        <div class="cert-issuer">Microsoft · 2021 – 2023</div>
+        <div class="cert-links">
+          <a class="cert-link" href="https://www.credly.com/badges/d12f7af5-3847-4be2-a9e0-2f253c8eaa9f/public_url" target="_blank" rel="noopener">2021–22 ↗</a>
+          <a class="cert-link" href="https://www.credly.com/badges/621b22c6-21cf-46f8-be3d-09d0fc705fdc/public_url" target="_blank" rel="noopener">2022–23 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:40ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">Service Adoption Specialist</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://learn.microsoft.com/api/achievements/share/en-gb/KamilBrzeziski-7614/UF8HYRT3?sharingId=DDABC5E39B3939DD" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:80ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">SC-900: Security, Compliance &amp; Identity Fundamentals</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://www.credly.com/badges/6ee0c742-d708-4065-b8ac-55633f63c1d8/public_url" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:120ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">Microsoft Innovative Educator (MIE) Trainer</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://learn.microsoft.com/api/achievements/share/en-us/KamilBrzeziski-7614/BTX6HNZD?sharingId=DDABC5E39B3939DD" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:140ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">Certified Microsoft Innovative Educator</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://learn.microsoft.com/api/achievements/share/en-us/KamilBrzeziski-7614/BTX6HNZD?sharingId=DDABC5E39B3939DD" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:160ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">Microsoft 365 Certified: Teams Administrator Associate</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://www.credly.com/badges/9075e092-f29a-4c5c-950f-40677e81821f/public_url" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:200ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">MS-900: Microsoft 365 Fundamentals</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://www.credly.com/badges/bfe467b4-09f3-4e2f-9a73-e0c81e310dd8/public_url" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:240ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">PL-900: Microsoft Power Platform Fundamentals</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://www.credly.com/badges/63875229-6c89-4b91-9434-b076114c0b83/public_url" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:280ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">MB-901: Microsoft Dynamics 365 Fundamentals</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://www.credly.com/badges/884ad087-dc95-45aa-82b6-30906aba299d/public_url" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-card sa" style="--delay:320ms">
+      <img class="cert-logo" src="img/microsoft-logo.png" alt="Microsoft"/>
+      <div class="cert-info">
+        <div class="cert-name">AZ-900: Microsoft Azure Fundamentals</div>
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-links"><a class="cert-link" href="https://www.credly.com/badges/b1f080d5-011f-4052-bfde-911a126ceeb7/public_url" target="_blank" rel="noopener">View badge ↗</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+  <div class="floating-icons" aria-hidden="true">
+    <div class="fi" style="left:4%;top:15%;animation-duration:7s;opacity:0.7;"><img src="img/Teams-Icon-FY26.png" alt=""/></div>
+    <div class="fi" style="left:90%;top:12%;animation-duration:9s;animation-delay:1s;opacity:0.65;"><img src="img/Outlook-Icon-FY26.png" alt=""/></div>
+    <div class="fi" style="left:3%;top:62%;animation-duration:8s;animation-delay:2s;opacity:0.6;"><img src="img/Word-Icon-FY26.png" alt=""/></div>
+    <div class="fi" style="left:92%;top:60%;animation-duration:10s;animation-delay:0.5s;opacity:0.65;"><img src="img/Excel-Icon-FY26.png" alt=""/></div>
+    <div class="fi" style="left:18%;top:8%;animation-duration:9s;animation-delay:0.8s;opacity:0.3;"><img src="img/OneDrive-Icon-FY26.png" alt=""/></div>
+    <div class="fi" style="left:78%;top:6%;animation-duration:8s;animation-delay:2.5s;opacity:0.28;"><img src="img/SharePoint-Icon-FY26.png" alt=""/></div>
+    <div class="fi" style="left:15%;top:75%;animation-duration:11s;animation-delay:1.5s;opacity:0.32;"><img src="img/PowerPoint-Icon-FY26.png" alt=""/></div>
+    <div class="fi" style="left:82%;top:78%;animation-duration:9s;animation-delay:2s;opacity:0.3;"><img src="img/Copilot-Icon-FY26.png" alt=""/></div>
+  </div>
+  <div class="sa" style="position:relative;z-index:1;">
+    <h2>Let's build something that actually sticks.</h2>
+    <p>Book a free 30-minute discovery call. No commitment, no pressure.</p>
+    <div class="about-cta-btns">
+      <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Discovery Call →</button>
+      <a class="about-cta-outline" href="themes.html">Browse Workshops</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
+  <p>© 2026 Haedlern. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
