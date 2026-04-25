@@ -429,7 +429,16 @@
           <div class="f-note">🔒 Your details are safe with us. No spam, ever.</div>
         </form>
       </div>
-      <div class="success-msg" id="a-sm"><h3>Message received.</h3><p>Thank you for reaching out — we'll be in touch as soon as possible.</p></div>
+      <div class="success-msg" id="a-sm">
+        <div class="s-check">
+          <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+            <circle class="s-circle" cx="26" cy="26" r="24"/>
+            <path class="s-tick" d="M14 27 L22 35 L38 17"/>
+          </svg>
+        </div>
+        <h3>Message received.</h3>
+        <p>Thank you for reaching out — we'll be in touch as soon as possible.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -788,10 +797,7 @@ function sendAdvisor(e) {
     return false;
   }
   fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(e.target)).toString()})
-    .finally(() => {
-      document.getElementById('a-fw').style.display = 'none';
-      document.getElementById('a-sm').style.display = 'block';
-    });
+    .finally(() => showSuccess('a-fw', 'a-sm'));
   return false;
 }
 

@@ -123,6 +123,65 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   });
 });
+function launchConfetti(originEl) {
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const rect = originEl ? originEl.getBoundingClientRect() : {left: canvas.width/2, top: canvas.height*0.5, width:0, height:0};
+  const ox = rect.left + rect.width / 2;
+  const oy = rect.top + rect.height / 2;
+  const colors = ['#0078d4','#00b4d8','#48cae4','#90e0ef','#caf0f8','#ffffff','#003f88'];
+  const particles = Array.from({length: 90}, () => {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 9 + 4;
+    return {
+      x: ox, y: oy,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 5,
+      w: Math.random() * 9 + 4,
+      h: Math.random() * 5 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rot: Math.random() * 360,
+      rotV: (Math.random() - 0.5) * 12,
+      isRect: Math.random() > 0.35
+    };
+  });
+  let start = null;
+  (function frame(ts) {
+    if (!start) start = ts;
+    const t = ts - start;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const alpha = Math.max(0, 1 - Math.max(0, t - 1400) / 800);
+    for (const p of particles) {
+      p.x += p.vx; p.vy += 0.32; p.y += p.vy; p.rot += p.rotV;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.fillStyle = p.color;
+      if (p.isRect) ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      else { ctx.beginPath(); ctx.arc(0, 0, p.w/2, 0, Math.PI*2); ctx.fill(); }
+      ctx.restore();
+    }
+    if (t < 2200) requestAnimationFrame(frame);
+    else canvas.remove();
+  })();
+}
+
+function showSuccess(fwId, smId) {
+  const fw = document.getElementById(fwId);
+  const sm = document.getElementById(smId);
+  fw.classList.add('fw-leaving');
+  setTimeout(() => {
+    fw.style.display = 'none';
+    sm.classList.add('show');
+    launchConfetti(sm);
+  }, 290);
+}
+
 function send(e){
   e.preventDefault();
   let valid=true;
@@ -130,7 +189,7 @@ function send(e){
   if(!valid){const first=fieldRules.find(r=>!document.getElementById(r.id).classList.contains('input-valid'));if(first)document.getElementById(first.id).focus();return false;}
   const form=e.target;
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
-    .finally(()=>{document.getElementById('fw').style.display='none';document.getElementById('sm').style.display='block';});
+    .finally(()=>showSuccess('fw','sm'));
   return false;
 }
 
