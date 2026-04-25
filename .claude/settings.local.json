@@ -59,7 +59,11 @@
       "mcp__Claude_in_Chrome__tabs_context_mcp",
       "Bash(powershell -Command ' *)",
       "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\kambr\\\\Desktop\\\\Website\\\\add-favicon.ps1\")",
-      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\kambr\\\\Desktop\\\\Website\\\\add-home-nav.ps1\")"
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\kambr\\\\Desktop\\\\Website\\\\add-home-nav.ps1\")",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "PowerShell(python -c \"import markdown; print\\('markdown ok'\\)\" 2>&1)",
+      "PowerShell(python -m pip install markdown 2>&1)"
     ]
   }
 }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://haedlern.com/sitemap.xml

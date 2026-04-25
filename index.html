@@ -3,8 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haedlern</title>
+<title>Haedlern — Microsoft 365 &amp; Copilot training that actually sticks</title>
+<meta name="description" content="Practical Microsoft 365 and Copilot training for modern workplaces. Workshops, adoption programmes, and Copilot rollouts that drive real change — not feature tours.">
+<link rel="canonical" href="https://haedlern.com/">
 <link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Haedlern — Microsoft 365 &amp; Copilot training that actually sticks">
+<meta property="og:description" content="Practical Microsoft 365 and Copilot training for modern workplaces. Workshops, adoption programmes, and Copilot rollouts that drive real change — not feature tours.">
+<meta property="og:url" content="https://haedlern.com/">
+<meta property="og:image" content="https://haedlern.com/img/og-default.png">
+<meta property="og:site_name" content="Haedlern">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Haedlern — Microsoft 365 &amp; Copilot training that actually sticks">
+<meta name="twitter:description" content="Practical Microsoft 365 and Copilot training for modern workplaces. Workshops, adoption programmes, and Copilot rollouts that drive real change — not feature tours.">
+<meta name="twitter:image" content="https://haedlern.com/img/og-default.png">
+<!-- JSON-LD: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Haedlern",
+  "description": "Microsoft 365 and Copilot training and adoption services for enterprise teams.",
+  "url": "https://haedlern.com",
+  "logo": "https://haedlern.com/img/haedlern-ladder-iso-cobalt.svg",
+  "image": "https://haedlern.com/img/og-default.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Kamil Brzezinski",
+    "jobTitle": "Microsoft 365 Trainer & Adoption Specialist",
+    "url": "https://haedlern.com/about.html"
+  },
+  "areaServed": "Worldwide",
+  "knowsAbout": ["Microsoft 365","Microsoft Copilot","Microsoft Teams","SharePoint","Power Platform","Modern Workplace","Adoption and Change Management"],
+  "sameAs": ["https://www.linkedin.com/in/kamil-brzezinski/"]
+}
+</script>
 <!-- Netlify Identity — required so invite/password-reset links resolve correctly -->
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -26,6 +61,7 @@
     </ul>
     <div class="nav-controls">
 <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Open navigation"><span></span><span></span><span></span></button>
       <button class="nav-cta" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Book a Call</button>
     </div>
   </nav>

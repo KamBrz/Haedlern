@@ -194,6 +194,59 @@ function send(e){
 }
 
 
+// MOBILE NAV DRAWER
+function initMobileNav() {
+  if (!document.getElementById('navHamburger')) return;
+  const backdrop = document.createElement('div');
+  backdrop.className = 'mobile-nav-backdrop';
+  backdrop.id = 'mobileNavBackdrop';
+  backdrop.addEventListener('click', closeMobileNav);
+  document.body.appendChild(backdrop);
+  const drawer = document.createElement('div');
+  drawer.className = 'mobile-nav';
+  drawer.id = 'mobileNav';
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'mobile-nav-close';
+  closeBtn.setAttribute('aria-label', 'Close navigation');
+  closeBtn.innerHTML = '&times;';
+  closeBtn.addEventListener('click', closeMobileNav);
+  drawer.appendChild(closeBtn);
+  document.querySelectorAll('.nav-links li a').forEach(a => {
+    const link = a.cloneNode(true);
+    link.addEventListener('click', closeMobileNav);
+    drawer.appendChild(link);
+  });
+  const isSubdir = /\/(blog|apps)\//.test(window.location.pathname);
+  const cta = document.createElement('a');
+  cta.className = 'mobile-nav-cta';
+  cta.href = isSubdir ? '../index.html#signup' : 'index.html#signup';
+  cta.textContent = 'Book a Call';
+  cta.addEventListener('click', closeMobileNav);
+  drawer.appendChild(cta);
+  document.body.appendChild(drawer);
+}
+function openMobileNav() {
+  document.getElementById('navHamburger').classList.add('open');
+  document.getElementById('mobileNavBackdrop').classList.add('open');
+  document.getElementById('mobileNav').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  const h = document.getElementById('navHamburger');
+  const b = document.getElementById('mobileNavBackdrop');
+  const n = document.getElementById('mobileNav');
+  if (h) h.classList.remove('open');
+  if (b) b.classList.remove('open');
+  if (n) n.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  if (!nav) return;
+  nav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+}
+document.addEventListener('DOMContentLoaded', initMobileNav);
+
 // HOW IT WORKS — pinned scrollytelling driver
 (function(){
   const wrap=document.querySelector('.how-wrap');
