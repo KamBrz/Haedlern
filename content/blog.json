@@ -1,28 +1,52 @@
 {
   "posts": [
     {
-      "title": "Why most Copilot rollouts stall in the first 90 days",
-      "slug": "why-copilot-rollouts-stall",
-      "date": "2026-04-22T09:00:00.000Z",
-      "author": "Kamil Brzezinski",
       "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
-      "image": "",
       "excerpt": "Licensing isn't adoption. The teams getting real ROI from Copilot all do three things differently in their first quarter — and none of them are technical.",
-      "tags": ["Copilot", "Adoption", "Change Management"],
+      "body": "## The 90-day pattern\n\nWe see the same arc in almost every Copilot rollout we walk into. Month one is full of energy — leadership announcements, a kickoff demo, a flurry of curious prompts. By month two, daily usage has quietly halved. By month three, the licences are still being paid for, but most of them aren't being touched.\n\nThe interesting bit is *why*. It's almost never that Copilot doesn't work. It's that the rollout was treated as a software deployment when it needed to be treated as a behaviour change.\n\n## Three things the successful rollouts do differently\n\n**1. They start with a workflow, not a feature tour.**\n\nThe failed rollouts open with a session called \"Introduction to Copilot.\" The successful ones open with a session called \"Use Copilot to prepare for your Monday status meeting.\" Same product, completely different framing — and a 4–6× difference in week-four active use.\n\n**2. They make one person on each team the local champion.**\n\nNot a power user. Not a tech evangelist. Just one normal person who's been given an hour a week to be slightly ahead of their colleagues and answer questions. Distributed peer support beats a central helpdesk every time.\n\n**3. They measure adoption, not licences assigned.**\n\nLicences assigned is a vanity metric. Weekly active users by team, prompts per user per week, and self-reported time saved are the metrics that actually predict which teams stick with it.\n\n## What this means for your rollout\n\nIf you're inside the first 90 days, the most useful thing you can do this week is pick a single high-frequency workflow that hurts — meeting prep, email triage, summarising long documents — and design one focused training session around it. Not Copilot in the abstract. *That specific job, made faster.*\n\nThat's the unlock.",
+      "author": "Kamil Brzezinski",
+      "slug": "why-copilot-rollouts-stall",
       "featured": true,
-      "body": "## The 90-day pattern\n\nWe see the same arc in almost every Copilot rollout we walk into. Month one is full of energy — leadership announcements, a kickoff demo, a flurry of curious prompts. By month two, daily usage has quietly halved. By month three, the licences are still being paid for, but most of them aren't being touched.\n\nThe interesting bit is *why*. It's almost never that Copilot doesn't work. It's that the rollout was treated as a software deployment when it needed to be treated as a behaviour change.\n\n## Three things the successful rollouts do differently\n\n**1. They start with a workflow, not a feature tour.**\n\nThe failed rollouts open with a session called \"Introduction to Copilot.\" The successful ones open with a session called \"Use Copilot to prepare for your Monday status meeting.\" Same product, completely different framing — and a 4–6× difference in week-four active use.\n\n**2. They make one person on each team the local champion.**\n\nNot a power user. Not a tech evangelist. Just one normal person who's been given an hour a week to be slightly ahead of their colleagues and answer questions. Distributed peer support beats a central helpdesk every time.\n\n**3. They measure adoption, not licences assigned.**\n\nLicences assigned is a vanity metric. Weekly active users by team, prompts per user per week, and self-reported time saved are the metrics that actually predict which teams stick with it.\n\n## What this means for your rollout\n\nIf you're inside the first 90 days, the most useful thing you can do this week is pick a single high-frequency workflow that hurts — meeting prep, email triage, summarising long documents — and design one focused training session around it. Not Copilot in the abstract. *That specific job, made faster.*\n\nThat's the unlock."
+      "date": "2026-04-22T09:00:00.000Z",
+      "title": "Why most Copilot rollouts stall in the first 90 days",
+      "tags": [
+        "Copilot",
+        "Adoption",
+        "Change Management"
+      ],
+      "image": ""
     },
     {
-      "title": "The quiet skills gap holding back your Microsoft 365 ROI",
-      "slug": "the-quiet-skills-gap",
-      "date": "2026-04-08T09:00:00.000Z",
-      "author": "Kamil Brzezinski",
       "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
-      "image": "",
       "excerpt": "Most organisations unlock less than 20% of what they're paying for in Microsoft 365 — and the reason is almost never the tools themselves.",
-      "tags": ["Microsoft 365", "ROI", "Training"],
+      "body": "## The gap nobody talks about\n\nForrester puts the three-year ROI of a properly deployed Microsoft 365 estate at 223%. That's a real number — but the words doing all the heavy lifting in that sentence are *properly deployed*. In practice, most enterprises are running M365 the way they ran Office 2010: Outlook, Word, Excel, the occasional Teams meeting, and absolutely nothing else.\n\n## Where the value actually lives\n\nThe productivity unlock in M365 isn't in the apps everyone already uses. It's in the connective tissue:\n\n- **SharePoint and OneDrive** replacing the network drive and the email-attachment shuffle\n- **Planner and To Do** giving teams a shared view of who's doing what\n- **Power Automate** quietly removing the small repetitive jobs that drain everyone's day\n- **Loop and Whiteboard** turning meetings from updates into actual collaborative work\n\nThese aren't advanced features. They're features your licence already includes. Your teams just don't know they exist, or have never been shown how they fit together.\n\n## Why training is the highest-leverage spend\n\nA single well-designed workshop, anchored on the workflows your team actually has, will do more for your M365 ROI than a year of additional licences. The maths is straightforward: if 30 people save two hours a week each because they finally understand how SharePoint metadata or shared mailboxes work, you've paid for the training inside the first month.\n\nThe organisations getting the full 223% aren't the ones that bought more — they're the ones that taught more.",
+      "author": "Kamil Brzezinski",
+      "slug": "the-quiet-skills-gap",
       "featured": false,
-      "body": "## The gap nobody talks about\n\nForrester puts the three-year ROI of a properly deployed Microsoft 365 estate at 223%. That's a real number — but the words doing all the heavy lifting in that sentence are *properly deployed*. In practice, most enterprises are running M365 the way they ran Office 2010: Outlook, Word, Excel, the occasional Teams meeting, and absolutely nothing else.\n\n## Where the value actually lives\n\nThe productivity unlock in M365 isn't in the apps everyone already uses. It's in the connective tissue:\n\n- **SharePoint and OneDrive** replacing the network drive and the email-attachment shuffle\n- **Planner and To Do** giving teams a shared view of who's doing what\n- **Power Automate** quietly removing the small repetitive jobs that drain everyone's day\n- **Loop and Whiteboard** turning meetings from updates into actual collaborative work\n\nThese aren't advanced features. They're features your licence already includes. Your teams just don't know they exist, or have never been shown how they fit together.\n\n## Why training is the highest-leverage spend\n\nA single well-designed workshop, anchored on the workflows your team actually has, will do more for your M365 ROI than a year of additional licences. The maths is straightforward: if 30 people save two hours a week each because they finally understand how SharePoint metadata or shared mailboxes work, you've paid for the training inside the first month.\n\nThe organisations getting the full 223% aren't the ones that bought more — they're the ones that taught more."
+      "date": "2026-04-08T09:00:00.000Z",
+      "title": "The quiet skills gap holding back your Microsoft 365 ROI",
+      "tags": [
+        "Microsoft 365",
+        "ROI",
+        "Training"
+      ],
+      "image": ""
+    },
+    {
+      "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
+      "excerpt": "SUMMARY",
+      "body": "BODY TEST",
+      "author": "Kamil Brzezinski",
+      "slug": "getting-started-with-copilot",
+      "featured": true,
+      "date": "2026-04-25T18:16:00.000+02:00",
+      "title": "Title",
+      "tags": [
+        "'TEST'",
+        "'TEST2'",
+        "'TEST3'"
+      ],
+      "image": "/img/blog/copilot-icon-fy26.png"
     }
   ]
 }
