@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Haedlern</title>
+<meta name="description" content="">
+<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── POST PAGE ── */
+.post-hero{padding:140px 8% 48px;position:relative;overflow:hidden;}
+.post-hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 100% at 50% 30%,black 10%,transparent 70%);pointer-events:none;opacity:0.3;z-index:0;}
+.post-hero-inner{max-width:760px;margin:0 auto;position:relative;z-index:1;}
+
+.post-back{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);text-decoration:none;margin-bottom:28px;transition:color 0.2s,gap 0.2s;}
+.post-back:hover{color:var(--blue);gap:10px;}
+
+.post-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.post-tag{display:inline-flex;align-items:center;background:var(--tag-bg);border:1px solid var(--tag-border);color:var(--blue);padding:3px 11px;border-radius:var(--r-pill);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+
+.post-hero h1{font-size:clamp(28px,4.5vw,50px);font-weight:900;letter-spacing:-1.6px;line-height:1.08;color:var(--text);margin:0 0 20px;}
+
+.post-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted);font-weight:500;}
+.post-meta-dot{opacity:0.4;}
+.post-meta-author{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--text2);}
+.post-meta-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;}
+
+/* Cover */
+.post-cover-wrap{padding:0 8%;max-width:calc(760px + 16%);margin:0 auto;box-sizing:border-box;}
+.post-cover{width:100%;border-radius:var(--r-2xl);overflow:hidden;aspect-ratio:16/9;background:linear-gradient(135deg,rgba(0,120,212,0.18),rgba(0,180,216,0.12));display:flex;align-items:center;justify-content:center;}
+.post-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+.post-cover-placeholder{font-size:80px;font-weight:900;color:var(--blue);opacity:0.3;letter-spacing:-4px;}
+
+/* Body */
+.post-body-section{padding:44px 8% 100px;}
+.post-body-inner{max-width:760px;margin:0 auto;}
+
+/* Article typography */
+.post-article{color:var(--text2);font-size:16.5px;line-height:1.85;}
+.post-article h2{font-size:clamp(20px,2.6vw,26px);font-weight:900;color:var(--text);letter-spacing:-0.6px;margin:2.2em 0 0.7em;line-height:1.15;}
+.post-article h3{font-size:clamp(17px,2vw,20px);font-weight:800;color:var(--text);letter-spacing:-0.3px;margin:1.8em 0 0.6em;line-height:1.2;}
+.post-article p{margin:0 0 1.4em;}
+.post-article p:last-child{margin-bottom:0;}
+.post-article strong{color:var(--text);font-weight:700;}
+.post-article em{font-style:italic;}
+.post-article a{color:var(--blue);text-decoration:underline;text-underline-offset:3px;transition:opacity 0.2s;}
+.post-article a:hover{opacity:0.75;}
+.post-article ul,.post-article ol{padding-left:0;margin:0 0 1.4em;list-style:none;display:flex;flex-direction:column;gap:10px;}
+.post-article ul li,.post-article ol li{font-size:15.5px;color:var(--text2);line-height:1.65;padding-left:32px;position:relative;}
+.post-article ul li::before{content:'✓';position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,120,212,0.28);}
+.post-article ol{counter-reset:ol-counter;}
+.post-article ol li{counter-increment:ol-counter;}
+.post-article ol li::before{content:counter(ol-counter);position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,120,212,0.28);}
+.post-article blockquote{border-left:3px solid var(--blue);padding:14px 20px;margin:1.6em 0;background:var(--tag-bg);border-radius:0 12px 12px 0;font-style:italic;color:var(--text2);}
+.post-article code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:14px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:2px 7px;color:var(--blue);}
+.post-article pre{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px 24px;overflow-x:auto;margin:1.6em 0;}
+.post-article pre code{background:none;border:none;padding:0;font-size:13.5px;color:var(--text2);}
+.post-article hr{border:none;border-top:1px solid var(--border);margin:2.5em 0;}
+.post-article img{width:100%;border-radius:var(--r-xl);margin:1.4em 0;box-shadow:var(--shadow-md);}
+
+.post-divider{border:none;border-top:1px solid var(--border);margin:64px 0 48px;}
+.post-bottom-cta{padding:44px 36px;text-align:center;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-2xl);transition:background 0.4s;}
+.post-bottom-cta h3{font-size:clamp(18px,2.2vw,24px);font-weight:900;color:var(--text);letter-spacing:-0.5px;margin-bottom:10px;}
+.post-bottom-cta p{color:var(--muted);font-size:14px;margin-bottom:22px;}
+
+.post-state{text-align:center;padding:80px 20px;color:var(--muted);}
+.post-state h2{font-size:22px;font-weight:900;color:var(--text);margin-bottom:10px;}
+
+@media(max-width:840px){
+  .post-hero{padding:120px 5% 36px;}
+  .post-cover-wrap{padding:0 5%;}
+  .post-body-section{padding:32px 5% 80px;}
+  .post-bottom-cta{padding:32px 22px;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav id="mainNav">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="apps.html">Apps</a></li>
+      <li><a href="themes.html">Themes</a></li>
+      <li><a href="index.html#pricing">Packages</a></li>
+      <li><a href="calculator.html">Package Advisor</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html" style="color:var(--blue)">Blog</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Call</button>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="post-hero section-glass" id="postHero" style="display:none;">
+  <div class="post-hero-grid"></div>
+  <div class="post-hero-inner">
+    <a class="post-back sa" href="blog.html">← Back to blog</a>
+    <div class="post-tags sa" style="--delay:40ms" id="postTags"></div>
+    <h1 class="sa" style="--delay:80ms" id="postTitle"></h1>
+    <div class="post-meta sa" style="--delay:120ms" id="postMeta"></div>
+  </div>
+</section>
+
+<!-- COVER IMAGE -->
+<div class="post-cover-wrap" id="postCoverWrap" style="display:none;">
+  <div class="post-cover" id="postCover"></div>
+</div>
+
+<!-- BODY -->
+<section class="post-body-section">
+  <div class="post-body-inner">
+    <div id="postContent">
+      <div class="post-state"><p>Loading…</p></div>
+    </div>
+    <hr class="post-divider" id="postDivider" style="display:none;">
+    <div class="post-bottom-cta sa" id="postCta" style="display:none;">
+      <h3>Want training built around real workflows like these?</h3>
+      <p>Book a free 30-minute discovery call. No commitment, no pressure.</p>
+      <a href="index.html#signup" class="btn-primary" style="background:var(--blue);color:#fff;border:none;padding:12px 26px;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 16px rgba(0,120,212,0.35);text-decoration:none;display:inline-block;">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
+  <p>© 2026 Haedlern. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function () {
+
+  // ── Minimal Markdown → HTML ──
+  function mdToHtml(md) {
+    if (!md) return '';
+    var lines = md.split('\n');
+    var out = '', inUl = false, inOl = false, inPre = false, preAcc = '';
+
+    function closeList() {
+      if (inUl) { out += '</ul>'; inUl = false; }
+      if (inOl) { out += '</ol>'; inOl = false; }
+    }
+
+    function esc(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function inline(s) {
+      var parts = [];
+      // protect code spans
+      s = s.replace(/`([^`]+)`/g, function(_,c) {
+        var ph = '\x00' + parts.length + '\x00';
+        parts.push('<code>' + esc(c) + '</code>');
+        return ph;
+      });
+      s = s.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+      s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      s = s.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
+      s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+      s = s.replace(/\x00(\d+)\x00/g, function(_,n){ return parts[n]; });
+      return s;
+    }
+
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+
+      // fenced code block
+      if (!inPre && /^```/.test(line)) { closeList(); inPre = true; preAcc = ''; continue; }
+      if (inPre) {
+        if (/^```/.test(line)) { out += '<pre><code>' + esc(preAcc.replace(/\n$/,'')) + '</code></pre>'; inPre = false; preAcc = ''; }
+        else preAcc += line + '\n';
+        continue;
+      }
+
+      // HR
+      if (/^---+$/.test(line.trim())) { closeList(); out += '<hr>'; continue; }
+
+      // Headings
+      var hm = line.match(/^(#{1,6})\s+(.*)/);
+      if (hm) { closeList(); var lv = hm[1].length; out += '<h'+lv+'>'+inline(hm[2])+'</h'+lv+'>'; continue; }
+
+      // Blockquote
+      var bq = line.match(/^>\s*(.*)/);
+      if (bq) { closeList(); out += '<blockquote><p>'+inline(bq[1])+'</p></blockquote>'; continue; }
+
+      // Unordered list
+      var ul = line.match(/^[-*+]\s+(.*)/);
+      if (ul) { if (inOl) { out += '</ol>'; inOl = false; } if (!inUl) { out += '<ul>'; inUl = true; } out += '<li>'+inline(ul[1])+'</li>'; continue; }
+
+      // Ordered list
+      var ol = line.match(/^\d+\.\s+(.*)/);
+      if (ol) { if (inUl) { out += '</ul>'; inUl = false; } if (!inOl) { out += '<ol>'; inOl = true; } out += '<li>'+inline(ol[1])+'</li>'; continue; }
+
+      // Blank line
+      if (!line.trim()) { closeList(); continue; }
+
+      // Paragraph
+      closeList(); out += '<p>'+inline(line)+'</p>';
+    }
+
+    closeList();
+    if (inPre) out += '<pre><code>' + esc(preAcc) + '</code></pre>';
+    return out;
+  }
+
+  function esc(s) {
+    return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    try { return new Date(iso).toLocaleDateString('en-GB',{year:'numeric',month:'long',day:'numeric'}); } catch(e){return '';}
+  }
+
+  function readTime(body) {
+    return Math.max(1, Math.round(String(body||'').split(/\s+/).filter(Boolean).length / 220)) + ' min read';
+  }
+
+  function initials(s) {
+    return String(s||'B').trim().split(/\s+/).slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase()||'B';
+  }
+
+  function showError(title, msg) {
+    document.getElementById('postContent').innerHTML =
+      '<div class="post-state"><h2>'+title+'</h2><p>'+msg+'</p>'+
+      '<a href="blog.html" style="display:inline-block;margin-top:20px;font-size:14px;font-weight:700;color:var(--blue);">← Back to blog</a></div>';
+  }
+
+  function render(post) {
+    document.title = esc(post.title) + ' | Haedlern Blog';
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = post.excerpt || '';
+
+    // Tags
+    var tagsEl = document.getElementById('postTags');
+    if (Array.isArray(post.tags) && post.tags.length) {
+      tagsEl.innerHTML = post.tags.map(function(t){ return '<span class="post-tag">'+esc(t)+'</span>'; }).join('');
+    } else {
+      tagsEl.style.display = 'none';
+    }
+
+    // Title
+    document.getElementById('postTitle').textContent = post.title || '';
+
+    // Meta row
+    document.getElementById('postMeta').innerHTML =
+      '<div class="post-meta-author">'+
+        '<div class="post-meta-avatar">'+esc(initials(post.author||post.title))+'</div>'+
+        '<span>'+esc(post.author||'')+'</span>'+
+      '</div>'+
+      (post.authorRole ? '<span class="post-meta-dot">·</span><span>'+esc(post.authorRole)+'</span>' : '')+
+      '<span class="post-meta-dot">·</span><span>'+fmtDate(post.date)+'</span>'+
+      '<span class="post-meta-dot">·</span><span>'+readTime(post.body)+'</span>';
+
+    document.getElementById('postHero').style.display = '';
+
+    // Cover
+    var coverWrap = document.getElementById('postCoverWrap');
+    var coverEl   = document.getElementById('postCover');
+    if (post.image) {
+      coverEl.innerHTML = '<img src="'+esc(post.image)+'" alt="'+esc(post.title)+'">';
+    } else {
+      coverEl.innerHTML = '<div class="post-cover-placeholder">'+esc(initials(post.title))+'</div>';
+    }
+    coverWrap.style.display = '';
+
+    // Article body
+    var article = document.createElement('article');
+    article.className = 'post-article sa';
+    article.innerHTML = mdToHtml(post.body || '');
+    var contentEl = document.getElementById('postContent');
+    contentEl.innerHTML = '';
+    contentEl.appendChild(article);
+
+    // CTA
+    document.getElementById('postDivider').style.display = '';
+    document.getElementById('postCta').style.display = '';
+
+    // Trigger scroll animations
+    if (typeof window.observeScrollAnimate === 'function') {
+      window.observeScrollAnimate();
+    } else {
+      document.querySelectorAll('.sa').forEach(function(el){ el.classList.add('in'); });
+    }
+  }
+
+  var slug = new URLSearchParams(window.location.search).get('slug') || '';
+  if (!slug) {
+    showError('No post specified', 'Try navigating from the <a href="blog.html" style="color:var(--blue)">blog index</a>.');
+    return;
+  }
+
+  fetch('content/blog.json', { cache: 'no-cache' })
+    .then(function(r){ if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(data){
+      var posts = (data && data.posts) || [];
+      var post = null;
+      for (var i = 0; i < posts.length; i++) { if (posts[i].slug === slug) { post = posts[i]; break; } }
+      if (!post) { showError('Post not found', 'This post doesn\'t exist or may have been removed.'); return; }
+      render(post);
+    })
+    .catch(function(err){
+      console.error(err);
+      showError('Couldn\'t load this post',
+        'If you\'re viewing this locally via <code>file://</code>, browsers block fetch(). '+
+        'Run a local server (e.g. <code>npx serve</code>) or deploy to Netlify to see it work.');
+    });
+
+})();
+</script>
+</body>
+</html>

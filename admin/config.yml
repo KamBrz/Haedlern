@@ -14,8 +14,8 @@ public_folder: "/img/blog"
 # drafts without publishing them straight to the live site.
 publish_mode: editorial_workflow
 
-site_url: https://your-site.netlify.app
-display_url: https://your-site.netlify.app
+site_url: https://haedlern.netlify.app
+display_url: https://haedlern.netlify.app
 logo_url: /img/haedlern-ladder-iso-cobalt.svg
 
 collections:

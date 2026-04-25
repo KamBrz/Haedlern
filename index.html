@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Haedlern</title>
 <link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
+<!-- Netlify Identity — required so invite/password-reset links resolve correctly -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -349,5 +351,17 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+  // Redirect to /admin/ after accepting a Netlify Identity invite or resetting password
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', function(user) {
+      if (!user) {
+        window.netlifyIdentity.on('login', function() {
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
