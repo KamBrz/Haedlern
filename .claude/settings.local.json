@@ -63,7 +63,8 @@
       "Bash(npm install *)",
       "Bash(npm run *)",
       "PowerShell(python -c \"import markdown; print\\('markdown ok'\\)\" 2>&1)",
-      "PowerShell(python -m pip install markdown 2>&1)"
+      "PowerShell(python -m pip install markdown 2>&1)",
+      "Bash(python build-blog.py)"
     ]
   }
 }

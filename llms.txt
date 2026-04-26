@@ -1,0 +1,27 @@
+# Haedlern
+
+> Microsoft 365 and Copilot training for enterprise teams — hands-on, customised workshops and adoption programmes that drive real behaviour change.
+
+Haedlern is a specialist Microsoft 365 training and adoption consultancy run by Kamil Brzezinski, a Microsoft 365 Trainer & Adoption Specialist. We design and deliver expert-led workshops for large organisations — covering Teams, Copilot, SharePoint, Power Platform, and every corner of the Microsoft 365 suite. Workshops accommodate up to 30 participants and are always tailored to the organisation's workflows, not generic feature tours.
+
+## Services
+
+- [Home](https://haedlern.com/): Overview of all Microsoft 365 and Copilot training services, packages, and how to book a free discovery call.
+- [App Workshops](https://haedlern.com/apps.html): Hands-on workshops for specific Microsoft 365 apps — Teams, Copilot, SharePoint, OneDrive, Excel, Word, Outlook, PowerPoint, Power Automate, Power BI, OneNote, Planner, Loop, Whiteboard, Forms, To Do, Lists, Visio, Edge, and Clipchamp.
+- [Themed Workshops](https://haedlern.com/themes.html): Training experiences organised by business outcome — AI adoption, productivity, modern workplace, and change management.
+- [Training Packages](https://haedlern.com/index.html#pricing): Starter, Professional, and Enterprise packages. All include up to 30 participants per session.
+- [Package Advisor](https://haedlern.com/calculator.html): Interactive tool to help organisations choose the right training package.
+- [About](https://haedlern.com/about.html): About Kamil Brzezinski — Microsoft 365 Trainer & Adoption Specialist.
+- [Blog](https://haedlern.com/blog.html): Practical articles on Microsoft 365 adoption, Copilot rollouts, Power Platform, and the modern workplace.
+
+## Blog Posts
+
+- [Why most Copilot rollouts stall in the first 90 days](https://haedlern.com/blog/why-copilot-rollouts-stall.html): Licensing isn't adoption. The teams getting real ROI from Copilot all do three things differently in their first quarter — and none of them are technical.
+- [What the Frontier Programme actually changes about your Copilot rollout](https://haedlern.com/blog/frontier-programme-explained.html): Frontier is where Microsoft's most useful Copilot upgrades land first — and most enterprises are losing ground if they ignore it.
+- [The quiet skills gap holding back your Microsoft 365 ROI](https://haedlern.com/blog/the-quiet-skills-gap.html): Most organisations unlock less than 20% of what they pay for in Microsoft 365 — and the reason is almost never the tools themselves.
+- [Copilot Cowork is here — and it changes how you'll plan your week](https://haedlern.com/blog/copilot-cowork-changes-your-week.html): Copilot used to answer questions. Cowork does work. The shift sounds small until you watch a daily briefing assemble itself.
+- [From assistant to colleague: how to think about Copilot agents in 2026](https://haedlern.com/blog/copilot-agents-2026.html): 230,000 organisations are now building custom Copilot agents. Here's a clean mental model for what an agent is and when to build one.
+- [The infinite workday — and the AI tools quietly reshaping it](https://haedlern.com/blog/infinite-workday-and-ai.html): 275 interruptions a day, 153 Teams messages, 117 emails. The response your team needs isn't another wellbeing email.
+- [The four-part prompt: a Copilot framework that finally sticks](https://haedlern.com/blog/four-part-prompt-framework.html): Microsoft's Goal-Context-Source-Expectations framework is duller and considerably more useful than most prompt training.
+- [How to stop SharePoint from leaking everything to Copilot](https://haedlern.com/blog/stop-sharepoint-oversharing-copilot.html): Copilot only surfaces content the user already had access to — and that sentence is doing far more work than it sounds.
+- [Power Automate's quiet revolution: when anyone can build a flow](https://haedlern.com/blog/power-automate-anyone-can-build.html): Describing a workflow in plain English and watching it build itself isn't a demo any more — it's something most M365 users can do today.

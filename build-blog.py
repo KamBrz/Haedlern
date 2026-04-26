@@ -64,6 +64,7 @@ def build_post(post):
 <link rel="canonical" href="{BASE}/blog/{slug}.html">
 <link rel="icon" type="image/svg+xml" href="../img/haedlern-ladder-iso-cobalt.svg">
 <link rel="stylesheet" href="../styles.css">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
@@ -106,6 +107,9 @@ def build_post(post):
   "image": "{og_image}",
   "keywords": {json.dumps(', '.join(tags))}
 }}
+</script>
+<script type="application/ld+json">
+{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"https://haedlern.com/"}},{{"@type":"ListItem","position":2,"name":"Blog","item":"https://haedlern.com/blog.html"}},{{"@type":"ListItem","position":3,"name":{json.dumps(title)},"item":"{BASE}/blog/{slug}.html"}}]}}
 </script>
 </head>
 <body>
@@ -165,6 +169,8 @@ def build_post(post):
 </footer>
 
 <script src="../script.js"></script>
+<!-- Microsoft Clarity -->
+<script>(function(c,l,a,r,i,t,y){{c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)}})(window,document,"clarity","script","whovnhgjm9");</script>
 </body>
 </html>'''
 

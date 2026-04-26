@@ -196,6 +196,38 @@ function send(e){
 }
 
 
+// NAV SLIDING HIGHLIGHT
+function initNavHighlight() {
+  const ul = document.querySelector('.nav-links');
+  if (!ul) return;
+  const hl = document.createElement('div');
+  hl.className = 'nav-highlight';
+  ul.appendChild(hl);
+  let entered = false;
+  ul.querySelectorAll('a').forEach(a => {
+    a.addEventListener('mouseenter', () => {
+      const lr = a.getBoundingClientRect();
+      const ur = ul.getBoundingClientRect();
+      if (!entered) {
+        hl.style.transition = 'opacity 0.18s';
+        hl.style.left   = (lr.left - ur.left) + 'px';
+        hl.style.top    = (lr.top  - ur.top)  + 'px';
+        hl.style.width  = lr.width  + 'px';
+        hl.style.height = lr.height + 'px';
+        requestAnimationFrame(() => { hl.style.transition = ''; hl.style.opacity = '1'; });
+        entered = true;
+      } else {
+        hl.style.left   = (lr.left - ur.left) + 'px';
+        hl.style.top    = (lr.top  - ur.top)  + 'px';
+        hl.style.width  = lr.width  + 'px';
+        hl.style.height = lr.height + 'px';
+      }
+    });
+  });
+  ul.addEventListener('mouseleave', () => { hl.style.opacity = '0'; entered = false; });
+}
+document.addEventListener('DOMContentLoaded', initNavHighlight);
+
 // MOBILE NAV DRAWER
 function initMobileNav() {
   if (!document.getElementById('navHamburger')) return;
