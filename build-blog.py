@@ -3,13 +3,27 @@ from datetime import datetime
 import markdown as md_lib
 
 BASE = 'https://haedlern.com'
-data = json.loads(open('content/blog.json', encoding='utf-8').read())
+
+try:
+    data = json.loads(open('content/blog.json', encoding='utf-8').read())
+except FileNotFoundError:
+    raise SystemExit('ERROR: content/blog.json not found. Run from the site root.')
+
 posts = data['posts']
 
 os.makedirs('blog', exist_ok=True)
 
 def esc(s):
     return html_mod.escape(str(s or ''), quote=True)
+
+def safe_slug(s):
+    return re.sub(r'[^a-zA-Z0-9\-_]', '', str(s or ''))
+
+def sanitize_html(h):
+    h = re.sub(r'<script[\s\S]*?</script>', '', h, flags=re.IGNORECASE)
+    h = re.sub(r'<(iframe|object|embed|form|base)[^>]*>[\s\S]*?</\1>', '', h, flags=re.IGNORECASE)
+    h = re.sub(r'\s+on\w+="[^"]*"', '', h, flags=re.IGNORECASE)
+    return h
 
 def reading_time(body):
     words = len(re.split(r'\s+', (body or '').strip()))
@@ -21,7 +35,7 @@ def fmt_date(iso):
 
 def build_post(post):
     title    = post.get('title', '')
-    slug     = post.get('slug', '')
+    slug     = safe_slug(post.get('slug', ''))
     date     = post.get('date', '')
     author   = post.get('author', 'Kamil Brzezinski')
     role     = post.get('authorRole', 'Microsoft 365 Trainer & Adoption Specialist')
@@ -33,7 +47,7 @@ def build_post(post):
     og_image = f'https://haedlern.com{image}' if image else f'{BASE}/img/og-default.png'
     mins     = reading_time(body)
     f_date   = fmt_date(date)
-    rendered = md_lib.markdown(body, extensions=['extra'])
+    rendered = sanitize_html(md_lib.markdown(body, extensions=['extra']))
     tags_og  = '\n'.join(f'<meta property="article:tag" content="{esc(t)}">' for t in tags)
     tags_html= ''.join(f'<span class="blog-tag">{esc(t)}</span>' for t in tags)
 
@@ -41,6 +55,9 @@ def build_post(post):
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(title)} | Haedlern</title>
 <meta name="description" content="{esc(excerpt)}">
@@ -55,7 +72,7 @@ def build_post(post):
 <meta property="og:url" content="{BASE}/blog/{slug}.html">
 <meta property="og:image" content="{og_image}">
 <meta property="og:site_name" content="Haedlern">
-<meta property="article:author" content="Kamil Brzezinski">
+<meta property="article:author" content="{esc(author)}">
 <meta property="article:published_time" content="{date}">
 {tags_og}
 
@@ -76,8 +93,8 @@ def build_post(post):
   "dateModified": "{iso_date}",
   "author": {{
     "@type": "Person",
-    "name": "Kamil Brzezinski",
-    "jobTitle": "Microsoft 365 Trainer & Adoption Specialist",
+    "name": {json.dumps(author)},
+    "jobTitle": {json.dumps(role)},
     "url": "https://haedlern.com/about.html"
   }},
   "publisher": {{
@@ -153,7 +170,7 @@ def build_post(post):
 
 for post in posts:
     html = build_post(post)
-    path = os.path.join('blog', post['slug'] + '.html')
+    path = os.path.join('blog', safe_slug(post['slug']) + '.html')
     with open(path, 'w', encoding='utf-8') as f:
         f.write(html)
     print(f'Generated: {path}')

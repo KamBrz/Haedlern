@@ -25,27 +25,29 @@ function type(){if(!tel)return;const w=phrases[pi];tel.textContent=del?w.substri
 if(tel)type();
 
 // COUNTER
-function counter(el){const t=parseInt(el.dataset.target),suf=el.dataset.suffix||'';let c=0;const inc=t/60;const iv=setInterval(()=>{c=Math.min(c+inc,t);el.textContent=Math.floor(c)+suf;if(c>=t)clearInterval(iv);},24);}
+function counter(el){const t=parseInt(el.dataset.target,10),suf=el.dataset.suffix||'';if(isNaN(t)||t<=0){el.textContent=(isNaN(t)?0:t)+suf;return;}let c=0;const inc=t/60;const iv=setInterval(()=>{c=Math.min(c+inc,t);el.textContent=Math.floor(c)+suf;if(c>=t)clearInterval(iv);},24);}
 
-// SCROLL PROGRESS BAR
+// SCROLL — progress bar, nav state, parallax (single RAF-throttled listener)
+let _scrollRaf=false,_fiEls=null;
+document.addEventListener('DOMContentLoaded',()=>{_fiEls=[...document.querySelectorAll('.fi')];});
 window.addEventListener('scroll',()=>{
-  const doc=document.documentElement;
-  const pct=(doc.scrollTop/(doc.scrollHeight-doc.clientHeight))*100;
-  document.getElementById('progress-bar').style.width=pct+'%';
-  document.getElementById('mainNav').classList.toggle('scrolled',doc.scrollTop>80);
-},{passive:true});
-
-// PARALLAX for orbs
-window.addEventListener('scroll',()=>{
-  const s=window.scrollY;
-  const o1=document.querySelector('.orb1'),o2=document.querySelector('.orb2'),o3=document.querySelector('.orb3');
-  if(o1)o1.style.transform=`translateY(${s*0.12}px)`;
-  if(o2)o2.style.transform=`translateY(${s*-0.08}px)`;
-  if(o3)o3.style.transform=`translateY(${s*0.06}px)`;
-  // floating icons subtle parallax
-  document.querySelectorAll('.fi').forEach((el,i)=>{
-    const rates=[0.05,0.08,0.04,0.09,0.06,0.07];
-    el.style.transform=`translateY(${s*rates[i%rates.length]}px)`;
+  if(_scrollRaf)return;
+  _scrollRaf=true;
+  requestAnimationFrame(()=>{
+    const doc=document.documentElement;
+    const s=window.scrollY;
+    const pb=document.getElementById('progress-bar');
+    if(pb)pb.style.width=(doc.scrollTop/(doc.scrollHeight-doc.clientHeight))*100+'%';
+    document.getElementById('mainNav').classList.toggle('scrolled',s>80);
+    const o1=document.querySelector('.orb1'),o2=document.querySelector('.orb2'),o3=document.querySelector('.orb3');
+    if(o1)o1.style.transform=`translateY(${s*0.12}px)`;
+    if(o2)o2.style.transform=`translateY(${s*-0.08}px)`;
+    if(o3)o3.style.transform=`translateY(${s*0.06}px)`;
+    _fiEls.forEach((el,i)=>{
+      const rates=[0.05,0.08,0.04,0.09,0.06,0.07];
+      el.style.transform=`translateY(${s*rates[i%rates.length]}px)`;
+    });
+    _scrollRaf=false;
   });
 },{passive:true});
 
@@ -134,7 +136,7 @@ function launchConfetti(originEl) {
   const ox = rect.left + rect.width / 2;
   const oy = rect.top + rect.height / 2;
   const colors = ['#0078d4','#00b4d8','#48cae4','#90e0ef','#caf0f8','#ffffff','#003f88'];
-  const particles = Array.from({length: 90}, () => {
+  const particles = Array.from({length: 50}, () => {
     const angle = Math.random() * Math.PI * 2;
     const speed = Math.random() * 9 + 4;
     return {

@@ -2,6 +2,9 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Microsoft 365, Copilot, and Modern Workplace insights | Haedlern</title>
 <meta name="description" content="Notes on Microsoft 365 adoption, Copilot rollouts, agents, Power Platform, and what actually works inside large organisations. Updated regularly.">
@@ -124,7 +127,7 @@
 <!-- BLOG LIST -->
 <section class="blog-section">
   <div class="blog-inner">
-    <div id="blog-list" class="blog-loading">Loading posts…</div>
+    <div id="blog-list" class="blog-loading" aria-live="polite" aria-atomic="false">Loading posts…</div>
 
     <div class="blog-bottom-cta sa">
       <h3>Want training built around real workflows like these?</h3>
@@ -251,7 +254,7 @@
     }
   }
 
-  fetch('content/blog.json', { cache: 'no-cache' })
+  fetch('content/blog.json')
     .then(r => {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
