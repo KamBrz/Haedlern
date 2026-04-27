@@ -46,7 +46,7 @@
         "ROI",
         "Training"
       ],
-      "image": ""
+      "image": "/img/blog/quiet-skills-gap.jpg"
     },
     {
       "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
@@ -62,7 +62,7 @@
         "Cowork",
         "Productivity"
       ],
-      "image": ""
+      "image": "/img/blog/copilot-cowork-week.jpg"
     },
     {
       "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
@@ -78,7 +78,7 @@
         "Agents",
         "Copilot Studio"
       ],
-      "image": ""
+      "image": "/img/blog/copilot-agents-2026.jpg"
     },
     {
       "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
@@ -94,7 +94,7 @@
         "Teams",
         "Wellbeing"
       ],
-      "image": ""
+      "image": "/img/blog/infinite-workday.jpg"
     },
     {
       "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
@@ -110,7 +110,7 @@
         "Prompts",
         "Training"
       ],
-      "image": ""
+      "image": "/img/blog/four-part-prompt-framework.jpg"
     },
     {
       "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
@@ -126,7 +126,7 @@
         "SharePoint",
         "Governance"
       ],
-      "image": ""
+      "image": "/img/blog/stop-sharepoint-oversharing.jpg"
     },
     {
       "authorRole": "Microsoft 365 Trainer & Adoption Specialist",
@@ -142,7 +142,7 @@
         "Power Automate",
         "Citizen Development"
       ],
-      "image": ""
+      "image": "/img/blog/power-automate-anyone-can-build.jpg"
     }
   ]
 }
