@@ -65,7 +65,23 @@
       "PowerShell(python -c \"import markdown; print\\('markdown ok'\\)\" 2>&1)",
       "PowerShell(python -m pip install markdown 2>&1)",
       "Bash(python build-blog.py)",
-      "Bash(grep -n \"rgb\\\\|#[0-9A-Fa-f]\\\\{3,6\\\\}\" \"c:/Users/kambr/Desktop/GIT WEBSITE/Haedlern/calculator.html\")"
+      "Bash(grep -n \"rgb\\\\|#[0-9A-Fa-f]\\\\{3,6\\\\}\" \"c:/Users/kambr/Desktop/GIT WEBSITE/Haedlern/calculator.html\")",
+      "Bash(uvx --version)",
+      "Bash(uvx --from \"token-savior-recall[mcp]\" token-savior --help)",
+      "Bash(where token-savior *)",
+      "Bash(uvx --from \"token-savior-recall[mcp]\" which token-savior)",
+      "Bash(pip show *)",
+      "Bash(pipx list *)",
+      "Bash(claude mcp *)",
+      "PowerShell(claude mcp add token-savior -- \"C:\\\\Users\\\\kambr\\\\AppData\\\\Roaming\\\\uv\\\\tools\\\\token-savior-recall\\\\Scripts\\\\token-savior\")",
+      "PowerShell(& \"C:\\\\Users\\\\kambr\\\\AppData\\\\Roaming\\\\uv\\\\tools\\\\token-savior-recall\\\\Scripts\\\\token-savior.exe\" --help 2>&1)",
+      "Bash(curl -s https://raw.githubusercontent.com/Mibayy/token-savior/main/README.md)",
+      "PowerShell(Get-Command claude -ErrorAction SilentlyContinue; Get-ChildItem \"$env:LOCALAPPDATA\\\\AnthropicClaude\\\\\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:APPDATA\\\\Claude\\\\\" -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-ChildItem \"$env:LOCALAPPDATA\\\\AnthropicClaude\\\\\" -ErrorAction SilentlyContinue | Select-Object Name, FullName)",
+      "Read(//c/Users/kambr/AppData/Local/**)",
+      "Read(//c/Users/kambr/.claude//**)",
+      "Read(//c/Users/kambr/.claude/**)",
+      "Bash(xargs sed *)"
     ]
   }
 }

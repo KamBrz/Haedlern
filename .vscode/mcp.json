@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "token-savior": {
+      "type": "stdio",
+      "command": "C:\\Users\\kambr\\AppData\\Roaming\\uv\\tools\\token-savior-recall\\Scripts\\token-savior.exe",
+      "env": {
+        "WORKSPACE_ROOTS": "C:\\Users\\kambr\\Desktop\\GIT WEBSITE\\Haedlern",
+        "TOKEN_SAVIOR_CLIENT": "claude-code"
+      }
+    }
+  }
+}
