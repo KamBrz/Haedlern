@@ -81,7 +81,17 @@
       "Read(//c/Users/kambr/AppData/Local/**)",
       "Read(//c/Users/kambr/.claude//**)",
       "Read(//c/Users/kambr/.claude/**)",
-      "Bash(xargs sed *)"
+      "Bash(xargs sed *)",
+      "Bash(mv \"Copilot Cowork changes how you'll plan your week.jpg\" \"copilot-cowork-week.jpg\")",
+      "Bash(mv \"Firefly_A non-technical office worker confidently building a digital workflow on a screen usi 432650.jpg\" \"power-automate-anyone-can-build.jpg\")",
+      "Bash(mv \"From assistant to colleague Copilot agents in 2026.jpg\" \"copilot-agents-2026.jpg\")",
+      "Bash(mv \"Stop SharePoint leaking to Copilot.jpg\" \"stop-sharepoint-oversharing.jpg\")",
+      "Bash(mv \"The four-part prompt framework.jpg\" \"four-part-prompt-framework.jpg\")",
+      "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/copilot-agents-2026.jpg|g' copilot-agents-2026.html)",
+      "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/copilot-cowork-week.jpg|g' copilot-cowork-changes-your-week.html)",
+      "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/four-part-prompt-framework.jpg|g' four-part-prompt-framework.html)",
+      "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/power-automate-anyone-can-build.jpg|g' power-automate-anyone-can-build.html)",
+      "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/stop-sharepoint-oversharing.jpg|g' stop-sharepoint-oversharing-copilot.html)"
     ]
   }
 }
