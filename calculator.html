@@ -41,7 +41,7 @@
 .q-options{display:flex;flex-direction:column;gap:9px;margin-bottom:24px;}
 .q-option{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border:2px solid var(--card-border);border-radius:12px;cursor:pointer;transition:all 0.18s;background:var(--bg);}
 .q-option:hover{border-color:var(--blue);background:var(--tag-bg);}
-.q-option.selected{border-color:var(--blue);background:rgba(0,120,212,0.06);box-shadow:0 0 0 3px rgba(0,120,212,0.1);}
+.q-option.selected{border-color:var(--blue);background:var(--tag-bg);box-shadow:0 0 0 3px var(--border2);}
 .q-option-letter{width:26px;height:26px;border-radius:7px;background:var(--tag-bg);border:1px solid var(--border2);color:var(--blue);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.18s;}
 .q-option.selected .q-option-letter{background:var(--blue);color:#fff;border-color:var(--blue);}
 .q-option-content{flex:1;}
@@ -50,7 +50,7 @@
 .q-checkboxes{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
 .q-checkbox-item{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border:2px solid var(--card-border);border-radius:12px;cursor:pointer;transition:all 0.18s;background:var(--bg);}
 .q-checkbox-item:hover{border-color:var(--blue);}
-.q-checkbox-item.checked{border-color:var(--blue);background:rgba(0,120,212,0.05);}
+.q-checkbox-item.checked{border-color:var(--blue);background:var(--tag-bg);}
 .q-checkbox-box{width:20px;height:20px;border-radius:5px;border:2px solid var(--border2);background:var(--input-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.18s;margin-top:1px;position:relative;}
 .q-checkbox-item.checked .q-checkbox-box{background:var(--blue);border-color:var(--blue);}
 .q-checkbox-item.checked .q-checkbox-box::after{content:'';display:block;width:10px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-1px);}
@@ -60,14 +60,14 @@
 .q-checkbox-price{font-size:13px;font-weight:700;color:var(--blue);white-space:nowrap;align-self:center;}
 .cur-row{display:flex;gap:8px;margin-bottom:24px;}
 .cur-opt{flex:1;padding:13px;border:2px solid var(--card-border);border-radius:11px;text-align:center;cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);background:var(--bg);transition:all 0.18s;font-family:inherit;}
-.cur-opt.selected{border-color:var(--blue);color:var(--blue);background:rgba(0,120,212,0.06);}
+.cur-opt.selected{border-color:var(--blue);color:var(--blue);background:var(--tag-bg);}
 /* result-page currency toggle */
 .result-cur-row{display:flex;justify-content:flex-end;gap:6px;margin-bottom:16px;}
 .result-cur-row .cur-opt{flex:0 0 auto;padding:8px 20px;font-size:13px;}
 .q-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;}
 .btn-back{background:none;border:1px solid var(--card-border);color:var(--muted);padding:9px 20px;border-radius:var(--r-pill);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.18s;font-family:inherit;}
 .btn-back:hover{color:var(--text);border-color:var(--border2);}
-.btn-next{background:var(--blue);color:#fff;border:none;padding:11px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 14px rgba(0,120,212,0.35);transition:all 0.2s;font-family:inherit;}
+.btn-next{background:var(--blue);color:#fff;border:none;padding:11px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 14px color-mix(in srgb, var(--blue) 35%, transparent);transition:all 0.2s;font-family:inherit;}
 .btn-next:hover:not(:disabled){background:var(--blue-dark);transform:translateY(-1px);}
 .btn-next:disabled{opacity:0.38;cursor:not-allowed;transform:none;}
 .q-step{display:none;}
@@ -105,7 +105,7 @@
 .alt-note{font-size:12px;color:var(--muted);flex:1;}
 .alt-price{font-size:12px;font-weight:700;color:var(--text2);white-space:nowrap;}
 .result-cta{text-align:center;}
-.result-cta-btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;border:none;padding:15px 38px;border-radius:var(--r-pill);font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(0,120,212,0.38);transition:all 0.2s;font-family:inherit;margin-bottom:10px;}
+.result-cta-btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;border:none;padding:15px 38px;border-radius:var(--r-pill);font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px color-mix(in srgb, var(--blue) 38%, transparent);transition:all 0.2s;font-family:inherit;margin-bottom:10px;}
 .result-cta-btn:hover{background:var(--blue-dark);transform:translateY(-2px);}
 .result-cta-note{font-size:12px;color:var(--muted);margin-bottom:12px;}
 .btn-restart{background:none;border:1px solid var(--border);color:var(--muted);padding:9px 20px;border-radius:var(--r-pill);font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
@@ -170,21 +170,21 @@
         <h2>What's your primary training objective?</h2>
         <p class="q-hint">This is the most important question — it shapes everything else.</p>
         <div class="q-options">
-          <div class="q-option" onclick="selectOption(1,'A',this)">
+          <div class="q-option" data-step="1" data-value="A">
             <div class="q-option-letter">A</div>
             <div class="q-option-content">
               <span class="q-option-label">Get a team skilled up on one specific M365 app</span>
               <span class="q-option-desc">e.g. "Our people barely use Teams properly" or "Excel is all over the place"</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(1,'B',this)">
+          <div class="q-option" data-step="1" data-value="B">
             <div class="q-option-letter">B</div>
             <div class="q-option-content">
               <span class="q-option-label">Improve how our team handles a key business process</span>
               <span class="q-option-desc">e.g. "Hybrid working is broken" or "Too much time wasted on email and manual tasks"</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(1,'C',this)">
+          <div class="q-option" data-step="1" data-value="C">
             <div class="q-option-letter">C</div>
             <div class="q-option-content">
               <span class="q-option-label">Build a sustained M365 learning culture across the organisation</span>
@@ -194,7 +194,7 @@
         </div>
         <div class="q-nav">
           <span></span>
-          <button class="btn-next" id="next-1" onclick="nextStep(1)" disabled>Continue →</button>
+          <button class="btn-next" id="next-1" data-step="1" data-dir="next" disabled>Continue →</button>
         </div>
       </div>
     </div>
@@ -206,21 +206,21 @@
         <h2>How many M365 apps do you want covered per session?</h2>
         <p class="q-hint">All sessions are 90 minutes — more apps means a workflow-themed approach to keep things focused.</p>
         <div class="q-options">
-          <div class="q-option" onclick="selectOption(2,'A',this)">
+          <div class="q-option" data-step="2" data-value="A">
             <div class="q-option-letter">A</div>
             <div class="q-option-content">
               <span class="q-option-label">Just one app</span>
               <span class="q-option-desc">Deep dive into a single tool — Teams, Excel, SharePoint, Copilot, Power BI, etc.</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(2,'B',this)">
+          <div class="q-option" data-step="2" data-value="B">
             <div class="q-option-letter">B</div>
             <div class="q-option-content">
               <span class="q-option-label">2–3 apps with a connected workflow theme</span>
               <span class="q-option-desc">e.g. Teams + Outlook + Loop for hybrid working, or SharePoint + OneDrive + Teams for files</span>
             </div>
           </div>
-          <div class="q-option" data-value="C" onclick="selectOption(2,'C',this)">
+          <div class="q-option" data-value="C" data-step="2">
             <div class="q-option-letter">C</div>
             <div class="q-option-content">
               <span class="q-option-label">Many apps — spread across multiple sessions over time</span>
@@ -229,8 +229,8 @@
           </div>
         </div>
         <div class="q-nav">
-          <button class="btn-back" onclick="prevStep(2)">← Back</button>
-          <button class="btn-next" id="next-2" onclick="nextStep(2)" disabled>Continue →</button>
+          <button class="btn-back" data-step="2" data-dir="back">← Back</button>
+          <button class="btn-next" id="next-2" data-step="2" data-dir="next" disabled>Continue →</button>
         </div>
       </div>
     </div>
@@ -242,21 +242,21 @@
         <h2>Does Copilot or AI feature in your training needs?</h2>
         <p class="q-hint">Copilot sessions carry a small premium due to specialist content. Standard M365 pricing applies otherwise.</p>
         <div class="q-options">
-          <div class="q-option" onclick="selectOption(3,'A',this)">
+          <div class="q-option" data-step="3" data-value="A">
             <div class="q-option-letter">A</div>
             <div class="q-option-content">
               <span class="q-option-label">Yes — Copilot is the primary focus</span>
               <span class="q-option-desc">Sessions centred on Copilot across M365, Copilot Agents, or the M365 Copilot App</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(3,'B',this)">
+          <div class="q-option" data-step="3" data-value="B">
             <div class="q-option-letter">B</div>
             <div class="q-option-content">
               <span class="q-option-label">Some AI elements alongside standard apps</span>
               <span class="q-option-desc">e.g. Copilot woven into a broader Teams, Outlook or M365 workshop</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(3,'C',this)">
+          <div class="q-option" data-step="3" data-value="C">
             <div class="q-option-letter">C</div>
             <div class="q-option-content">
               <span class="q-option-label">No — standard M365 apps only</span>
@@ -265,8 +265,8 @@
           </div>
         </div>
         <div class="q-nav">
-          <button class="btn-back" onclick="prevStep(3)">← Back</button>
-          <button class="btn-next" id="next-3" onclick="nextStep(3)" disabled>Continue →</button>
+          <button class="btn-back" data-step="3" data-dir="back">← Back</button>
+          <button class="btn-next" id="next-3" data-step="3" data-dir="next" disabled>Continue →</button>
         </div>
       </div>
     </div>
@@ -278,28 +278,28 @@
         <h2>How many training sessions are you planning?</h2>
         <p class="q-hint">More sessions unlock better per-session pricing — this is the biggest lever on value.</p>
         <div class="q-options">
-          <div class="q-option" data-value="A" onclick="selectOption(4,'A',this)">
+          <div class="q-option" data-value="A" data-step="4">
             <div class="q-option-letter">A</div>
             <div class="q-option-content">
               <span class="q-option-label">Just 1 session</span>
               <span class="q-option-desc">One targeted event to address a specific need</span>
             </div>
           </div>
-          <div class="q-option" data-value="B" onclick="selectOption(4,'B',this)">
+          <div class="q-option" data-value="B" data-step="4">
             <div class="q-option-letter">B</div>
             <div class="q-option-content">
               <span class="q-option-label">2–3 sessions</span>
               <span class="q-option-desc">A small run — rolling training across teams or covering a few topics</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(4,'C',this)">
+          <div class="q-option" data-step="4" data-value="C">
             <div class="q-option-letter">C</div>
             <div class="q-option-content">
               <span class="q-option-label">4–11 sessions</span>
               <span class="q-option-desc">A meaningful programme spread across several months</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(4,'D',this)">
+          <div class="q-option" data-step="4" data-value="D">
             <div class="q-option-letter">D</div>
             <div class="q-option-content">
               <span class="q-option-label">12+ sessions — regular ongoing training (2 per month)</span>
@@ -308,8 +308,8 @@
           </div>
         </div>
         <div class="q-nav">
-          <button class="btn-back" onclick="prevStep(4)">← Back</button>
-          <button class="btn-next" id="next-4" onclick="nextStep(4)" disabled>Continue →</button>
+          <button class="btn-back" data-step="4" data-dir="back">← Back</button>
+          <button class="btn-next" id="next-4" data-step="4" data-dir="next" disabled>Continue →</button>
         </div>
       </div>
     </div>
@@ -321,21 +321,21 @@
         <h2>Do you need to train multiple separate groups or departments?</h2>
         <p class="q-hint">Each session accommodates up to 30 participants. More people means multiple runs.</p>
         <div class="q-options">
-          <div class="q-option" onclick="selectOption(5,'A',this)">
+          <div class="q-option" data-step="5" data-value="A">
             <div class="q-option-letter">A</div>
             <div class="q-option-content">
               <span class="q-option-label">No — one group, one session per topic</span>
               <span class="q-option-desc">15 people or fewer per training event</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(5,'B',this)">
+          <div class="q-option" data-step="5" data-value="B">
             <div class="q-option-letter">B</div>
             <div class="q-option-content">
               <span class="q-option-label">Yes — same content needs to reach multiple groups</span>
               <span class="q-option-desc">Rolling the same training across different teams, shifts or departments</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(5,'C',this)">
+          <div class="q-option" data-step="5" data-value="C">
             <div class="q-option-letter">C</div>
             <div class="q-option-content">
               <span class="q-option-label">Yes — different content for different groups</span>
@@ -344,8 +344,8 @@
           </div>
         </div>
         <div class="q-nav">
-          <button class="btn-back" onclick="prevStep(5)">← Back</button>
-          <button class="btn-next" id="next-5" onclick="nextStep(5)" disabled>Continue →</button>
+          <button class="btn-back" data-step="5" data-dir="back">← Back</button>
+          <button class="btn-next" id="next-5" data-step="5" data-dir="next" disabled>Continue →</button>
         </div>
       </div>
     </div>
@@ -357,21 +357,21 @@
         <h2>How important is post-session support and strategic guidance?</h2>
         <p class="q-hint">Every tier includes a recording and a pre-session skills survey. This is about what's on top.</p>
         <div class="q-options">
-          <div class="q-option" onclick="selectOption(6,'A',this)">
+          <div class="q-option" data-step="6" data-value="A">
             <div class="q-option-letter">A</div>
             <div class="q-option-content">
               <span class="q-option-label">Basic — a recording and 7-day Q&amp;A is enough</span>
               <span class="q-option-desc">Staff can rewatch and ask follow-up questions for a week after</span>
             </div>
           </div>
-          <div class="q-option" onclick="selectOption(6,'B',this)">
+          <div class="q-option" data-step="6" data-value="B">
             <div class="q-option-letter">B</div>
             <div class="q-option-content">
               <span class="q-option-label">Extended — 30-day Q&amp;A and a discovery call to shape content</span>
               <span class="q-option-desc">More time to embed the learning; a pre-session call to make sure the content is right</span>
             </div>
           </div>
-          <div class="q-option" data-value="C" onclick="selectOption(6,'C',this)">
+          <div class="q-option" data-value="C" data-step="6">
             <div class="q-option-letter">C</div>
             <div class="q-option-content">
               <span class="q-option-label">Strategic — phased calendar and priority scheduling</span>
@@ -380,8 +380,8 @@
           </div>
         </div>
         <div class="q-nav">
-          <button class="btn-back" onclick="prevStep(6)">← Back</button>
-          <button class="btn-next" id="next-6" onclick="nextStep(6)" disabled>Continue →</button>
+          <button class="btn-back" data-step="6" data-dir="back">← Back</button>
+          <button class="btn-next" id="next-6" data-step="6" data-dir="next" disabled>Continue →</button>
         </div>
       </div>
     </div>
@@ -393,7 +393,7 @@
         <h2>Would you like any add-ons?</h2>
         <p class="q-hint">Add-ons can be applied to any session. Select any that interest you — you can decide for certain after booking.</p>
         <div class="q-checkboxes">
-          <div class="q-checkbox-item" onclick="toggleAddon(this,'office-hours')">
+          <div class="q-checkbox-item" data-addon="office-hours">
             <div class="q-checkbox-box"></div>
             <div class="q-checkbox-text">
               <span class="q-checkbox-label">Office Hours</span>
@@ -401,7 +401,7 @@
             </div>
             <span class="q-checkbox-price" id="oh-price">£200</span>
           </div>
-          <div class="q-checkbox-item" id="no-addon" onclick="toggleNone(this)">
+          <div class="q-checkbox-item" id="no-addon" data-action="none">
             <div class="q-checkbox-box"></div>
             <div class="q-checkbox-text">
               <span class="q-checkbox-label">No add-ons for now</span>
@@ -412,13 +412,13 @@
         <div style="margin-bottom:20px;">
           <p class="section-label">Preferred currency</p>
           <div class="cur-row">
-            <div class="cur-opt selected" id="gbp-opt" onclick="selectCurrency('gbp')">£ GBP</div>
-            <div class="cur-opt" id="eur-opt" onclick="selectCurrency('eur')">€ EUR</div>
+            <div class="cur-opt selected" id="gbp-opt" data-currency="gbp">£ GBP</div>
+            <div class="cur-opt" id="eur-opt" data-currency="eur">€ EUR</div>
           </div>
         </div>
         <div class="q-nav">
-          <button class="btn-back" onclick="prevStep(7)">← Back</button>
-          <button class="btn-next" id="next-7" onclick="showResult()">See my recommendation →</button>
+          <button class="btn-back" data-step="7" data-dir="back">← Back</button>
+          <button class="btn-next" id="next-7" data-action="show-result">See my recommendation →</button>
         </div>
       </div>
     </div>
@@ -441,11 +441,11 @@
         <form class="s-form" name="advisor-call" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return sendAdvisor(event)">
           <input type="hidden" name="form-name" value="advisor-call"/>
           <p style="position:absolute;left:-9999px;"><label>Do not fill this in: <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
-          <div class="f-group"><label>Full name</label><input type="text" id="a-fn" name="name" placeholder="Jane Smith" required minlength="2" maxlength="100" pattern="[A-Za-z\u00C0-\u024F\s\-\']+" title="Please enter your full name"/><span class="f-error" id="a-fn-err">Please enter your full name (letters only)</span></div>
-          <div class="f-group"><label>Job title</label><input type="text" id="a-jt" name="job-title" placeholder="L&amp;D Manager" required minlength="2" maxlength="100"/><span class="f-error" id="a-jt-err">Please enter your job title</span></div>
-          <div class="f-group"><label>Company name</label><input type="text" id="a-co" name="company" placeholder="Acme Corporation" required minlength="2" maxlength="150"/><span class="f-error" id="a-co-err">Please enter your company name</span></div>
-          <div class="f-group"><label>Work email</label><input type="email" id="a-em" name="email" placeholder="jane@acme.com" required maxlength="254"/><span class="f-error" id="a-em-err">Please enter a valid work email address</span></div>
-          <div class="f-group full"><label>Message</label><textarea id="a-msg" name="message" rows="6" maxlength="3000" placeholder="Complete the advisor above — your answers will appear here automatically."></textarea></div>
+          <div class="f-group"><label for="a-fn">Full name</label><input type="text" id="a-fn" autocomplete="name" aria-describedby="a-fn-err" name="name" placeholder="Jane Smith" required minlength="2" maxlength="100" pattern="[A-Za-z\u00C0-\u024F\s\-\']+" title="Please enter your full name"/><span class="f-error" id="a-fn-err">Please enter your full name (letters only)</span></div>
+          <div class="f-group"><label for="a-jt">Job title</label><input type="text" id="a-jt" autocomplete="organization-title" aria-describedby="a-jt-err" name="job-title" placeholder="L&amp;D Manager" required minlength="2" maxlength="100"/><span class="f-error" id="a-jt-err">Please enter your job title</span></div>
+          <div class="f-group"><label for="a-co">Company name</label><input type="text" id="a-co" autocomplete="organization" aria-describedby="a-co-err" name="company" placeholder="Acme Corporation" required minlength="2" maxlength="150"/><span class="f-error" id="a-co-err">Please enter your company name</span></div>
+          <div class="f-group"><label for="a-em">Work email</label><input type="email" id="a-em" autocomplete="email" aria-describedby="a-em-err" name="email" placeholder="jane@acme.com" required maxlength="254"/><span class="f-error" id="a-em-err">Please enter a valid work email address</span></div>
+          <div class="f-group full"><label for="a-msg">Message</label><textarea id="a-msg" name="message" rows="6" maxlength="3000" placeholder="Complete the advisor above — your answers will appear here automatically."></textarea></div>
           <div class="f-submit"><button type="submit">Book My Discovery Call</button></div>
           <div class="f-note">🔒 Your details are safe with us. No spam, ever.</div>
         </form>
@@ -515,7 +515,7 @@ function selectCurrency(c) {
   document.getElementById('gbp-opt').classList.toggle('selected', c==='gbp');
   document.getElementById('eur-opt').classList.toggle('selected', c==='eur');
   document.getElementById('oh-price').textContent = f('addon_oh');
-  document.getElementById('cd-price').textContent = f('addon_cd');
+  const cdEl = document.getElementById('cd-price'); if (cdEl) cdEl.textContent = f('addon_cd');
 }
 
 // ── Filter rules: hide options that contradict earlier answers ─────────────
@@ -735,8 +735,8 @@ function renderResult() {
 
   document.getElementById('result-output').innerHTML = `
     <div class="result-cur-row">
-      <button id="res-gbp" class="cur-opt${currency==='gbp'?' selected':''}" onclick="switchResultCurrency('gbp')">£ GBP</button>
-      <button id="res-eur" class="cur-opt${currency==='eur'?' selected':''}" onclick="switchResultCurrency('eur')">€ EUR</button>
+      <button id="res-gbp" class="cur-opt${currency==='gbp'?' selected':''}" data-action="currency" data-currency="gbp">£ GBP</button>
+      <button id="res-eur" class="cur-opt${currency==='eur'?' selected':''}" data-action="currency" data-currency="eur">€ EUR</button>
     </div>
     <div class="result-top">
       <div class="result-badge">Your Recommendation</div>
@@ -766,10 +766,10 @@ function renderResult() {
     </div>
 
     <div class="result-cta">
-      <button class="result-cta-btn" onclick="document.getElementById('advisor-signup').scrollIntoView({behavior:'smooth'})">Book a Free Discovery Call</button>
+      <button class="result-cta-btn" data-action="book">Book a Free Discovery Call</button>
       <div class="result-cta-note">No commitment. Our team will confirm the right package with you on the call.</div>
       <br>
-      <button class="btn-restart" onclick="restartCalc()">↺ Start over</button>
+      <button class="btn-restart" data-action="restart">↺ Start over</button>
     </div>
   `;
 
@@ -869,12 +869,45 @@ function restartCalc() {
   document.getElementById('gbp-opt').classList.add('selected');
   document.getElementById('eur-opt').classList.remove('selected');
   document.getElementById('oh-price').textContent='£200';
-  document.getElementById('cd-price').textContent='£300';
+  const cdEl2 = document.getElementById('cd-price'); if (cdEl2) cdEl2.textContent='£300';
   updateProg(1);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 updateProg(1);
+
+// Event delegation for quiz interactions
+document.querySelector('.calc-container').addEventListener('click', function(e) {
+  const opt = e.target.closest('.q-option:not(.q-option-hidden)');
+  if (opt && opt.dataset.step) { selectOption(+opt.dataset.step, opt.dataset.value, opt); return; }
+
+  const next = e.target.closest('.btn-next[data-dir="next"]');
+  if (next && !next.disabled) { nextStep(+next.dataset.step); return; }
+
+  const showRes = e.target.closest('[data-action="show-result"]');
+  if (showRes) { showResult(); return; }
+
+  const back = e.target.closest('.btn-back[data-dir="back"]');
+  if (back) { prevStep(+back.dataset.step); return; }
+
+  const chk = e.target.closest('.q-checkbox-item');
+  if (chk) {
+    if (chk.dataset.action === 'none') toggleNone(chk);
+    else if (chk.dataset.addon) toggleAddon(chk, chk.dataset.addon);
+    return;
+  }
+
+  const curOpt = e.target.closest('.cur-opt[data-currency]');
+  if (curOpt && curOpt.closest('.cur-row')) { selectCurrency(curOpt.dataset.currency); }
+});
+
+document.getElementById('step-result').addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  if (btn.dataset.action === 'currency') switchResultCurrency(btn.dataset.currency);
+  else if (btn.dataset.action === 'restart') restartCalc();
+  else if (btn.dataset.action === 'book') document.getElementById('advisor-signup').scrollIntoView({behavior:'smooth'});
+});
 </script>
 </body>
 </html>

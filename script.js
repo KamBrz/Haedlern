@@ -29,6 +29,8 @@ function counter(el){const t=parseInt(el.dataset.target,10),suf=el.dataset.suffi
 
 // SCROLL — progress bar, nav state, parallax (single RAF-throttled listener)
 let _scrollRaf=false,_fiEls=null;
+let _isMobile=window.matchMedia('(max-width:768px)').matches;
+window.matchMedia('(max-width:768px)').addEventListener('change',e=>{_isMobile=e.matches;});
 document.addEventListener('DOMContentLoaded',()=>{_fiEls=[...document.querySelectorAll('.fi')];});
 window.addEventListener('scroll',()=>{
   if(_scrollRaf)return;
@@ -39,14 +41,16 @@ window.addEventListener('scroll',()=>{
     const pb=document.getElementById('progress-bar');
     if(pb)pb.style.width=(doc.scrollTop/(doc.scrollHeight-doc.clientHeight))*100+'%';
     document.getElementById('mainNav').classList.toggle('scrolled',s>80);
-    const o1=document.querySelector('.orb1'),o2=document.querySelector('.orb2'),o3=document.querySelector('.orb3');
-    if(o1)o1.style.transform=`translateY(${s*0.12}px)`;
-    if(o2)o2.style.transform=`translateY(${s*-0.08}px)`;
-    if(o3)o3.style.transform=`translateY(${s*0.06}px)`;
-    _fiEls.forEach((el,i)=>{
-      const rates=[0.05,0.08,0.04,0.09,0.06,0.07];
-      el.style.transform=`translateY(${s*rates[i%rates.length]}px)`;
-    });
+    if(!_isMobile){
+      const o1=document.querySelector('.orb1'),o2=document.querySelector('.orb2'),o3=document.querySelector('.orb3');
+      if(o1)o1.style.transform=`translateY(${s*0.12}px)`;
+      if(o2)o2.style.transform=`translateY(${s*-0.08}px)`;
+      if(o3)o3.style.transform=`translateY(${s*0.06}px)`;
+      _fiEls.forEach((el,i)=>{
+        const rates=[0.05,0.08,0.04,0.09,0.06,0.07];
+        el.style.transform=`translateY(${s*rates[i%rates.length]}px)`;
+      });
+    }
     _scrollRaf=false;
   });
 },{passive:true});
