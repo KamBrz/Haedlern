@@ -6,29 +6,29 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Package Advisor — Find the right Microsoft 365 training package | Haedlern</title>
+<title>Package Advisor — Find the Right M365 Training | Haedlern</title>
 <meta name="description" content="Answer five quick questions and get a tailored Microsoft 365 and Copilot training package for your team. Workshops, adoption programmes, and ongoing coaching.">
 <link rel="canonical" href="https://haedlern.com/calculator.html">
 <link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Package Advisor — Find the right Microsoft 365 training package | Haedlern">
+<meta property="og:title" content="Package Advisor — Find the Right M365 Training | Haedlern">
 <meta property="og:description" content="Answer five quick questions and get a tailored Microsoft 365 and Copilot training package for your team. Workshops, adoption programmes, and ongoing coaching.">
 <meta property="og:url" content="https://haedlern.com/calculator.html">
 <meta property="og:image" content="https://haedlern.com/img/og-default.png">
 <meta property="og:site_name" content="Haedlern">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Package Advisor — Find the right Microsoft 365 training package | Haedlern">
+<meta name="twitter:title" content="Package Advisor — Find the Right M365 Training | Haedlern">
 <meta name="twitter:description" content="Answer five quick questions and get a tailored Microsoft 365 and Copilot training package for your team. Workshops, adoption programmes, and ongoing coaching.">
 <meta name="twitter:image" content="https://haedlern.com/img/og-default.png">
 <style>
-.calc-page{min-height:100vh;padding:120px 5% 80px;display:flex;flex-direction:column;align-items:center;}
+.calc-page{min-height:100vh;padding:120px 5% 80px;display:flex;flex-direction:column;align-items:center;overflow-x:hidden;}
 .calc-header{text-align:center;margin-bottom:48px;}
 .calc-header .tag{display:inline-flex;align-items:center;gap:6px;background:var(--tag-bg);border:1px solid var(--tag-border);color:var(--blue);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-pill);margin-bottom:16px;}
 .calc-header h1{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;color:var(--text);margin-bottom:12px;}
-.calc-header p{color:var(--muted);font-size:15px;max-width:500px;margin:0 auto;}
-.calc-container{width:100%;max-width:720px;}
+.calc-header p{color:var(--muted);font-size:clamp(14px,1.2vw,17px);max-width:clamp(500px,38vw,900px);margin:0 auto;}
+.calc-container{width:100%;max-width:max(720px,55vw);position:relative;z-index:2;}
 .calc-progress{display:flex;align-items:center;gap:6px;margin-bottom:28px;}
 .prog-step{flex:1;height:4px;border-radius:99px;background:var(--border);transition:background 0.3s;}
 .prog-step.done{background:var(--blue);}
@@ -74,11 +74,11 @@
 .q-step.active{display:block;}
 
 /* ── RESULT ── */
-.result-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-xl);padding:40px;box-shadow:var(--shadow-lg);}
+.result-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-xl);padding:40px;box-shadow:var(--shadow-lg);position:relative;z-index:2;}
 .result-top{text-align:center;padding-bottom:30px;border-bottom:1px solid var(--border);margin-bottom:30px;}
 .result-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,185,95,0.1);border:1px solid rgba(0,185,95,0.28);color:#00a855;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-pill);margin-bottom:16px;}
 .result-tier-name{font-size:34px;font-weight:900;letter-spacing:-1.2px;color:var(--text);margin-bottom:8px;}
-.result-tier-desc{font-size:14px;color:var(--muted);line-height:1.6;max-width:480px;margin:0 auto 22px;}
+.result-tier-desc{font-size:clamp(13px,1.05vw,15px);color:var(--muted);line-height:1.6;max-width:clamp(480px,36vw,860px);margin:0 auto 22px;}
 .result-price-block{display:inline-flex;flex-direction:column;align-items:center;background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:18px 36px;}
 .result-price-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:3px;}
 .result-price-value{font-size:44px;font-weight:900;letter-spacing:-2px;color:var(--blue);line-height:1;}
@@ -118,6 +118,25 @@
   .result-tier-name{font-size:26px;}
   .result-price-value{font-size:36px;}
 }
+
+.got-idea-wrap {
+  position: absolute;
+  left: 100%;
+  top: 20px;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+.got-idea-wrap.visible { transform: translateX(-8%); opacity: 1; }
+.got-idea { height: clamp(180px, 24vw, 340px); width: auto; display: block; }
+.q-card { position: relative; z-index: 2; }
+.got-idea-bubble { position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%) scale(0.85); z-index: 3; background: #fff; color: #111; font-size: 12px; font-weight: 800; padding: 10px 14px; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.18); max-width: 280px; line-height: 1.5; text-align: center; opacity: 0; transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; user-select: none; }
+.got-idea-bubble::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-top: 11px solid #fff; border-left: 7px solid transparent; border-right: 7px solid transparent; }
+.got-idea-bubble.show { opacity: 1; transform: translateX(-50%) scale(1); }
+@media (max-width: 900px) { .got-idea-wrap { display: none; } }
 </style>
 <!-- Microsoft Clarity -->
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","whovnhgjm9");</script>
@@ -132,7 +151,7 @@
       <li><a href="index.html">Home</a></li><li><a href="apps.html">Apps</a></li>
       <li><a href="themes.html">Themes</a></li>
       <li><a href="index.html#pricing">Packages</a></li>
-      <li><a href="calculator.html">Package Advisor</a></li>
+      <li><a href="calculator.html" style="color:var(--blue)">Package Advisor</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="blog.html">Blog</a></li>
     </ul>
@@ -146,12 +165,15 @@
 
 <div class="calc-page section-glass">
   <div class="calc-header">
-    <div class="tag">Package Advisor</div>
     <h1>Find your perfect training package</h1>
     <p>Answer 7 quick questions and we'll recommend the right tier with a clear price estimate — no fluff.</p>
   </div>
 
   <div class="calc-container">
+    <div class="got-idea-wrap">
+      <div class="got-idea-bubble">Your selections are automatically copied to the contact form below!</div>
+      <img src="img/got-idea.png" class="got-idea" alt="" aria-hidden="true"/>
+    </div>
     <div class="calc-progress">
       <div class="prog-step" id="ps1"></div>
       <div class="prog-step" id="ps2"></div>
@@ -435,8 +457,8 @@
   <div class="cta-rings"><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div></div>
   <div class="cta-inner">
     <h2>Ready to move forward?</h2>
-    <p>Book a free 30-minute discovery call. We'll confirm your package and build the programme around your team.</p>
-    <div class="signup-card" style="max-width:660px;margin:40px auto 0;text-align:left;">
+    <p>Book a free discovery call. We'll confirm your package and build the programme around your team.</p>
+    <div class="signup-card" style="max-width:max(660px,48vw);margin:40px auto 0;text-align:left;">
       <div id="a-fw">
         <form class="s-form" name="advisor-call" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return sendAdvisor(event)">
           <input type="hidden" name="form-name" value="advisor-call"/>
@@ -466,7 +488,7 @@
 
 <footer>
   <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
-  <p>© 2026 Haedlern. All rights reserved.</p>
+  <p>© 2026 Haedlern. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
 </footer>
 
 <script src="script.js"></script>
@@ -553,7 +575,6 @@ function nextStep(cur) {
   applyFilters(currentStep);
   document.getElementById('step-'+currentStep).classList.add('active');
   updateProg(currentStep);
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function prevStep(cur) {
@@ -561,7 +582,6 @@ function prevStep(cur) {
   currentStep = cur-1;
   document.getElementById('step-'+currentStep).classList.add('active');
   updateProg(currentStep);
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function updateProg(s) {
@@ -685,7 +705,6 @@ function showResult() {
   document.getElementById('step-7').classList.remove('active');
   document.getElementById('step-result').classList.add('active');
   updateProg(8);
-  window.scrollTo({top:0,behavior:'smooth'});
   const s=score();
   lastBest = getBest(s);
   renderResult();
@@ -871,7 +890,6 @@ function restartCalc() {
   document.getElementById('oh-price').textContent='£200';
   const cdEl2 = document.getElementById('cd-price'); if (cdEl2) cdEl2.textContent='£300';
   updateProg(1);
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 updateProg(1);
@@ -908,6 +926,15 @@ document.getElementById('step-result').addEventListener('click', function(e) {
   else if (btn.dataset.action === 'restart') restartCalc();
   else if (btn.dataset.action === 'book') document.getElementById('advisor-signup').scrollIntoView({behavior:'smooth'});
 });
+</script>
+<script>
+(function () {
+  var wrap   = document.querySelector('.got-idea-wrap');
+  var bubble = document.querySelector('.got-idea-bubble');
+  if (!wrap) return;
+  setTimeout(function () { wrap.classList.add('visible'); }, 500);
+  if (bubble) setTimeout(function () { bubble.classList.add('show'); }, 1100);
+})();
 </script>
 </body>
 </html>

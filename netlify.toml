@@ -1,0 +1,3 @@
+[build]
+  command = "node build-blog.js && node indexnow.js"
+  publish = "."

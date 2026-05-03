@@ -37,8 +37,7 @@
 <style>
 /* ── HERO ── */
 .about-hero{padding:120px 8% 80px;position:relative;overflow:hidden;}
-.about-hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 100% at 10% 50%,black 10%,transparent 65%);pointer-events:none;opacity:0.35;z-index:0;}
-.about-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:180px 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.about-hero-inner{max-width:max(1200px,72vw);margin:0 auto;display:grid;grid-template-columns:180px 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
 .about-photo-wrap{position:relative;}
 .about-photo-glow{position:absolute;inset:-12px;border-radius:28px;z-index:0;background:linear-gradient(135deg,rgba(0,120,212,0.18),rgba(0,180,216,0.1));filter:blur(20px);}
 .about-photo{position:relative;z-index:1;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:20px;box-shadow:0 16px 48px rgba(0,120,212,0.15);border:1px solid var(--border2);display:block;}
@@ -53,11 +52,11 @@
 .about-li img{width:16px;height:16px;object-fit:contain;}
 
 /* ── STORY (merged into hero) ── */
-.about-divider{max-width:1200px;margin:52px auto;border:none;border-top:1px solid var(--border);}
-.about-story-inner{max-width:1200px;margin:0 auto 40px;}
+.about-divider{max-width:max(1200px,72vw);margin:52px auto;border:none;border-top:1px solid var(--border);}
+.about-story-inner{max-width:max(1200px,72vw);margin:0 auto 40px;}
 .about-story-title{font-size:clamp(22px,2.8vw,34px);font-weight:900;color:var(--text);letter-spacing:-0.8px;margin:12px 0 14px;line-height:1.2;}
 .about-story-text{font-size:15px;color:var(--muted);line-height:1.85;}
-.about-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);max-width:1200px;margin:0 auto;border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;}
+.about-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);max-width:max(1200px,72vw);margin:0 auto;border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;}
 .about-hl{background:var(--card);padding:28px 26px;transition:background 0.4s;}
 .about-hl::before{content:'';display:block;width:36px;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:2px;margin-bottom:14px;}
 .about-hl-label{font-size:13px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-0.2px;}
@@ -65,10 +64,10 @@
 
 /* ── CERTS ── */
 .certs-section{padding:80px 8%;background:var(--bg);transition:background 0.4s;}
-.certs-section .s-header{max-width:1200px;margin:0 auto 40px;}
+.certs-section .s-header{max-width:max(1200px,72vw);margin:0 auto 40px;}
 .certs-section .s-header .title{font-size:clamp(22px,2.8vw,34px);}
 .certs-section .s-header .sub{margin-left:0;max-width:100%;}
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;max-width:1200px;margin:0 auto;}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;max-width:max(1200px,72vw);margin:0 auto;}
 .cert-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-xl);padding:18px 20px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;transition:transform 0.22s,box-shadow 0.22s,border-color 0.22s;}
 .cert-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border2);}
 .cert-logo{width:36px;height:36px;border-radius:8px;flex-shrink:0;object-fit:contain;padding:4px;background:var(--bg2);border:1px solid var(--border);transition:background 0.4s;}
@@ -82,8 +81,10 @@
 
 /* ── CTA ── */
 .about-cta{padding:90px 8%;text-align:center;background:var(--bg2);border-top:1px solid var(--border);transition:background 0.4s;position:relative;overflow:hidden;}
+.thats-me{position:absolute;right:0;top:90px;height:clamp(160px,22vw,320px);width:auto;transform:translateX(100%);opacity:0;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1),opacity 0.6s ease;pointer-events:none;user-select:none;z-index:2;}
+.thats-me.peeking{transform:translateX(0);opacity:1;}
 .about-cta h2{font-size:clamp(22px,2.8vw,34px);font-weight:900;color:var(--text);margin-bottom:12px;letter-spacing:-0.8px;}
-.about-cta p{color:var(--muted);font-size:15px;margin-bottom:28px;max-width:600px;margin-left:auto;margin-right:auto;}
+.about-cta p{color:var(--muted);font-size:clamp(14px,1.2vw,17px);margin-bottom:28px;max-width:clamp(600px,44vw,1100px);margin-left:auto;margin-right:auto;}
 .about-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 .about-cta-outline{background:transparent;color:var(--text2);padding:12px 22px;border-radius:var(--r-pill);font-size:14px;font-weight:600;border:1px solid var(--border);text-decoration:none;display:inline-block;transition:all 0.22s;}
 .about-cta-outline:hover{border-color:var(--blue);color:var(--blue);}
@@ -130,7 +131,7 @@
 
 <!-- HERO -->
 <section class="about-hero section-glass">
-  <div class="about-hero-grid"></div>
+  <img src="img/thats-me.png" class="thats-me" alt="" aria-hidden="true"/>
   <div class="about-hero-inner">
 
     <div class="about-photo-wrap sa">
@@ -304,7 +305,7 @@
   </div>
   <div class="sa" style="position:relative;z-index:1;">
     <h2>Let's build something that actually sticks.</h2>
-    <p>Book a free 30-minute discovery call. No commitment, no pressure.</p>
+    <p>Book a free discovery call. No commitment, no pressure.</p>
     <div class="about-cta-btns">
       <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Discovery Call →</button>
       <a class="about-cta-outline" href="themes.html">Browse Workshops</a>
@@ -314,9 +315,17 @@
 
 <footer>
   <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
-  <p>© 2026 Haedlern. All rights reserved.</p>
+  <p>© 2026 Haedlern. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
 </footer>
 
 <script src="script.js"></script>
+<script>
+(function(){
+  var img = document.querySelector('.thats-me');
+  var section = document.querySelector('.about-hero');
+  if (!img || !section) return;
+  setTimeout(function(){ img.classList.add('peeking'); }, 600);
+})();
+</script>
 </body>
 </html>

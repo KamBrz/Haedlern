@@ -56,6 +56,14 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 // INTERSECTION OBSERVER — scroll animations
+// On mobile: skip animations, reveal everything immediately and run counters once
+if(_isMobile){
+  document.querySelectorAll('.sa,.sa-left,.sa-right,.sa-scale').forEach(el=>{
+    el.classList.add('in');
+    el.querySelectorAll('[data-target]').forEach(el=>{if(!el.dataset.done){el.dataset.done=1;counter(el);}});
+  });
+  document.getElementById('stepsLineFill')?.classList.add('in');
+}
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -69,7 +77,7 @@ const io=new IntersectionObserver(entries=>{
     }
   });
 },{threshold:0.12});
-document.querySelectorAll('.sa,.sa-left,.sa-right,.sa-scale').forEach(el=>io.observe(el));
+if(!_isMobile)document.querySelectorAll('.sa,.sa-left,.sa-right,.sa-scale').forEach(el=>io.observe(el));
 // also observe steps container for line animation
 const stepsEl=document.querySelector('.steps');
 if(stepsEl){const so=new IntersectionObserver(entries=>{if(entries[0].isIntersecting)document.getElementById('stepsLineFill')?.classList.add('in');},{threshold:0.3});so.observe(stepsEl);}
@@ -350,4 +358,94 @@ document.addEventListener('DOMContentLoaded', initMobileNav);
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll,{passive:true});
   onScroll();
+})();
+
+// COOKIE CONSENT + GOOGLE ANALYTICS
+// ── Replace G-XXXXXXXXXX with your GA4 Measurement ID ──
+(function(){
+  var GA_ID='G-9TFNG95TMC';
+  var KEY='haedlern_consent';
+
+  function getConsent(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
+  function setConsent(v){try{localStorage.setItem(KEY,v);}catch(e){}}
+
+  function loadGA(){
+    if(window._gaLoaded)return;
+    window._gaLoaded=true;
+    var s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){window.dataLayer.push(arguments);}
+    window.gtag=gtag;
+    gtag('js',new Date());
+    gtag('config',GA_ID,{anonymize_ip:true});
+  }
+
+  function hideBanner(){
+    var b=document.getElementById('cookie-banner');
+    if(!b)return;
+    b.classList.remove('cb-visible');
+    b.classList.add('cb-hiding');
+    setTimeout(function(){if(b.parentNode)b.parentNode.removeChild(b);},420);
+  }
+
+  function accept(){setConsent('yes');loadGA();hideBanner();}
+  function decline(){setConsent('no');hideBanner();}
+
+  function showBanner(){
+    if(document.getElementById('cookie-banner'))return;
+    var b=document.createElement('div');
+    b.id='cookie-banner';
+    b.setAttribute('role','dialog');
+    b.setAttribute('aria-label','Cookie preferences');
+    var imgBase=/\/(apps|blog)\//.test(window.location.pathname)?'../':'';
+    b.innerHTML=
+      '<img class="cb-character" src="'+imgBase+'img/eat-cookies.png" alt="" aria-hidden="true"/>'+
+      '<div class="cb-inner">'+
+        '<div class="cb-text">'+
+          '<div class="cb-copy">'+
+            '<strong>Cookie preferences</strong>'+
+            '<p>We use Google Analytics to understand how visitors use this site. No advertising or profiling. <a href="/privacy.html" style="color:var(--blue);text-decoration:none;font-weight:600;">Privacy policy ↗</a></p>'+
+          '</div>'+
+        '</div>'+
+        '<div class="cb-actions">'+
+          '<button class="cb-btn cb-decline" id="cb-decline">Decline</button>'+
+          '<button class="cb-btn cb-accept" id="cb-accept">Accept analytics</button>'+
+        '</div>'+
+      '</div>';
+    document.body.appendChild(b);
+    b.offsetHeight; // force reflow so CSS transition fires
+    b.classList.add('cb-visible');
+    document.getElementById('cb-accept').addEventListener('click',accept);
+    document.getElementById('cb-decline').addEventListener('click',decline);
+  }
+
+  function injectFooterLink(){
+    document.querySelectorAll('footer > p').forEach(function(p){
+      if(p.textContent.indexOf('All rights reserved')===-1)return;
+      if(p.querySelector('.cookie-prefs-link'))return;
+      p.appendChild(document.createTextNode(' · '));
+      var btn=document.createElement('button');
+      btn.className='cookie-prefs-link';
+      btn.textContent='Cookie settings';
+      btn.addEventListener('click',function(){openCookiePrefs();});
+      p.appendChild(btn);
+    });
+  }
+
+  function openCookiePrefs(){showBanner();}
+  window.openCookiePrefs=openCookiePrefs;
+
+  // Init
+  var consent=getConsent();
+  if(consent==='yes'){
+    loadGA();
+  } else if(!consent){
+    document.addEventListener('DOMContentLoaded',function(){
+      setTimeout(showBanner,900);
+    });
+  }
+  document.addEventListener('DOMContentLoaded',injectFooterLink);
 })();

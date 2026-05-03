@@ -95,6 +95,21 @@
   transition: all 0.22s; backdrop-filter: blur(10px);
 }
 .apps-back-banner .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+
+.juggle-apps {
+  position: absolute;
+  right: 4%;
+  bottom: 0;
+  height: clamp(150px, 21vw, 300px);
+  width: auto;
+  pointer-events: none;
+  user-select: none;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+.juggle-apps.visible { transform: translateY(0); opacity: 1; }
+@media (max-width: 760px) { .juggle-apps { display: none; } }
 </style>
 <!-- Microsoft Clarity -->
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","whovnhgjm9");</script>
@@ -126,8 +141,9 @@
 
 <!-- HERO -->
 <section class="apps-page-hero section-glass">
+  <img src="img/juggle-apps.png" class="juggle-apps" alt="" aria-hidden="true"/>
   <div class="apps-page-hero-content">
-    <h1 class="sa"><em>Training</em> for every Microsoft 365 app</h1>
+    <h1 class="sa">Training for every Microsoft 365 app</h1>
     <p class="sa" style="--delay:100ms">Purpose-built training sessions across the full M365 ecosystem — grouped by how your teams actually work. Click any category to explore the apps and what's covered.</p>
   </div>
 </section>
@@ -517,7 +533,7 @@
 <section class="apps-back-banner">
   <div>
     <h2>Not sure which session fits your team?</h2>
-    <p>Book a free 30-minute discovery call. No commitment, no pressure.</p>
+    <p>Book a free discovery call. No commitment, no pressure.</p>
     <div class="apps-back-banner-btns">
       <a class="btn-white" href="index.html#signup">Book a Discovery Call</a>
       <a class="btn-ghost" href="calculator.html">Try the Package Advisor →</a>
@@ -527,9 +543,15 @@
 
 <footer>
   <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
-  <p>© 2026 Haedlern. All rights reserved.</p>
+  <p>© 2026 Haedlern. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
 </footer>
 
 <script src="script.js"></script>
+<script>
+  setTimeout(function () {
+    var img = document.querySelector('.juggle-apps');
+    if (img) img.classList.add('visible');
+  }, 300);
+</script>
 </body>
 </html>

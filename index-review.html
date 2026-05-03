@@ -6,96 +6,198 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haedlern — Microsoft 365 &amp; Copilot training that actually sticks</title>
-<meta name="description" content="Practical Microsoft 365 and Copilot training for modern workplaces. Workshops, adoption programmes, and Copilot rollouts that drive real change — not feature tours.">
-<link rel="canonical" href="https://haedlern.com/">
-<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Haedlern — Microsoft 365 &amp; Copilot training that actually sticks">
-<meta property="og:description" content="Practical Microsoft 365 and Copilot training for modern workplaces. Workshops, adoption programmes, and Copilot rollouts that drive real change — not feature tours.">
-<meta property="og:url" content="https://haedlern.com/">
-<meta property="og:image" content="https://haedlern.com/img/og-default.png">
-<meta property="og:site_name" content="Haedlern">
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Haedlern — Microsoft 365 &amp; Copilot training that actually sticks">
-<meta name="twitter:description" content="Practical Microsoft 365 and Copilot training for modern workplaces. Workshops, adoption programmes, and Copilot rollouts that drive real change — not feature tours.">
-<meta name="twitter:image" content="https://haedlern.com/img/og-default.png">
-<!-- JSON-LD: Organization -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Haedlern",
-  "description": "Microsoft 365 and Copilot training and adoption services for enterprise teams.",
-  "url": "https://haedlern.com",
-  "logo": "https://haedlern.com/img/haedlern-ladder-iso-cobalt.svg",
-  "image": "https://haedlern.com/img/og-default.png",
-  "founder": {
-    "@type": "Person",
-    "name": "Kamil Brzezinski",
-    "jobTitle": "Microsoft 365 Trainer & Adoption Specialist",
-    "url": "https://haedlern.com/about.html"
-  },
-  "areaServed": "Worldwide",
-  "knowsAbout": ["Microsoft 365","Microsoft Copilot","Microsoft Teams","SharePoint","Power Platform","Modern Workplace","Adoption and Change Management"],
-  "sameAs": ["https://www.linkedin.com/in/kamil-brzezinski/"]
-}
-</script>
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<title>[REVIEW] Haedlern — Microsoft 365 &amp; Copilot training that actually sticks</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg">
+<link rel="stylesheet" href="styles.css">
+
 <style>
-/* HOW-V2 — JS-pinned scroll reveal */
+/* ═══════════════════════════════════════════
+   HOW-V2  —  JS-pinned scroll reveal
+   position:sticky is broken by overflow-x:hidden
+   on body, so we drive the pin from JavaScript.
+   ═══════════════════════════════════════════ */
+
 .how-v2-section { padding: 0; }
-.how-v2-zone { height: 220vh; position: relative; background: var(--bg); transition: background 0.4s; }
-.how-v2-panel { padding: 52px 5% 64px; background: var(--bg); transition: background 0.4s; }
-.how-v2-inner { width: 100%; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+
+/* Zone: provides scroll height — must be position:relative
+   so the panel can be position:absolute at the end */
+.how-v2-zone {
+  height: 220vh;
+  position: relative;
+  background: var(--bg);
+  transition: background 0.4s;
+}
+
+/* Panel: JS sets position:fixed while in zone.
+   No CSS sticky — it doesn't work with overflow-x:hidden on body. */
+.how-v2-panel {
+  padding: 52px 5% 64px;
+  background: var(--bg);
+  transition: background 0.4s;
+  /* width/position controlled by JS */
+}
+
+.how-v2-inner {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+/* Heading */
 .how-v2-heading { text-align: center; }
-.how-v2-heading h2 { font-size: clamp(26px, 3.6vw, 46px); font-weight: 900; letter-spacing: -1.5px; color: var(--text); margin: 10px 0 0; line-height: 1.06; }
-.how-v2-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: stretch; }
-.how-v2-card { display: flex; flex-direction: column; align-items: center; height: 100%; opacity: 0; transform: translateY(60px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+.how-v2-heading h2 {
+  font-size: clamp(26px, 3.6vw, 46px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  color: var(--text);
+  margin: 10px 0 0;
+  line-height: 1.06;
+}
+
+/* Grid — stretch makes all rows equal height */
+.how-v2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* Card wrapper — no background, fills grid row height */
+.how-v2-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
 .how-v2-card.revealed { opacity: 1; transform: translateY(0); }
-.how-v2-img-stage { width: calc(100% + 10%); margin-left: -5%; display: flex; justify-content: center; align-items: flex-end; margin-bottom: -56px; position: relative; z-index: 2; flex-shrink: 0; pointer-events: none; }
-.how-v2-img { height: 250px; width: auto; max-width: 100%; display: block; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.6s cubic-bezier(0.16,1,0.3,1); }
+
+/* Image stage: 10% wider than card, overlaps into card body */
+.how-v2-img-stage {
+  width: calc(100% + 10%);
+  margin-left: -5%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: -56px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Image: same height for all three (+25% vs previous), width follows natural aspect ratio */
+.how-v2-img {
+  height: 250px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1),
+              filter    0.6s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* per-step resting tilt + drop-shadow follows PNG shape */
 .how-v2-card[data-step="1"] .how-v2-img { transform: rotate(-3deg);   filter: drop-shadow(0 18px 36px rgba(99,102,241,0.30)); }
 .how-v2-card[data-step="2"] .how-v2-img { transform: rotate( 1.5deg); filter: drop-shadow(0 18px 36px rgba(245,158, 11,0.30)); }
 .how-v2-card[data-step="3"] .how-v2-img { transform: rotate(-1deg);   filter: drop-shadow(0 18px 36px rgba( 16,185,129,0.30)); }
+
 .how-v2-card[data-step="1"]:hover .how-v2-img { transform: rotate(-0.5deg) translateY(-12px); filter: drop-shadow(0 28px 48px rgba(99,102,241,0.42)); }
 .how-v2-card[data-step="2"]:hover .how-v2-img { transform: rotate(    0deg) translateY(-12px); filter: drop-shadow(0 28px 48px rgba(245,158, 11,0.42)); }
 .how-v2-card[data-step="3"]:hover .how-v2-img { transform: rotate(    0deg) translateY(-12px); filter: drop-shadow(0 28px 48px rgba( 16,185,129,0.42)); }
-.how-v2-card-body { background: var(--card); border: 1px solid var(--card-border); border-radius: 22px; box-shadow: var(--shadow-md); padding: 72px 24px 24px; width: 100%; flex: 1; display: flex; flex-direction: column; position: relative; z-index: 1; transition: box-shadow 0.3s; }
+
+/* Card body — flex:1 makes it fill remaining card height → equal sizes */
+.how-v2-card-body {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-md);
+  padding: 72px 24px 24px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.3s;
+}
 .how-v2-card:hover .how-v2-card-body { box-shadow: var(--shadow-lg); }
+
 .how-v2-kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.how-v2-num { width: 30px; height: 30px; border-radius: 50%; color: #fff; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.how-v2-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  color: #fff; font-size: 12px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
 .how-v2-meta { display: flex; flex-direction: column; gap: 1px; }
 .how-v2-label { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2.2px; }
 .how-v2-when  { font-size: 11px; color: var(--muted); font-weight: 500; }
 .how-v2-title { font-size: 17px; font-weight: 900; letter-spacing: -0.4px; color: var(--text); line-height: 1.22; margin-bottom: 14px; }
+
 .how-v2-bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
 .how-v2-bullets li { font-size: 13px; color: var(--text2); padding-left: 23px; position: relative; line-height: 1.5; }
-.how-v2-bullets li::before { content: '✓'; position: absolute; left: 0; top: 1px; width: 15px; height: 15px; border-radius: 50%; color: #fff; font-size: 9px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
-.how-v2-outcome { margin-top: auto; padding: 11px 14px; border-left: 3px solid; border-radius: 0 8px 8px 0; font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.how-v2-bullets li::before {
+  content: '✓'; position: absolute; left: 0; top: 1px;
+  width: 15px; height: 15px; border-radius: 50%;
+  color: #fff; font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.how-v2-outcome {
+  margin-top: auto; padding: 11px 14px;
+  border-left: 3px solid; border-radius: 0 8px 8px 0;
+  font-size: 12.5px; color: var(--text2); line-height: 1.6;
+}
 .how-v2-outcome strong { color: var(--text); font-weight: 800; }
+
+/* Step colours */
 .how-v2-card[data-step="1"] .how-v2-num          { background:#6366f1; box-shadow:0 2px 10px rgba(99,102,241,.4); }
 .how-v2-card[data-step="1"] .how-v2-label         { color:#6366f1; }
 .how-v2-card[data-step="1"] .how-v2-bullets li::before { background:linear-gradient(135deg,#4f46e5,#818cf8); }
 .how-v2-card[data-step="1"] .how-v2-outcome       { background:rgba(99,102,241,.06); border-color:#6366f1; }
+
 .how-v2-card[data-step="2"] .how-v2-num          { background:#f59e0b; box-shadow:0 2px 10px rgba(245,158,11,.4); }
 .how-v2-card[data-step="2"] .how-v2-label         { color:#d97706; }
 .how-v2-card[data-step="2"] .how-v2-bullets li::before { background:linear-gradient(135deg,#d97706,#fbbf24); }
 .how-v2-card[data-step="2"] .how-v2-outcome       { background:rgba(245,158,11,.06); border-color:#f59e0b; }
+
 .how-v2-card[data-step="3"] .how-v2-num          { background:#10b981; box-shadow:0 2px 10px rgba(16,185,129,.4); }
 .how-v2-card[data-step="3"] .how-v2-label         { color:#10b981; }
 .how-v2-card[data-step="3"] .how-v2-bullets li::before { background:linear-gradient(135deg,#059669,#34d399); }
 .how-v2-card[data-step="3"] .how-v2-outcome       { background:rgba(16,185,129,.06); border-color:#10b981; }
-.how-v2-cta { text-align: center; opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+
+/* CTA */
+.how-v2-cta {
+  text-align: center;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
 .how-v2-cta.revealed { opacity: 1; transform: translateY(0); }
-.stick-out-wrap { position: absolute; left: 0; bottom: 0; pointer-events: none; user-select: none; transform: translateX(-100%); opacity: 0; transition: transform 0.9s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease; will-change: transform; }
-.stick-out-wrap.visible { transform: translateX(0%); opacity: 1; }
-.stick-out { height: clamp(180px, 24vw, 340px); width: auto; display: block; transform: scaleX(-1); }
-.stick-out-bubble { position: absolute; top: 36px; right: 0; transform: translateX(calc(100% + 16px)) scale(0.85); background: #fff; color: #111; font-size: 14px; font-weight: 800; padding: 10px 18px; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.18); white-space: nowrap; opacity: 0; transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1); }
-.stick-out-bubble::before { content: ''; position: absolute; left: -10px; top: 13px; width: 0; height: 0; border-right: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
-.stick-out-bubble.show { opacity: 1; transform: translateX(calc(100% + 16px)) scale(1); }
+
+/* ── Stick-out character on signup form ── */
+.stick-out {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 340px;
+  width: auto;
+  /* flip so character faces right, into the form */
+  transform: scaleX(-1) translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  user-select: none;
+}
+.stick-out.peeking {
+  transform: scaleX(-1) translateX(0);
+}
+
+/* Mobile: flat layout, no pinning */
 @media (max-width: 900px) {
   .how-v2-zone   { height: auto; padding: 64px 0 80px; }
   .how-v2-panel  { padding: 0 5%; }
@@ -106,68 +208,30 @@
   .how-v2-img    { height: 212px; }
 }
 </style>
-<!-- JSON-LD: FAQPage -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What Microsoft 365 apps does Haedlern train on?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Haedlern delivers training across the full Microsoft 365 suite including Microsoft Teams, Copilot, SharePoint, OneDrive, Excel, Word, Outlook, PowerPoint, Power Automate, Power BI, OneNote, Planner, Loop, Whiteboard, Forms, To Do, Lists, Visio, Edge, and Clipchamp."}
-    },
-    {
-      "@type": "Question",
-      "name": "Do you offer Microsoft Copilot training?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Haedlern specialises in Microsoft 365 Copilot training and adoption programmes, including Copilot rollout support, prompt engineering workshops, and Copilot agent training for enterprise teams."}
-    },
-    {
-      "@type": "Question",
-      "name": "How many participants can attend a workshop?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Workshops accommodate up to 30 participants per session, making them ideal for team-level training across departments in large organisations."}
-    },
-    {
-      "@type": "Question",
-      "name": "How does the training process work?",
-      "acceptedAnswer": {"@type": "Answer", "text": "The process has three phases: Discovery (a call to understand your organisation's needs), Customise (tailoring the content to your workflows), and Deliver (the live expert-led session). This ensures every workshop is immediately applicable."}
-    },
-    {
-      "@type": "Question",
-      "name": "Can workshops be customised for our organisation?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every workshop is tailored to your organisation's specific workflows, tools, and adoption goals. Haedlern does not deliver generic feature tours — training is anchored on the real tasks your teams do every day."}
-    },
-    {
-      "@type": "Question",
-      "name": "How do I book a Microsoft 365 training session?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Book a free discovery call through the form on haedlern.com. It covers your current Microsoft 365 setup, training goals, and the best package for your needs."}
-    }
-  ]
-}
-</script>
-<!-- Netlify Identity — required so invite/password-reset links resolve correctly -->
-<script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<!-- Microsoft Clarity -->
-<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","whovnhgjm9");</script>
 </head>
 <body>
 
 <div id="progress-bar"></div>
 
+<!-- REVIEW BANNER -->
+<div style="background:#f59e0b;color:#1a1a1a;text-align:center;padding:10px 20px;font-size:13px;font-weight:700;position:fixed;top:0;left:0;right:0;z-index:9999;font-family:'Inter',system-ui,sans-serif;">
+  DESIGN REVIEW — "How It Works" redesign &nbsp;·&nbsp; <a href="index.html" style="color:#1a1a1a;text-decoration:underline;">← Back to live version</a>
+</div>
+
 <!-- NAV -->
-<div class="nav-wrap">
+<div class="nav-wrap" style="top:44px;">
   <nav id="mainNav">
     <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="color:var(--blue)">Home</a></li><li><a href="apps.html">Apps</a></li>
-      <li><a href="themes.html">Themes</a></li>
+      <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Home</a></li>
+      <li><a href="apps.html">Apps</a></li><li><a href="themes.html">Themes</a></li>
       <li><a href="#pricing">Packages</a></li>
       <li><a href="calculator.html">Package Advisor</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="blog.html">Blog</a></li>
     </ul>
     <div class="nav-controls">
-<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
       <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Open navigation"><span></span><span></span><span></span></button>
       <button class="nav-cta" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Book a Call</button>
     </div>
@@ -175,16 +239,14 @@
 </div>
 
 <!-- HERO -->
-<section class="hero section-glass">
-<div class="floating-icons" aria-hidden="true">
-    <!-- Edges — high opacity -->
+<section class="hero section-glass" style="padding-top:160px;">
+  <div class="floating-icons" aria-hidden="true">
     <div class="fi" style="left:3%;top:14%;animation-duration:7s;opacity:0.9;"><img src="img/Outlook-Icon-FY26.png" alt="Outlook" width="54" height="54"/></div>
     <div class="fi" style="left:91%;top:11%;animation-duration:9s;animation-delay:1s;opacity:0.88;"><img src="img/Excel-Icon-FY26.png" alt="Excel" width="54" height="54"/></div>
     <div class="fi" style="left:2%;top:56%;animation-duration:8s;animation-delay:2s;opacity:0.85;"><img src="img/Word-Icon-FY26.png" alt="Word" width="54" height="54"/></div>
     <div class="fi" style="left:93%;top:58%;animation-duration:10s;animation-delay:0.5s;opacity:0.9;"><img src="img/SharePoint-Icon-FY26.png" alt="SharePoint" width="54" height="54"/></div>
     <div class="fi" style="left:7%;top:88%;animation-duration:7.5s;animation-delay:3s;opacity:0.82;"><img src="img/PowerPoint-Icon-FY26.png" alt="PowerPoint" width="54" height="54"/></div>
     <div class="fi" style="left:88%;top:86%;animation-duration:8.5s;animation-delay:1.5s;opacity:0.88;"><img src="img/Copilot-Icon-FY26.png" alt="Copilot" width="54" height="54"/></div>
-    <!-- Mid-ring — medium opacity -->
     <div class="fi" style="left:16%;top:7%;animation-duration:9s;animation-delay:0.8s;opacity:0.58;"><img src="img/Teams-Icon-FY26.png" alt="Teams" width="54" height="54"/></div>
     <div class="fi" style="left:76%;top:6%;animation-duration:8s;animation-delay:2.5s;opacity:0.55;"><img src="img/OneDrive-Icon-FY26.png" alt="OneDrive" width="54" height="54"/></div>
     <div class="fi" style="left:14%;top:36%;animation-duration:10s;animation-delay:1.2s;opacity:0.5;"><img src="img/Edge-Icon-FY26.png" alt="Edge" width="54" height="54"/></div>
@@ -193,7 +255,6 @@
     <div class="fi" style="left:79%;top:71%;animation-duration:9s;animation-delay:2s;opacity:0.5;"><img src="img/PowerBi-Icon-FY26.png" alt="Power BI" width="54" height="54"/></div>
     <div class="fi" style="left:36%;top:92%;animation-duration:8s;animation-delay:1s;opacity:0.6;"><img src="img/Loop-Icon-FY26.png" alt="Loop" width="54" height="54"/></div>
     <div class="fi" style="left:60%;top:91%;animation-duration:10s;animation-delay:2.8s;opacity:0.57;"><img src="img/Visio-Icon-FY26.png" alt="Visio" width="54" height="54"/></div>
-    <!-- Centre — very low opacity so text stays in focus -->
     <div class="fi" style="left:30%;top:19%;animation-duration:13s;animation-delay:4s;opacity:0.18;"><img src="img/OneNote-Icon-FY26.png" alt="OneNote" width="54" height="54"/></div>
     <div class="fi" style="left:64%;top:17%;animation-duration:11s;animation-delay:1.8s;opacity:0.16;"><img src="img/Forms-Icon-FY26.png" alt="Forms" width="54" height="54"/></div>
     <div class="fi" style="left:26%;top:52%;animation-duration:14s;animation-delay:0.6s;opacity:0.14;"><img src="img/Lists-Icon-FY26.png" alt="Lists" width="54" height="54"/></div>
@@ -221,29 +282,16 @@
       <p class="sub" style="margin:0 auto;">Most employees unlock less than 20% of M365's potential — lost productivity and wasted investment, every single day.</p>
     </div>
     <div class="problem-grid stagger">
-      <div class="p-card sa" style="--delay:0ms">
-        <div class="p-eyebrow">Skills Gap</div>
-        <div class="p-num">63%</div>
-        <div class="p-desc">of employers say skills gaps are the <strong>#1 barrier to transformation</strong></div>
-        <a class="p-source" href="https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/" target="_blank" rel="noopener">WEF Future of Jobs 2025 ↗</a>
-      </div>
-      <div class="p-card sa" style="--delay:120ms">
-        <div class="p-eyebrow">Training Gap</div>
-        <div class="p-num">39%</div>
-        <div class="p-desc">of employees using AI at work have received <strong>any company-provided training</strong></div>
-        <a class="p-source" href="https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part" target="_blank" rel="noopener">Microsoft &amp; LinkedIn Work Trend Index 2024 ↗</a>
-      </div>
-      <div class="p-card sa" style="--delay:240ms">
-        <div class="p-eyebrow">ROI Opportunity</div>
-        <div class="p-num">223%</div>
-        <div class="p-desc">three-year ROI on Microsoft 365 with <strong>proper deployment and adoption</strong></div>
-        <a class="p-source" href="https://tei.forrester.com/go/Microsoft/365Business/?lang=en-us" target="_blank" rel="noopener">Forrester TEI for Microsoft ↗</a>
-      </div>
+      <div class="p-card sa" style="--delay:0ms"><div class="p-eyebrow">Skills Gap</div><div class="p-num">63%</div><div class="p-desc">of employers say skills gaps are the <strong>#1 barrier to transformation</strong></div><a class="p-source" href="https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/" target="_blank" rel="noopener">WEF Future of Jobs 2025 ↗</a></div>
+      <div class="p-card sa" style="--delay:120ms"><div class="p-eyebrow">Training Gap</div><div class="p-num">39%</div><div class="p-desc">of employees using AI at work have received <strong>any company-provided training</strong></div><a class="p-source" href="https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part" target="_blank" rel="noopener">Microsoft &amp; LinkedIn Work Trend Index 2024 ↗</a></div>
+      <div class="p-card sa" style="--delay:240ms"><div class="p-eyebrow">ROI Opportunity</div><div class="p-num">223%</div><div class="p-desc">three-year ROI on Microsoft 365 with <strong>proper deployment and adoption</strong></div><a class="p-source" href="https://tei.forrester.com/go/Microsoft/365Business/?lang=en-us" target="_blank" rel="noopener">Forrester TEI for Microsoft ↗</a></div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS — JS-pinned card reveal -->
+<!-- ═══════════════════════════════════════════
+     HOW IT WORKS — JS-pinned card reveal
+     ═══════════════════════════════════════════ -->
 <section class="how-v2-section" id="how">
   <div class="how-v2-zone" id="howV2Zone">
     <div class="how-v2-panel" id="howV2Panel">
@@ -327,12 +375,15 @@
 
         </div><!-- /grid -->
 
+        <div class="how-v2-cta" id="howV2Cta">
+          <button class="btn-primary" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Book a Free Discovery Call</button>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="pricing-header-row sa">
@@ -347,8 +398,6 @@
       <button class="cur-btn" data-cur="eur">€ EUR</button>
     </div>
   </div>
-
-  <!-- Always-included icon strip -->
   <div class="always-included-strip sa">
     <div class="ai-strip-label">What's always included</div>
     <div class="ai-strip-items">
@@ -360,94 +409,19 @@
       <div class="ai-strip-item">Free discovery call — no commitment upfront</div>
     </div>
   </div>
-
-  <!-- Tiers -->
   <div class="pricing-grid stagger" style="margin-top:20px;max-width:max(1100px,70vw);">
-
-    <!-- Tier 1 -->
-    <div class="p-tier p-tier-outlined sa" style="--delay:0ms;">
-      <div class="tier-label">Tier 1</div>
-      <div class="tier-name">Focus Session</div>
-      <div class="tier-price-main">
-        <span class="tier-price-primary" data-gbp="£395" data-eur="€470">£395</span>
-        <span class="tier-price-secondary" data-gbp="/ €470" data-eur="/ £395">/ €470</span>
-        <span class="tier-price-note">standard M365 apps</span>
-      </div>
-      <div class="tier-copilot-note">Copilot sessions: <strong data-gbp="£450 / €535" data-eur="€535 / £450">£450 / €535</strong></div>
-      <div class="tier-dur">90 minutes · single app · up to 30 participants</div>
-      <ul class="tier-feats">
-        <li>One app, built around your team's real workflows</li>
-        <li>7-day async Q&amp;A after the session</li>
-        <li>All standard inclusions</li>
-      </ul>
-    </div>
-
-    <!-- Tier 2 -->
-    <div class="p-tier feat sa" style="--delay:120ms;">
-      <div class="feat-badge">Most Popular</div>
-      <div class="tier-label">Tier 2</div>
-      <div class="tier-name">Custom Workshop</div>
-      <div class="tier-price-main">
-        <span class="tier-price-primary" data-gbp="£500" data-eur="€595">£500</span>
-        <span class="tier-price-secondary" data-gbp="/ €595" data-eur="/ £500">/ €595</span>
-        <span class="tier-price-note">standard</span>
-      </div>
-      <div class="tier-copilot-note">Copilot-focused or multi-AI theme: <strong data-gbp="£650 / €770" data-eur="€770 / £650">£650 / €770</strong></div>
-      <div class="tier-dur">90 minutes · 2–3 apps · workflow-themed · up to 30 participants</div>
-      <ul class="tier-feats">
-        <li>Built around a business outcome, not just an app</li>
-        <li>Sector-specific examples throughout</li>
-        <li>30-day async Q&amp;A support</li>
-        <li>Eligible for add-ons</li>
-      </ul>
-      <a href="themes.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none;border-top:1px solid var(--border);padding-top:14px;margin-top:4px;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Browse workshop themes →</a>
-    </div>
-
-    <!-- Tier 3 -->
-    <div class="p-tier p-tier-outlined sa" style="--delay:240ms;">
-      <div class="tier-label">Tier 3</div>
-      <div class="tier-name">Ongoing Programme</div>
-      <div class="tier-price-main">
-        <span class="tier-price-primary" data-gbp="£550" data-eur="€650">£550</span>
-        <span class="tier-price-secondary" data-gbp="/ €650" data-eur="/ £550">/ €650</span>
-        <span class="tier-price-note">per month</span>
-      </div>
-      <div class="tier-per-session" data-gbp="= £275 / €325 per session" data-eur="= €325 / £275 per session">= £275 / €325 per session</div>
-      <div class="tier-dur">2 sessions/month · 6 sessions total · save ~20% · up to 30 participants · 3-month minimum</div>
-      <ul class="tier-feats">
-        <li>Phased M365 learning calendar designed upfront</li>
-        <li>Priority scheduling locked in advance</li>
-        <li>2 sessions per month, up to 30 participants each</li>
-        <li>Custom Workshop upgrades available at <strong data-gbp="£175 / €210" data-eur="€210 / £175">£175 / €210</strong> per session</li>
-      </ul>
-    </div>
+    <div class="p-tier p-tier-outlined sa" style="--delay:0ms;"><div class="tier-label">Tier 1</div><div class="tier-name">Focus Session</div><div class="tier-price-main"><span class="tier-price-primary" data-gbp="£395" data-eur="€470">£395</span><span class="tier-price-secondary" data-gbp="/ €470" data-eur="/ £395">/ €470</span><span class="tier-price-note">standard M365 apps</span></div><div class="tier-copilot-note">Copilot sessions: <strong data-gbp="£450 / €535" data-eur="€535 / £450">£450 / €535</strong></div><div class="tier-dur">90 minutes · single app · up to 30 participants</div><ul class="tier-feats"><li>One app, built around your team's real workflows</li><li>7-day async Q&amp;A after the session</li><li>All standard inclusions</li></ul></div>
+    <div class="p-tier feat sa" style="--delay:120ms;"><div class="feat-badge">Most Popular</div><div class="tier-label">Tier 2</div><div class="tier-name">Custom Workshop</div><div class="tier-price-main"><span class="tier-price-primary" data-gbp="£500" data-eur="€595">£500</span><span class="tier-price-secondary" data-gbp="/ €595" data-eur="/ £500">/ €595</span><span class="tier-price-note">standard</span></div><div class="tier-copilot-note">Copilot-focused or multi-AI theme: <strong data-gbp="£650 / €770" data-eur="€770 / £650">£650 / €770</strong></div><div class="tier-dur">90 minutes · 2–3 apps · workflow-themed · up to 30 participants</div><ul class="tier-feats"><li>Built around a business outcome, not just an app</li><li>Sector-specific examples throughout</li><li>30-day async Q&amp;A support</li><li>Eligible for add-ons</li></ul><a href="themes.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none;border-top:1px solid var(--border);padding-top:14px;margin-top:4px;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Browse workshop themes →</a></div>
+    <div class="p-tier p-tier-outlined sa" style="--delay:240ms;"><div class="tier-label">Tier 3</div><div class="tier-name">Ongoing Programme</div><div class="tier-price-main"><span class="tier-price-primary" data-gbp="£550" data-eur="€650">£550</span><span class="tier-price-secondary" data-gbp="/ €650" data-eur="/ £550">/ €650</span><span class="tier-price-note">per month</span></div><div class="tier-per-session" data-gbp="= £275 / €325 per session" data-eur="= €325 / £275 per session">= £275 / €325 per session</div><div class="tier-dur">2 sessions/month · 6 sessions total · save ~20% · up to 30 participants · 3-month minimum</div><ul class="tier-feats"><li>Phased M365 learning calendar designed upfront</li><li>Priority scheduling locked in advance</li><li>2 sessions per month, up to 30 participants each</li><li>Custom Workshop upgrades available at <strong data-gbp="£175 / €210" data-eur="€210 / £175">£175 / €210</strong> per session</li></ul></div>
   </div>
-
-  <!-- Bundle + Add-ons -->
   <div class="bundle-addons-grid stagger" style="margin-top:24px;">
-    <div class="bundle-card sa" style="--delay:0ms">
-      <div class="bundle-tag">Bundle</div>
-      <div class="bundle-name">3-Session Bundle</div>
-      <div class="bundle-price"><span data-gbp="£949" data-eur="€1,129">£949</span> <span class="bundle-price-secondary" data-gbp="/ €1,129" data-eur="/ £949">/ €1,129</span></div>
-      <p class="bundle-desc">Three Focus Sessions booked upfront — <strong data-gbp="save £236 / €281 vs booking individually" data-eur="save €281 / £236 vs booking individually">save £236 / €281 vs booking individually</strong>. Good for rolling the same training across multiple departments. That's ~£316 / ~€376 per session — a saving of around 20%.</p>
-    </div>
-    <div class="addons-card sa" style="--delay:120ms">
-      <div class="bundle-tag">Add-ons</div>
-      <div class="bundle-name">Enhance any session</div>
-      <div class="addon-row">
-        <span class="addon-name">Office Hours <span class="addon-sub">— 1hr live Q&amp;A, attendees bring real problems</span></span>
-        <span class="addon-price" data-gbp="£200 / €240" data-eur="€240 / £200">£200 / €240</span>
-      </div>
-    </div>
+    <div class="bundle-card sa" style="--delay:0ms"><div class="bundle-tag">Bundle</div><div class="bundle-name">3-Session Bundle</div><div class="bundle-price"><span data-gbp="£949" data-eur="€1,129">£949</span> <span class="bundle-price-secondary" data-gbp="/ €1,129" data-eur="/ £949">/ €1,129</span></div><p class="bundle-desc">Three Focus Sessions booked upfront — <strong data-gbp="save £236 / €281 vs booking individually" data-eur="save €281 / £236 vs booking individually">save £236 / €281 vs booking individually</strong>. Good for rolling the same training across multiple departments. That's ~£316 / ~€376 per session — a saving of around 20%.</p></div>
+    <div class="addons-card sa" style="--delay:120ms"><div class="bundle-tag">Add-ons</div><div class="bundle-name">Enhance any session</div><div class="addon-row"><span class="addon-name">Office Hours <span class="addon-sub">— 1hr live Q&amp;A, attendees bring real problems</span></span><span class="addon-price" data-gbp="£200 / €240" data-eur="€240 / £200">£200 / €240</span></div></div>
   </div>
-
 </section>
 
 <section class="testimonials section-glass">
-  <div class="s-header sa-right">
-    <div class="tag">Client Stories</div>
-    <h2 class="title">Trusted by leading organisations</h2>
-  </div>
+  <div class="s-header sa-right"><div class="tag">Client Stories</div><h2 class="title">Trusted by leading organisations</h2></div>
   <div class="testi-grid stagger">
     <div class="testi sa" style="--delay:0ms"><div class="stars">★★★★★</div><div class="quote">"Our Teams adoption went from chaotic to structured in a single day. The trainer understood our industry from the very first session."</div><div class="author"><div class="avatar">SK</div><div><div class="author-name">Sarah K.</div><div class="author-role">Head of Digital, Global Logistics Firm</div></div></div></div>
     <div class="testi sa" style="--delay:120ms"><div class="stars">★★★★★</div><div class="quote">"The Copilot workshop changed how our entire leadership team works. Within a week we'd saved hours across the business. Exceptional value."</div><div class="author"><div class="avatar">MR</div><div><div class="author-name">Marcus R.</div><div class="author-role">CTO, Financial Services Group</div></div></div></div>
@@ -455,12 +429,8 @@
   </div>
 </section>
 
-<!-- CTA + SIGNUP COMBINED -->
 <section class="cta-section" id="signup">
-  <div class="stick-out-wrap">
-    <img src="img/stick-out.png" class="stick-out" alt="" aria-hidden="true"/>
-    <div class="stick-out-bubble">Let's chat!</div>
-  </div>
+  <img src="img/stick-out.png" class="stick-out" alt="" aria-hidden="true"/>
   <div class="cta-dots"></div>
   <div class="cta-rings"><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div></div>
   <div class="cta-inner sa">
@@ -470,7 +440,7 @@
       <div id="fw"><form class="s-form" name="discovery-call" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return send(event)">
         <input type="hidden" name="form-name" value="discovery-call"/>
         <p style="position:absolute;left:-9999px;"><label>Do not fill this in: <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
-        <div class="f-group"><label for="fn">Full name</label><input type="text" id="fn" autocomplete="name" aria-describedby="fn-err" name="name" placeholder="Jane Smith" required minlength="2" maxlength="100" pattern="[A-Za-z\u00C0-\u024F\s\-\']+" title="Please enter your full name (letters only)"/><span class="f-error" id="fn-err">Please enter your full name (letters only)</span></div>
+        <div class="f-group"><label for="fn">Full name</label><input type="text" id="fn" autocomplete="name" aria-describedby="fn-err" name="name" placeholder="Jane Smith" required minlength="2" maxlength="100" pattern="[A-Za-zÀ-ɏ\s\-\']+" title="Please enter your full name"/><span class="f-error" id="fn-err">Please enter your full name (letters only)</span></div>
         <div class="f-group"><label for="jt">Job title</label><input type="text" id="jt" autocomplete="organization-title" aria-describedby="jt-err" name="job-title" placeholder="IT Manager" required minlength="2" maxlength="100"/><span class="f-error" id="jt-err">Please enter your job title</span></div>
         <div class="f-group"><label for="co">Company name</label><input type="text" id="co" autocomplete="organization" aria-describedby="co-err" name="company" placeholder="Acme Corporation" required minlength="2" maxlength="150"/><span class="f-error" id="co-err">Please enter your company name</span></div>
         <div class="f-group"><label for="em">Work email</label><input type="email" id="em" autocomplete="email" aria-describedby="em-err" name="email" placeholder="jane@acme.com" required maxlength="254"/><span class="f-error" id="em-err">Please enter a valid work email address</span></div>
@@ -479,14 +449,8 @@
         <div class="f-note">🔒 Your details are safe with us. No spam, ever.</div>
       </form></div>
       <div class="success-msg" id="sm">
-        <div class="s-check">
-          <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
-            <circle class="s-circle" cx="26" cy="26" r="24"/>
-            <path class="s-tick" d="M14 27 L22 35 L38 17"/>
-          </svg>
-        </div>
-        <h3>Message received.</h3>
-        <p>Thank you for reaching out — we'll be in touch as soon as possible.</p>
+        <div class="s-check"><svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><circle class="s-circle" cx="26" cy="26" r="24"/><path class="s-tick" d="M14 27 L22 35 L38 17"/></svg></div>
+        <h3>Message received.</h3><p>Thank you for reaching out — we'll be in touch as soon as possible.</p>
       </div>
     </div>
   </div>
@@ -499,31 +463,25 @@
 
 <script src="script.js"></script>
 <script>
-  // Redirect to /admin/ after accepting a Netlify Identity invite or resetting password
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on('init', function(user) {
-      if (!user) {
-        window.netlifyIdentity.on('login', function() {
-          document.location.href = '/admin/';
-        });
-      }
-    });
-  }
-</script>
-<script>
+// ── How-V2: JS-driven pin ─────────────────────────────────────────
+// CSS position:sticky is broken when body has overflow-x:hidden.
+// We replicate sticky behaviour manually with position:fixed.
 (function () {
   const isMobile = () => window.matchMedia('(max-width:900px)').matches;
+
   const zone  = document.getElementById('howV2Zone');
   const panel = document.getElementById('howV2Panel');
   const cards = document.querySelectorAll('.how-v2-card');
   const cta   = document.getElementById('howV2Cta');
   if (!zone || !panel || !cards.length) return;
 
-  const NAV_H = 80;
-  const AT    = [0.03, 0.36, 0.68, 0.90];
+  const NAV_H  = 80;   // height of fixed nav (review banner + nav)
+  const AT     = [0.03, 0.36, 0.68, 0.90]; // reveal thresholds
 
+  // Cache zone's document offset — recalculate on resize
   let zoneDocTop = 0;
   function cacheOffsets() {
+    // getBoundingClientRect + scrollY gives absolute doc position
     zoneDocTop = zone.getBoundingClientRect().top + window.scrollY;
   }
   cacheOffsets();
@@ -533,19 +491,25 @@
 
   function update() {
     if (isMobile()) {
+      // Reset to normal flow on mobile
       panel.style.cssText = '';
       cards.forEach(c => c.classList.add('revealed'));
       if (cta) cta.classList.add('revealed');
       return;
     }
 
-    const sy    = window.scrollY;
-    const zoneH = zone.offsetHeight;
-    const vh    = window.innerHeight;
+    const sy      = window.scrollY;
+    const zoneH   = zone.offsetHeight;
+    const vh      = window.innerHeight;
+
+    // The scroll range over which the panel should be fixed:
+    // starts when zone top reaches NAV_H from viewport top,
+    // ends when zone bottom reaches viewport bottom.
     const pinStart = zoneDocTop - NAV_H;
     const pinEnd   = zoneDocTop + zoneH - vh;
 
     if (sy < pinStart) {
+      // Above zone: normal in-flow position
       panel.style.position = '';
       panel.style.top      = '';
       panel.style.left     = '';
@@ -556,6 +520,7 @@
     }
 
     if (sy >= pinEnd) {
+      // Scrolled past zone: anchor panel to zone bottom
       panel.style.position = 'absolute';
       panel.style.top      = (zoneH - panel.offsetHeight) + 'px';
       panel.style.left     = '0';
@@ -567,6 +532,7 @@
       return;
     }
 
+    // In zone: fix the panel to the viewport
     panel.style.position = 'fixed';
     panel.style.top      = NAV_H + 'px';
     panel.style.left     = '0';
@@ -574,6 +540,7 @@
     panel.style.width    = '100%';
     panel.style.zIndex   = '10';
 
+    // Drive card reveals from scroll progress through zone
     const progress = (sy - pinStart) / (pinEnd - pinStart);
     cards.forEach((c, i) => { if (progress >= AT[i]) c.classList.add('revealed'); });
     if (cta && progress >= AT[3]) cta.classList.add('revealed');
@@ -588,23 +555,20 @@
   update();
 })();
 </script>
+
 <script>
+// Stick-out character: slides in when signup section enters view
 (function () {
   const section = document.getElementById('signup');
-  const wrap    = section && section.querySelector('.stick-out-wrap');
-  const bubble  = section && section.querySelector('.stick-out-bubble');
-  if (!wrap) return;
-
-  function check() {
-    const nearBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 300;
-    if (nearBottom) {
-      wrap.classList.add('visible');
-      if (bubble) setTimeout(() => bubble.classList.add('show'), 500);
-      window.removeEventListener('scroll', check);
+  const img     = section && section.querySelector('.stick-out');
+  if (!img) return;
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      img.classList.add('peeking');
+      observer.disconnect();
     }
-  }
-
-  window.addEventListener('scroll', check, { passive: true });
+  }, { threshold: 0.25 });
+  observer.observe(section);
 })();
 </script>
 </body>

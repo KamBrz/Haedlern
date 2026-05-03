@@ -91,7 +91,12 @@
       "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/copilot-cowork-week.jpg|g' copilot-cowork-changes-your-week.html)",
       "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/four-part-prompt-framework.jpg|g' four-part-prompt-framework.html)",
       "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/power-automate-anyone-can-build.jpg|g' power-automate-anyone-can-build.html)",
-      "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/stop-sharepoint-oversharing.jpg|g' stop-sharepoint-oversharing-copilot.html)"
+      "Bash(sed -i 's|https://haedlern.com/img/og-default.png|https://haedlern.com/img/blog/stop-sharepoint-oversharing.jpg|g' stop-sharepoint-oversharing-copilot.html)",
+      "Bash(Select-String -Path \"index.html\" -Pattern \"viewport|max-width\")",
+      "Bash(Select-Object -First 20)",
+      "Bash(Get-ChildItem -Path . -Filter \"*.html\" -Recurse)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "PowerShell([System.Guid]::NewGuid\\(\\).ToString\\('N'\\))"
     ]
   }
 }

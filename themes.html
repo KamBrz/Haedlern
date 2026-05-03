@@ -6,22 +6,54 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Themed Microsoft 365 Workshops — Adoption, Productivity, Modern Workplace | Haedlern</title>
+<title>Microsoft 365 Workshops — Adoption, Productivity &amp; More | Haedlern</title>
 <meta name="description" content="Multi-session themed training programmes for Microsoft 365 and Copilot — designed for adoption, productivity uplift, and modern workplace transformation.">
 <link rel="canonical" href="https://haedlern.com/themes.html">
 <link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg"><link rel="stylesheet" href="styles.css">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Themed Microsoft 365 Workshops — Adoption, Productivity, Modern Workplace | Haedlern">
+<meta property="og:title" content="Microsoft 365 Workshops — Adoption, Productivity &amp; More | Haedlern">
 <meta property="og:description" content="Multi-session themed training programmes for Microsoft 365 and Copilot — designed for adoption, productivity uplift, and modern workplace transformation.">
 <meta property="og:url" content="https://haedlern.com/themes.html">
 <meta property="og:image" content="https://haedlern.com/img/og-default.png">
 <meta property="og:site_name" content="Haedlern">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Themed Microsoft 365 Workshops — Adoption, Productivity, Modern Workplace | Haedlern">
+<meta name="twitter:title" content="Microsoft 365 Workshops — Adoption, Productivity &amp; More | Haedlern">
 <meta name="twitter:description" content="Multi-session themed training programmes for Microsoft 365 and Copilot — designed for adoption, productivity uplift, and modern workplace transformation.">
 <meta name="twitter:image" content="https://haedlern.com/img/og-default.png">
+<style>
+.themes-hero { position: relative; overflow: visible; z-index: 2; }
+.themes-apps-img { display: none; pointer-events: none; user-select: none; }
+
+@media (min-width: 761px) {
+  .themes-hero { text-align: left; padding-top: 80px; padding-bottom: 0; }
+  .themes-hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 40px;
+  }
+  .themes-hero-text { flex: 1; min-width: 0; }
+  .themes-hero-sub { margin-left: 0; }
+  .themes-apps-img {
+    display: block;
+    position: relative;
+    align-self: flex-end;
+    height: clamp(240px, 33vw, 480px);
+    width: auto;
+    max-width: 42%;
+    flex-shrink: 0;
+    margin-bottom: -95px;
+    object-fit: contain;
+    object-position: bottom;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+  .themes-apps-img.visible { opacity: 1; }
+}
+</style>
 <!-- Microsoft Clarity -->
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","whovnhgjm9");</script>
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -52,9 +84,14 @@
 
 <!-- HERO -->
 <section class="themes-hero section-glass">
-  <div class="tag">Themed Workshops</div>
-  <h1 class="themes-hero-title">Training built around outcomes, not just apps</h1>
-  <p class="themes-hero-sub">Multi-app sessions designed around a single business goal — your team leaves knowing exactly how to work better together, not just which buttons to press.</p>
+  <div class="themes-hero-inner">
+    <div class="themes-hero-text">
+      <div class="tag">Themed Workshops</div>
+      <h1 class="themes-hero-title">Training built around outcomes, not just apps</h1>
+      <p class="themes-hero-sub">Multi-app sessions designed around a single business goal — your team leaves knowing exactly how to work better together, not just which buttons to press.</p>
+    </div>
+    <img src="img/themes-apps.png" class="themes-apps-img" alt="" aria-hidden="true"/>
+  </div>
 </section>
 
 <!-- CATEGORIES -->
@@ -502,15 +539,21 @@
 <section class="themes-cta-section">
   <div class="tag">Get Started</div>
   <h2 class="title">Not sure which theme fits your team?</h2>
-  <p>Book a free 30-minute discovery call and we'll help you choose — or design something entirely bespoke.</p>
+  <p>Book a free discovery call and we'll help you choose — or design something entirely bespoke.</p>
   <a class="nav-cta" style="display:inline-block;margin-top:28px;font-size:15px;padding:14px 32px;text-decoration:none;" href="index.html#signup">Book a Free Discovery Call</a>
 </section>
 
 <footer>
   <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
-  <p>© 2026 Haedlern. All rights reserved.</p>
+  <p>© 2026 Haedlern. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
 </footer>
 
 <script src="script.js"></script>
+<script>
+  setTimeout(function () {
+    var img = document.querySelector('.themes-apps-img');
+    if (img) img.classList.add('visible');
+  }, 300);
+</script>
 </body>
 </html>

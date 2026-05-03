@@ -6,34 +6,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — Microsoft 365, Copilot, and Modern Workplace insights | Haedlern</title>
+<title>Blog — Microsoft 365, Copilot &amp; Modern Workplace | Haedlern</title>
 <meta name="description" content="Notes on Microsoft 365 adoption, Copilot rollouts, agents, Power Platform, and what actually works inside large organisations. Updated regularly.">
 <link rel="canonical" href="https://haedlern.com/blog.html">
 <link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg">
 <link rel="stylesheet" href="styles.css">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Blog — Microsoft 365, Copilot, and Modern Workplace insights | Haedlern">
+<meta property="og:title" content="Blog — Microsoft 365, Copilot &amp; Modern Workplace | Haedlern">
 <meta property="og:description" content="Notes on Microsoft 365 adoption, Copilot rollouts, agents, Power Platform, and what actually works inside large organisations. Updated regularly.">
 <meta property="og:url" content="https://haedlern.com/blog.html">
 <meta property="og:image" content="https://haedlern.com/img/og-default.png">
 <meta property="og:site_name" content="Haedlern">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Blog — Microsoft 365, Copilot, and Modern Workplace insights | Haedlern">
+<meta name="twitter:title" content="Blog — Microsoft 365, Copilot &amp; Modern Workplace | Haedlern">
 <meta name="twitter:description" content="Notes on Microsoft 365 adoption, Copilot rollouts, agents, Power Platform, and what actually works inside large organisations. Updated regularly.">
 <meta name="twitter:image" content="https://haedlern.com/img/og-default.png">
 <style>
 /* ── BLOG INDEX ── */
 .blog-hero{padding:140px 8% 40px;position:relative;overflow:hidden;}
-.blog-hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 100% at 50% 30%,black 10%,transparent 70%);pointer-events:none;opacity:0.3;z-index:0;}
-.blog-hero-inner{max-width:1200px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.blog-hero-inner{max-width:max(1200px,72vw);margin:0 auto;text-align:center;position:relative;z-index:1;}
 .blog-hero h1{font-size:clamp(34px,4.5vw,56px);font-weight:900;letter-spacing:-1.6px;line-height:1.06;color:var(--text);margin:14px 0 14px;}
 .blog-hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.blog-hero p{font-size:16px;color:var(--muted);max-width:640px;margin:0 auto;line-height:1.7;}
+.blog-hero p{font-size:clamp(14px,1.3vw,18px);color:var(--muted);max-width:clamp(640px,46vw,1150px);margin:0 auto;line-height:1.7;}
+.blog-sitting-img{display:none;pointer-events:none;user-select:none;}
+@media(min-width:761px){
+  .blog-hero{text-align:left;overflow:visible;z-index:2;padding-top:160px;padding-bottom:0;}
+  .blog-hero-inner{max-width:max(1200px,72vw);margin:0 auto;display:flex;align-items:flex-end;padding-bottom:40px;text-align:left;}
+  .blog-hero-text{flex:1;min-width:0;}
+  .blog-hero p{margin:0;}
+  .blog-sitting-img{display:block;position:relative;align-self:flex-end;height:clamp(180px,22vw,320px);width:auto;max-width:36%;flex-shrink:0;margin-bottom:-95px;object-fit:contain;object-position:bottom;opacity:0;transition:opacity 0.9s ease;}
+  .blog-sitting-img.visible{opacity:1;}
+}
 
 .blog-section{padding:40px 8% 100px;}
-.blog-inner{max-width:1200px;margin:0 auto;}
+.blog-inner{max-width:max(1200px,72vw);margin:0 auto;}
 
 /* Featured post (large) */
 .blog-featured{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;background:var(--card);border:1px solid var(--card-border);border-radius:var(--r-2xl);padding:0;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:36px;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;text-decoration:none;color:inherit;}
@@ -119,11 +127,13 @@
 
 <!-- HERO -->
 <section class="blog-hero section-glass">
-  <div class="blog-hero-grid"></div>
   <div class="blog-hero-inner">
-    <div class="tag sa">Blog</div>
-    <h1 class="sa" style="--delay:60ms"><em>Field notes</em><br>from inside enterprise M365.</h1>
-    <p class="sa" style="--delay:120ms">Practical writing on Microsoft 365 adoption, Copilot rollouts, and what actually works when you're trying to change how a large organisation gets its work done.</p>
+    <div class="blog-hero-text">
+      <div class="tag sa">Blog</div>
+      <h1 class="sa" style="--delay:60ms">Field notes<br>from inside enterprise M365.</h1>
+      <p class="sa" style="--delay:120ms">Practical writing on Microsoft 365 adoption, Copilot rollouts, and what actually works when you're trying to change how a large organisation gets its work done.</p>
+    </div>
+    <img src="img/sitting-down-blog.png" class="blog-sitting-img" alt="" aria-hidden="true"/>
   </div>
 </section>
 
@@ -133,8 +143,8 @@
     <div id="blog-list" class="blog-loading" aria-live="polite" aria-atomic="false">Loading posts…</div>
 
     <div class="blog-bottom-cta sa">
-      <h3>Want training built around real workflows like these?</h3>
-      <p>Book a free 30-minute discovery call. No commitment, no pressure.</p>
+      <h3>Want training built around real workflows?</h3>
+      <p>Book a free discovery call. No commitment, no pressure.</p>
       <a href="index.html#signup" class="btn-primary" style="background:var(--blue);color:#fff;border:none;padding:12px 26px;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 16px rgba(0,120,212,0.35);">Book a Discovery Call</a>
     </div>
   </div>
@@ -142,10 +152,16 @@
 
 <footer>
   <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
-  <p>© 2026 Haedlern. All rights reserved.</p>
+  <p>© 2026 Haedlern. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
 </footer>
 
 <script src="script.js"></script>
+<script>
+  setTimeout(function () {
+    var img = document.querySelector('.blog-sitting-img');
+    if (img) img.classList.add('visible');
+  }, 300);
+</script>
 <script>
 // ── Blog index renderer ──
 (function() {

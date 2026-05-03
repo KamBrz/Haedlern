@@ -14,7 +14,7 @@
 /* ── POST PAGE ── */
 .post-hero{padding:140px 8% 48px;position:relative;overflow:hidden;}
 .post-hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 100% at 50% 30%,black 10%,transparent 70%);pointer-events:none;opacity:0.3;z-index:0;}
-.post-hero-inner{max-width:760px;margin:0 auto;position:relative;z-index:1;}
+.post-hero-inner{max-width:clamp(760px,56vw,1400px);margin:0 auto;position:relative;z-index:1;}
 
 .post-back{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);text-decoration:none;margin-bottom:28px;transition:color 0.2s,gap 0.2s;}
 .post-back:hover{color:var(--blue);gap:10px;}
@@ -30,14 +30,14 @@
 .post-meta-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;}
 
 /* Cover */
-.post-cover-wrap{padding:0 8%;max-width:calc(760px + 16%);margin:0 auto;box-sizing:border-box;}
+.post-cover-wrap{padding:0 8%;max-width:calc(clamp(760px,56vw,1400px) + 16%);margin:0 auto;box-sizing:border-box;}
 .post-cover{width:100%;border-radius:var(--r-2xl);overflow:hidden;aspect-ratio:16/9;background:linear-gradient(135deg,rgba(0,120,212,0.18),rgba(0,180,216,0.12));display:flex;align-items:center;justify-content:center;}
 .post-cover img{width:100%;height:100%;object-fit:cover;display:block;}
 .post-cover-placeholder{font-size:80px;font-weight:900;color:var(--blue);opacity:0.3;letter-spacing:-4px;}
 
 /* Body */
 .post-body-section{padding:44px 8% 100px;}
-.post-body-inner{max-width:760px;margin:0 auto;}
+.post-body-inner{max-width:clamp(760px,56vw,1400px);margin:0 auto;}
 
 /* Article typography */
 .post-article{color:var(--text2);font-size:16.5px;line-height:1.85;}
@@ -130,7 +130,7 @@
     <hr class="post-divider" id="postDivider" style="display:none;">
     <div class="post-bottom-cta sa" id="postCta" style="display:none;">
       <h3>Want training built around real workflows like these?</h3>
-      <p>Book a free 30-minute discovery call. No commitment, no pressure.</p>
+      <p>Book a free discovery call. No commitment, no pressure.</p>
       <a href="index.html#signup" class="btn-primary" style="background:var(--blue);color:#fff;border:none;padding:12px 26px;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 16px rgba(0,120,212,0.35);text-decoration:none;display:inline-block;">Book a Discovery Call</a>
     </div>
   </div>
@@ -138,7 +138,7 @@
 
 <footer>
   <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
-  <p>© 2026 Haedlern. All rights reserved.</p>
+  <p>© 2026 Haedlern. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
 </footer>
 
 <script src="script.js"></script>

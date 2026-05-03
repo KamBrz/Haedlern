@@ -2,7 +2,8 @@
   "name": "haedlern-site",
   "private": true,
   "scripts": {
-    "build": "node build-blog.js"
+    "build": "node build-blog.js",
+    "ping": "node indexnow.js"
   },
   "dependencies": {
     "marked": "^12.0.0"
