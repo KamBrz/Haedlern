@@ -491,7 +491,7 @@ p.sub{font-size:clamp(15px,1.3vw,19px);color:var(--muted);max-width:clamp(540px,
 .fw-leaving{opacity:0;transform:scale(0.97);transition:opacity 0.28s ease,transform 0.28s ease;pointer-events:none;}
 
 /* ── CTA ── */
-.cta-section{background:var(--bg3);border-top:1px solid var(--border);padding:clamp(60px,7vw,120px) 5%;text-align:center;position:relative;overflow:hidden;transition:background 0.4s;}
+.cta-section{background:var(--bg2);border-top:1px solid var(--border);padding:clamp(60px,7vw,120px) 5%;text-align:center;position:relative;overflow:hidden;transition:background 0.4s;}
 .cta-dots{position:absolute;inset:0;background-image:radial-gradient(var(--border2) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);}
 /* Animated rings */
 .cta-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;}
