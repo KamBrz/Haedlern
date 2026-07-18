@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -67,10 +67,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About SharePoint Document Libraries</h2>
-    <p>SharePoint Document Libraries are M365's structured home for team and project files — far more capable than shared drives, with metadata, versioning, permissions, co-authoring, content approvals and automated retention. Every Microsoft 365 Group and Teams channel is backed by a SharePoint library behind the scenes.</p>
-    <p>It's best used for any set of team files that needs structure — project deliverables, contracts, policies, client files, engineering documents — especially when versioning, access control or regulatory retention matters. Operations, legal, HR, engineering, finance and project teams benefit most. SharePoint solves the classic shared-drive problem — "v7_FINAL_really_final.docx", orphan files, and permissions no one remembers setting — with a governable, searchable library that scales from small teams to the whole organisation.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About SharePoint Document Libraries</h2>
+      <p>SharePoint Document Libraries are M365's structured home for team and project files — far more capable than shared drives, with metadata, versioning, permissions, co-authoring, content approvals and automated retention. Every Microsoft 365 Group and Teams channel is backed by a SharePoint library behind the scenes.</p>
+      <p>It's best used for any set of team files that needs structure — project deliverables, contracts, policies, client files, engineering documents — especially when versioning, access control or regulatory retention matters. Operations, legal, HR, engineering, finance and project teams benefit most. SharePoint solves the classic shared-drive problem — "v7_FINAL_really_final.docx", orphan files, and permissions no one remembers setting — with a governable, searchable library that scales from small teams to the whole organisation.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_SHAREPOINT_PAGE.png" alt="Illustration of a person working in SharePoint Document Libraries" loading="lazy"/>
   </div>
 </section>
 
@@ -83,27 +86,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">SharePoint Document Libraries</div>
-      <ul class="session-bullets">
-        <li>What a document library is</li>
-        <li>The relationship between SharePoint, OneDrive and Teams file storage</li>
-        <li>Creating a document library</li>
-        <li>Uploading, creating, moving, copying and deleting files</li>
-        <li>Opening and editing files in the browser vs. desktop app</li>
-        <li>Organising with metadata columns instead of folders</li>
-        <li>Understanding content types and document templates</li>
-        <li>Creating and saving custom views — sorting, filtering and grouping</li>
-        <li>Version history — viewing, restoring and deleting versions</li>
-        <li>Check out / check in — preventing conflicting edits</li>
-        <li>Co-authoring documents in real time</li>
-        <li>Sharing files — internal links, guest access, expiry dates and permissions</li>
-        <li>Managing and revoking access to shared documents</li>
-        <li>Setting alerts to be notified when documents change</li>
-        <li>Searching within a library and across the site</li>
-        <li>Restoring deleted files from the Recycle Bin</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Library foundations</h4>
+          <p>What a document library actually is and how SharePoint, OneDrive and Teams file storage relate behind the scenes. We create a document library from scratch so everyone understands where team files should live and why.</p>
+          <div class="ses-chips"><span>Libraries 101</span><span>SharePoint vs. OneDrive</span><span>Create a library</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Everyday file handling</h4>
+          <p>The daily essentials of uploading, creating, moving, copying and deleting files, plus when to open and edit a document in the browser versus the desktop app. We also cover the safety net of restoring deleted files from the Recycle Bin.</p>
+          <div class="ses-chips"><span>File basics</span><span>Browser vs. desktop</span><span>Recycle Bin</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Structure beyond folders</h4>
+          <p>Organising with metadata columns instead of ever-deeper folder trees, and understanding how content types and document templates keep files consistent. We then build and save custom views that sort, filter and group the library for different ways of working.</p>
+          <div class="ses-chips"><span>Metadata columns</span><span>Content types</span><span>Custom views</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Versions &amp; co-authoring</h4>
+          <p>Working on the same document without treading on each other — real-time co-authoring for everyday collaboration, and check out / check in when you need to prevent conflicting edits. Version history ties it together, with viewing, restoring and deleting versions on demand.</p>
+          <div class="ses-chips"><span>Co-authoring</span><span>Check in/out</span><span>Version history</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Share, watch &amp; find</h4>
+          <p>Sharing files responsibly with internal links, guest access, expiry dates and the right permissions — then managing and revoking that access when circumstances change. We finish by setting alerts to be notified when documents change and searching effectively within a library and across the site.</p>
+          <div class="ses-chips"><span>Guest access</span><span>Revoking access</span><span>Alerts</span><span>Search</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

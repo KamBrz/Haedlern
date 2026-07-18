@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -67,10 +67,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About Power Automate</h2>
-    <p>Microsoft Power Automate is M365's low-code automation platform — a workflow tool for connecting apps, automating approvals and replacing repetitive manual work with triggered flows. It talks to hundreds of services (M365, Dynamics, SharePoint, SQL, Salesforce, ServiceNow) and supports both cloud flows and desktop/RPA automation.</p>
-    <p>It's best used for approval routing, form-to-email workflows, document generation, data moves between systems, and any task that has an obvious pattern and happens at least weekly. Operations, HR, finance, IT, customer service and anyone whose work involves "copy this there, email that, then update a list" benefit most. Power Automate solves the hidden productivity tax of manual, repeatable admin — letting the business automate it themselves without opening a ticket with IT or waiting for a developer.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About Power Automate</h2>
+      <p>Microsoft Power Automate is M365's low-code automation platform — a workflow tool for connecting apps, automating approvals and replacing repetitive manual work with triggered flows. It talks to hundreds of services (M365, Dynamics, SharePoint, SQL, Salesforce, ServiceNow) and supports both cloud flows and desktop/RPA automation.</p>
+      <p>It's best used for approval routing, form-to-email workflows, document generation, data moves between systems, and any task that has an obvious pattern and happens at least weekly. Operations, HR, finance, IT, customer service and anyone whose work involves "copy this there, email that, then update a list" benefit most. Power Automate solves the hidden productivity tax of manual, repeatable admin — letting the business automate it themselves without opening a ticket with IT or waiting for a developer.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_POWERAUTOMATE_PAGE.png" alt="Illustration of a person working in Power Automate" loading="lazy"/>
   </div>
 </section>
 
@@ -83,25 +86,45 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">Power Automate</div>
-      <ul class="session-bullets">
-        <li>What Power Automate is and where it fits in Microsoft 365</li>
-        <li>Flow types — automated, instant (manual) and scheduled</li>
-        <li>Understanding triggers — what starts a flow</li>
-        <li>Understanding actions — what a flow does</li>
-        <li>Using dynamic content to pass data between steps</li>
-        <li>Browsing and using templates to build flows quickly</li>
-        <li>Building your first flow from scratch</li>
-        <li>Testing flows and reading run history</li>
-        <li>Condition (If/Then/Else) — branching logic</li>
-        <li>Apply to Each — looping through a list of items</li>
-        <li>Variables — counters, flags and dynamic messages</li>
-        <li>Approval workflows — single, sequential and parallel approvals</li>
-        <li>Responding to approvals in Teams and the Approvals centre</li>
-        <li>Sharing flows with co-owners and run-only users</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Automation foundations</h4>
+          <p>What Power Automate is and where it fits in Microsoft 365, plus the three flow types — automated, instant and scheduled — and when to reach for each. We build a clear mental model of triggers as what starts a flow and actions as what a flow actually does.</p>
+          <div class="ses-chips"><span>Flow types</span><span>Triggers</span><span>Actions</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Building your first flow</h4>
+          <p>Getting hands-on quickly by browsing the template gallery before building a flow entirely from scratch. Along the way we use dynamic content to pass data between steps, then test the flow and read its run history to see exactly what happened and why.</p>
+          <div class="ses-chips"><span>Templates</span><span>Dynamic content</span><span>Run history</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Smarter flow logic</h4>
+          <p>Making flows genuinely intelligent with Condition blocks for If/Then/Else branching and Apply to Each for looping through lists of items. We add variables for counters, flags and dynamic messages so a single flow can adapt to whatever data arrives.</p>
+          <div class="ses-chips"><span>If/Then/Else</span><span>Apply to Each</span><span>Variables</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Approvals &amp; sharing</h4>
+          <p>Building the workflows teams ask for most: single, sequential and parallel approvals, with responses handled in Teams or the Approvals centre. We close by sharing flows safely — adding co-owners who can edit and run-only users who can simply press go.</p>
+          <div class="ses-chips"><span>Approvals</span><span>Teams responses</span><span>Co-owners</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

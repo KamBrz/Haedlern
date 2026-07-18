@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -67,10 +67,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About Planner</h2>
-    <p>Microsoft Planner is M365's visual task-management tool — a shared board where teams can plan, assign and track work across buckets, schedules and timelines. The new Planner also unifies To Do, Project for the Web and Loop tasks, so personal, team and plan-level work all live in one view.</p>
-    <p>It's best used for team projects, recurring operations, campaign planning, onboarding checklists and any work that benefits from a simple, visual view of who's doing what. Project managers, team leads, marketing, HR, operations and cross-functional teams benefit most. Planner solves the frequent problem of work being tracked in private to-do lists that managers can't see — giving the whole team a single, shared view of progress, priorities and blockers without the overhead of a full project-management platform.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About Planner</h2>
+      <p>Microsoft Planner is M365's visual task-management tool — a shared board where teams can plan, assign and track work across buckets, schedules and timelines. The new Planner also unifies To Do, Project for the Web and Loop tasks, so personal, team and plan-level work all live in one view.</p>
+      <p>It's best used for team projects, recurring operations, campaign planning, onboarding checklists and any work that benefits from a simple, visual view of who's doing what. Project managers, team leads, marketing, HR, operations and cross-functional teams benefit most. Planner solves the frequent problem of work being tracked in private to-do lists that managers can't see — giving the whole team a single, shared view of progress, priorities and blockers without the overhead of a full project-management platform.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_PLANNER_PAGE.png" alt="Illustration of a person working in Planner" loading="lazy"/>
   </div>
 </section>
 
@@ -83,30 +86,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">Planner</div>
-      <ul class="session-bullets">
-        <li>What the new Microsoft Planner is and how it unifies tasks across M365</li>
-        <li>Navigating Planner — My Day, My Tasks, My Plans and Favourites</li>
-        <li>My Day and My Tasks — managing your personal daily workload</li>
-        <li>Creating and setting up a plan — naming, privacy and members</li>
-        <li>Organising tasks into buckets — phases, categories and workflows</li>
-        <li>Creating tasks — title, assignee, due date, priority and status</li>
-        <li>Task details — notes, checklists, attachments, comments and @mentions</li>
-        <li>Assigning multiple people to a task</li>
-        <li>Using labels for colour-coded categorisation</li>
-        <li>Board view — grouping by bucket, assignee, priority and progress</li>
-        <li>List / Grid view — inline editing and bulk-updating tasks</li>
-        <li>Schedule view — seeing tasks on a calendar</li>
-        <li>Charts view — tracking plan health and workload distribution</li>
-        <li>Filtering and grouping across views</li>
-        <li>Notifications — task assignments, due date reminders and plan updates</li>
-        <li>Adding Planner as a tab in a Teams channel</li>
-        <li>Planner tasks appearing in Microsoft To Do</li>
-        <li>Exporting a plan to Excel</li>
-        <li>Plan hygiene — naming conventions, regular reviews and archiving completed plans</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Getting oriented</h4>
+          <p>What the new Microsoft Planner is and how it unifies tasks across M365 into a single view. We navigate the app — My Day, My Tasks, My Plans and Favourites — and use My Day and My Tasks to manage your own daily workload before touching team plans.</p>
+          <div class="ses-chips"><span>New Planner</span><span>My Day</span><span>My Tasks</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Building your first plan</h4>
+          <p>Creating and setting up a plan from scratch — naming, privacy and members — then organising work into buckets that reflect your phases, categories or workflows. We create tasks with a title, assignee, due date, priority and status so the board reflects real work from day one.</p>
+          <div class="ses-chips"><span>Plan setup</span><span>Buckets</span><span>Task basics</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Richer, clearer tasks</h4>
+          <p>Making every task self-explanatory with notes, checklists, attachments, comments and @mentions. We assign multiple people to shared tasks and apply colour-coded labels so anyone can read the board at a glance.</p>
+          <div class="ses-chips"><span>Checklists</span><span>@mentions</span><span>Labels</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Views &amp; tracking progress</h4>
+          <p>Seeing the same plan four ways: Board view grouped by bucket, assignee, priority or progress, List and Grid view for inline editing and bulk updates, Schedule view for tasks on a calendar, and Charts view for plan health and workload distribution. We finish with filtering and grouping across views, plus the notifications that keep everyone on top of assignments, due dates and plan updates.</p>
+          <div class="ses-chips"><span>Board</span><span>Schedule</span><span>Charts</span><span>Notifications</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Connected &amp; well kept</h4>
+          <p>Bringing Planner to where the team already works — adding it as a tab in a Teams channel and seeing assigned tasks appear in Microsoft To Do. We export a plan to Excel for reporting and close with plan hygiene: naming conventions, regular reviews and archiving completed plans.</p>
+          <div class="ses-chips"><span>Teams tab</span><span>To Do sync</span><span>Excel export</span><span>Plan hygiene</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><script>try{if(localStorage.getItem('themePref')==='dark')document.documentElement.dataset.theme='dark';}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft 365 Copilot Training — Adoption, Prompts, Agents &amp; Cowork | Haedlern</title>
+<meta name="description" content="Hands-on Microsoft 365 Copilot training that turns licences into adoption — Copilot Chat, prompting, Cowork, Notebooks, custom agents and Copilot across Word, Excel, PowerPoint, Teams and Outlook.">
+<link rel="canonical" href="https://haedlern.com/copilot.html">
+<link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="stylesheet" href="styles.css">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Microsoft 365 Copilot Training — Adoption, Prompts, Agents &amp; Cowork | Haedlern">
+<meta property="og:description" content="Hands-on Microsoft 365 Copilot training that turns licences into adoption — Copilot Chat, prompting, Cowork, Notebooks, custom agents and Copilot across Word, Excel, PowerPoint, Teams and Outlook.">
+<meta property="og:url" content="https://haedlern.com/copilot.html">
+<meta property="og:image" content="https://haedlern.com/img/og-default.png">
+<meta property="og:site_name" content="Haedlern">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 Copilot Training — Adoption, Prompts, Agents &amp; Cowork | Haedlern">
+<meta name="twitter:description" content="Hands-on Microsoft 365 Copilot training that turns licences into adoption — Copilot Chat, prompting, Cowork, Notebooks, custom agents and Copilot across Word, Excel, PowerPoint, Teams and Outlook.">
+<meta name="twitter:image" content="https://haedlern.com/img/og-default.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://haedlern.com/"},{"@type":"ListItem","position":2,"name":"Copilot Training","item":"https://haedlern.com/copilot.html"}]}
+</script>
+<style>
+/* Page-wide monochrome palette — the Copilot-app design language */
+body {
+  --mono-bg: #ffffff; --mono-side: #fafafa; --mono-border: #e6e6e6;
+  --mono-text: #1f1f1f; --mono-text2: #565656; --mono-muted: #9a9a9a;
+}
+[data-theme="dark"] body {
+  --mono-bg: #202020; --mono-side: #1a1a1a; --mono-border: #383838;
+  --mono-text: #f0f0f0; --mono-text2: #b8b8b8; --mono-muted: #7d7d7d;
+}
+
+/* ── PAGE BACKGROUND — monochrome canvas matching the Copilot app ── */
+html { background: #fcfcfb; }
+html[data-theme="dark"] { background: #181818; }
+
+/* Re-tint the site aurora to soft neutral greys on this page */
+body::before {
+  background:
+    radial-gradient(ellipse 55% 40% at 30% 35%, rgba(110,110,110,0.14), transparent 60%),
+    radial-gradient(ellipse 45% 55% at 75% 25%, rgba(140,140,140,0.10), transparent 58%),
+    radial-gradient(ellipse 60% 35% at 55% 75%, rgba(120,120,120,0.11), transparent 60%);
+}
+body::after {
+  background:
+    radial-gradient(ellipse 50% 45% at 65% 60%, rgba(130,130,130,0.09), transparent 58%),
+    radial-gradient(ellipse 55% 35% at 20% 70%, rgba(110,110,110,0.10), transparent 55%),
+    radial-gradient(ellipse 40% 50% at 85% 80%, rgba(150,150,150,0.08), transparent 58%);
+}
+[data-theme="dark"] body::before {
+  background:
+    radial-gradient(ellipse 55% 40% at 30% 35%, rgba(255,255,255,0.055), transparent 60%),
+    radial-gradient(ellipse 45% 55% at 75% 25%, rgba(255,255,255,0.040), transparent 58%),
+    radial-gradient(ellipse 60% 35% at 55% 75%, rgba(255,255,255,0.045), transparent 60%);
+}
+[data-theme="dark"] body::after {
+  background:
+    radial-gradient(ellipse 50% 45% at 65% 60%, rgba(255,255,255,0.038), transparent 58%),
+    radial-gradient(ellipse 55% 35% at 20% 70%, rgba(255,255,255,0.042), transparent 55%),
+    radial-gradient(ellipse 40% 50% at 85% 80%, rgba(255,255,255,0.032), transparent 58%);
+}
+
+/* ── FULL-SCREEN SECTIONS — each fills one viewport, free scrolling ── */
+section.cp-snap.cp-section {
+  min-height: 100vh; box-sizing: border-box;
+  display: flex; align-items: center;
+  padding-top: 110px; padding-bottom: 60px;
+}
+section.cp-snap.cp-section .cp-section-inner { width: 100%; }
+/* On small screens sections stack taller than a viewport — let them size naturally */
+@media (max-width: 900px), (max-height: 720px) {
+  .copilot-hero { min-height: 0; }
+  section.cp-snap.cp-section { min-height: 0; display: block; padding-top: 70px; }
+}
+
+/* ── COPILOT HUB HERO ── */
+.copilot-hero {
+  min-height: 100vh; box-sizing: border-box;
+  display: flex; align-items: center; justify-content: center;
+  text-align: left;
+  padding: 120px 5% 60px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, #fbfbfa 0%, #f5f5f4 100%);
+}
+[data-theme="dark"] .copilot-hero {
+  background: linear-gradient(160deg, #1c1c1c 0%, #161616 100%);
+}
+.copilot-hero-content { position: relative; z-index: 1; max-width: max(1180px, 75vw); margin: 0 auto; width: 100%; }
+.copilot-hero-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--mono-text2);
+  margin-bottom: 14px;
+}
+.copilot-hero-kicker img { width: 20px; height: 20px; }
+.copilot-hero h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800; letter-spacing: -2px;
+  line-height: 1.08; margin-bottom: 16px; color: var(--mono-text);
+}
+.copilot-hero h1 em {
+  font-style: normal; position: relative; z-index: 0; white-space: nowrap;
+}
+.copilot-hero h1 em::after {
+  content: ''; position: absolute; z-index: -1;
+  left: -0.06em; right: -0.06em; bottom: 0.04em; height: 0.28em;
+  background: rgba(0,0,0,0.14); border-radius: 0.14em;
+  transform: skewX(-8deg);
+}
+[data-theme="dark"] .copilot-hero h1 em::after { background: rgba(255,255,255,0.22); }
+.copilot-hero p {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--mono-text2); line-height: 1.7;
+  max-width: 640px; margin: 0 0 26px;
+}
+.copilot-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.copilot-hero .btn-primary {
+  background: var(--mono-text); color: var(--mono-bg);
+  padding: 13px 26px; border-radius: 10px;
+  font-size: 14px; font-weight: 700; border: none; text-decoration: none; display: inline-block;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+  transition: all 0.22s;
+}
+.copilot-hero .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.20); }
+.copilot-hero .btn-secondary {
+  background: var(--mono-bg); color: var(--mono-text);
+  padding: 13px 26px; border-radius: 10px;
+  font-size: 14px; font-weight: 600; border: 1px solid var(--mono-border);
+  text-decoration: none; display: inline-block; transition: all 0.22s;
+}
+.copilot-hero .btn-secondary:hover { border-color: var(--mono-muted); transform: translateY(-2px); }
+
+/* ── HERO SPLIT + COPILOT APP MOCK ── */
+.copilot-hero-split { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.cp-chat {
+  display: flex; overflow: hidden;
+  background: var(--mono-bg); border: 1px solid var(--mono-border); border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.12), 0 4px 14px rgba(0,0,0,0.05);
+  min-height: 320px; font-size: 12px;
+}
+[data-theme="dark"] .cp-chat { box-shadow: 0 18px 50px rgba(0,0,0,0.5); }
+.cp-chat-side {
+  width: 148px; flex-shrink: 0; padding: 12px 10px;
+  border-right: 1px solid var(--mono-border);
+  background: var(--mono-side);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.cp-chat-side-head { display: flex; align-items: center; justify-content: space-between; padding: 2px 4px 10px; }
+.cp-chat-wordmark { font-size: 13px; font-weight: 800; letter-spacing: -0.2px; color: var(--mono-text); }
+.cp-chat-side-glyphs { font-size: 9px; color: var(--mono-muted); letter-spacing: 2px; }
+.cp-chat-tabs {
+  display: flex; background: rgba(0,0,0,0.06); border-radius: 8px; padding: 2px; margin-bottom: 10px;
+}
+[data-theme="dark"] .cp-chat-tabs { background: rgba(255,255,255,0.09); }
+.cp-chat-tabs span {
+  flex: 1; text-align: center; font-size: 10.5px; font-weight: 600;
+  color: var(--mono-text2); padding: 4px 0; border-radius: 6px;
+}
+.cp-chat-tabs .on { background: var(--mono-bg); color: var(--mono-text); box-shadow: 0 1px 2.5px rgba(0,0,0,0.10); }
+.cp-chat-side-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 500; color: var(--mono-text2);
+  padding: 4px 6px; border-radius: 6px; white-space: nowrap;
+}
+.cp-chat-side-list { display: flex; flex-direction: column; gap: 1px; margin-top: 12px; overflow: hidden; }
+.cp-chat-side-list span {
+  font-size: 10.5px; color: var(--mono-text2); padding: 4px 6px; border-radius: 6px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cp-chat-side-list span:first-child { background: rgba(0,0,0,0.05); color: var(--mono-text); font-weight: 600; }
+[data-theme="dark"] .cp-chat-side-list span:first-child { background: rgba(255,255,255,0.08); }
+.cp-chat-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.cp-chat-top { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; }
+.cp-chat-auto { font-size: 10.5px; color: var(--mono-text2); }
+.cp-chat-top-dots { font-size: 12px; color: var(--mono-muted); letter-spacing: 2px; }
+.cp-chat-centre {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  padding: 18px 22px 26px; gap: 16px;
+}
+.cp-chat-greet { font-size: clamp(19px, 1.8vw, 24px); font-weight: 300; color: var(--mono-muted); letter-spacing: -0.5px; }
+.cp-chat-greet strong { font-weight: 800; color: var(--mono-text); }
+.cp-chat-ask {
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1.5px solid var(--mono-border); padding-bottom: 9px;
+}
+.cp-chat-glyph { color: var(--mono-muted); flex-shrink: 0; }
+.cp-chat-plus { font-size: 16px; font-weight: 300; color: var(--mono-muted); line-height: 1; }
+.cp-chat-prompt { font-size: 12.5px; color: var(--mono-text); min-height: 16px; display: inline-flex; align-items: baseline; min-width: 0; overflow: hidden; }
+.cp-chat-ask-icons { margin-left: auto; display: flex; align-items: center; gap: 10px; color: var(--mono-muted); flex-shrink: 0; }
+.cp-chat-prompt > span:first-child:empty::before { content: 'Ask Copilot'; color: var(--mono-muted); }
+.cp-chat-caret {
+  display: inline-block; width: 1.5px; height: 13px; margin-left: 1px;
+  background: var(--mono-text); align-self: center;
+  animation: cp-caret-blink 1.05s step-end infinite;
+}
+@keyframes cp-caret-blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0; } }
+.cp-chat-pills { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+.cp-chat-pills span {
+  font-size: 10.5px; font-weight: 500; color: var(--mono-text2);
+  border: 1px solid var(--mono-border); border-radius: 8px; padding: 5px 11px;
+  background: var(--mono-bg); white-space: nowrap;
+}
+.cp-chat-pills .cp-chat-pills-search {
+  margin-left: auto; border: none; background: none; padding: 0 2px;
+  font-size: 13px; color: var(--mono-muted);
+}
+.cp-pill-org-ico {
+  display: inline-block; width: 9px; height: 9px; border-radius: 2px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  margin-right: 6px; vertical-align: -1px;
+}
+@media (max-width: 1050px) { .cp-chat-side { display: none; } }
+@media (max-width: 900px) {
+  .copilot-hero-split { grid-template-columns: 1fr; gap: 34px; }
+  .cp-chat { min-height: 250px; max-width: 480px; }
+}
+
+/* ── BENTO GRID ── */
+.cp-bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.cp-bento-tile {
+  position: relative; overflow: hidden; text-decoration: none; color: inherit;
+  background: var(--mono-bg); border: 1px solid var(--mono-border); border-radius: 14px;
+  padding: 20px; display: flex; flex-direction: column; gap: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.cp-bento-tile:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.10); border-color: var(--mono-muted); }
+.cp-bento-lg {
+  grid-column: span 2; padding: 26px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.cp-bento-glow {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.6;
+  background: radial-gradient(circle at 12% 0%, rgba(0,0,0,0.045), transparent 55%);
+  transition: opacity 0.35s;
+}
+[data-theme="dark"] .cp-bento-glow { background: radial-gradient(circle at 12% 0%, rgba(255,255,255,0.05), transparent 55%); }
+.cp-bento-tile:hover .cp-bento-glow { opacity: 1; }
+.cp-bento-kicker {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px;
+  color: var(--mono-muted);
+}
+.cp-bento-icons { display: flex; align-items: center; gap: 7px; position: relative; }
+.cp-bento-icons img { width: 26px; height: 26px; object-fit: contain; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.10)); }
+.cp-bento-lg .cp-bento-icons img { width: 32px; height: 32px; }
+.cp-bento-tile h3 { font-size: 16px; font-weight: 800; letter-spacing: -0.4px; color: var(--mono-text); margin: 0; position: relative; }
+.cp-bento-lg h3 { font-size: 21px; }
+.cp-bento-tile p { font-size: 12.5px; color: var(--mono-text2); line-height: 1.55; margin: 0; position: relative; flex: 1; }
+.cp-bento-lg p { font-size: 14px; }
+.cp-bento-chips { display: flex; flex-wrap: wrap; gap: 6px; position: relative; }
+.cp-bento-chips span {
+  font-size: 10.5px; font-weight: 500; color: var(--mono-text2);
+  background: var(--mono-bg); border: 1px solid var(--mono-border); border-radius: 8px;
+  padding: 4px 10px;
+}
+.cp-bento-cta { font-size: 12px; font-weight: 700; color: var(--mono-text); position: relative; margin-top: 4px; transition: letter-spacing 0.2s; }
+.cp-bento-tile:hover .cp-bento-cta { letter-spacing: 0.3px; }
+@media (max-width: 1000px) { .cp-bento { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .cp-bento { grid-template-columns: 1fr; } .cp-bento-lg { grid-column: span 1; } }
+
+/* ── SHARED SECTION SHELL ── */
+.cp-section { padding: 70px 5%; }
+.cp-section-inner { max-width: max(1180px, 75vw); margin: 0 auto; }
+.cp-kicker {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--mono-muted);
+  margin-bottom: 10px;
+}
+.cp-title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; letter-spacing: -1px; color: var(--mono-text); margin-bottom: 12px; line-height: 1.2; }
+.cp-sub { font-size: 15px; color: var(--mono-text2); line-height: 1.7; max-width: 640px; margin-bottom: 36px; }
+
+/* ── SECTION BACKGROUND VARIANT ── */
+.cp-why { background: var(--mono-side); }
+
+/* ── CTA BANNER (monochrome) ── */
+.copilot-banner {
+  background: linear-gradient(160deg, #232323 0%, #161616 100%);
+  padding: 60px 5%; text-align: center; position: relative; overflow: hidden;
+}
+.copilot-banner h2 { font-size: clamp(22px, 3vw, 36px); font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -1px; }
+.copilot-banner p { color: rgba(255,255,255,0.75); font-size: 16px; margin-bottom: 28px; }
+.copilot-banner-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.copilot-banner .btn-white {
+  background: #fff; color: #1f1f1f; padding: 12px 24px; border-radius: 10px;
+  font-size: 14px; font-weight: 700; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  text-decoration: none; display: inline-block; transition: all 0.22s;
+}
+.copilot-banner .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+.copilot-banner .btn-ghost {
+  background: rgba(255,255,255,0.15); color: #fff; padding: 12px 24px; border-radius: 10px;
+  font-size: 14px; font-weight: 700; border: 1px solid rgba(255,255,255,0.3);
+  text-decoration: none; display: inline-block; transition: all 0.22s; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.copilot-banner .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+
+@media (max-width: 900px) {
+  .cp-section { padding: 54px 5%; }
+}
+
+/* ── WORKSHOP BUILDER ── */
+.cp-builder-wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; align-items: start; }
+.cp-builder-palette {
+  background: var(--mono-bg); border: 1px solid var(--mono-border); border-radius: 14px;
+  padding: 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.cp-builder-group { margin-bottom: 16px; }
+.cp-builder-group:last-child { margin-bottom: 0; }
+.cp-builder-group-label {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;
+  color: var(--mono-muted); margin-bottom: 8px;
+}
+.cp-builder-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.cp-module {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 500; color: var(--mono-text2);
+  background: var(--mono-bg); border: 1px solid var(--mono-border); border-radius: 8px;
+  padding: 6px 12px; cursor: grab; -webkit-user-select: none; user-select: none;
+  transition: border-color 0.18s, box-shadow 0.18s, opacity 0.18s, transform 0.18s, color 0.18s;
+}
+.cp-module:hover { border-color: var(--mono-muted); color: var(--mono-text); box-shadow: 0 3px 10px rgba(0,0,0,0.08); transform: translateY(-1px); }
+.cp-module:active { cursor: grabbing; }
+.cp-module.dragging { opacity: 0.45; }
+.cp-module.selected { opacity: 0.38; border-style: dashed; transform: none; box-shadow: none; }
+.cp-module .cp-module-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mono-muted); flex-shrink: 0; }
+.cp-builder-board { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 14px; }
+.cp-dropzone {
+  min-height: 220px; border-radius: 14px; padding: 20px;
+  border: 1.5px dashed var(--mono-border);
+  background: var(--mono-side);
+  transition: border-color 0.2s, background 0.2s;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.cp-dropzone.dragover { border-color: var(--mono-muted); background: var(--mono-bg); }
+.cp-dropzone-title { font-size: 13px; font-weight: 800; letter-spacing: -0.2px; color: var(--mono-text); display: flex; align-items: center; justify-content: space-between; }
+.cp-dropzone-count { font-size: 11px; font-weight: 700; color: var(--mono-muted); }
+.cp-dropzone-hint { font-size: 13px; color: var(--mono-muted); line-height: 1.6; margin: auto 0; text-align: center; padding: 18px 8px; }
+.cp-dropzone-hint strong { color: var(--mono-text); }
+.cp-dropzone-list { display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+.cp-picked {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; color: var(--mono-bg); white-space: nowrap;
+  background: var(--mono-text); border-radius: 8px;
+  padding: 6px 8px 6px 12px; cursor: default; -webkit-user-select: none; user-select: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+  animation: cp-pop 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes cp-pop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.cp-picked button {
+  border: none; background: rgba(255,255,255,0.25); color: var(--mono-bg);
+  width: 17px; height: 17px; border-radius: 50%; cursor: pointer;
+  font-size: 11px; line-height: 1; display: flex; align-items: center; justify-content: center;
+  padding: 0; transition: background 0.15s;
+}
+[data-theme="dark"] .cp-picked button { background: rgba(0,0,0,0.25); }
+.cp-picked button:hover { background: rgba(255,255,255,0.45); }
+[data-theme="dark"] .cp-picked button:hover { background: rgba(0,0,0,0.45); }
+.cp-builder-notes {
+  width: 100%; box-sizing: border-box; display: block;
+  min-height: 76px; resize: vertical;
+  background: var(--mono-bg); border: 1px solid var(--mono-border); border-radius: 10px;
+  padding: 11px 14px;
+  font-family: inherit; font-size: 13px; line-height: 1.55; color: var(--mono-text);
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.cp-builder-notes::placeholder { color: var(--mono-muted); }
+.cp-builder-notes:focus { outline: none; border-color: var(--mono-muted); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.cp-builder-book {
+  display: block; text-align: center; text-decoration: none;
+  background: var(--mono-text); color: var(--mono-bg);
+  padding: 13px 24px; border-radius: 10px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+  transition: all 0.22s; opacity: 0.45; pointer-events: none;
+}
+.cp-builder-book.active { opacity: 1; pointer-events: auto; }
+.cp-builder-book.active:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.20); }
+@media (max-width: 900px) {
+  .cp-builder-wrap { grid-template-columns: 1fr; }
+  .cp-builder-board { position: static; }
+  .cp-dropzone { min-height: 140px; }
+}
+</style>
+<!-- Microsoft Clarity -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","whovnhgjm9");</script>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav id="mainNav">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="copilot.html" class="nav-copilot">Copilot</a></li><li><a href="apps.html">Apps</a></li>
+      <li><a href="themes.html">Themes</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="calculator.html">Package Advisor</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <button class="nav-cta" onclick="window.location.href='index.html#signup'">Book a Call</button>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="copilot-hero section-glass cp-snap">
+  <div class="copilot-hero-content">
+    <div class="copilot-hero-split">
+      <div class="copilot-hero-copy">
+        <div class="copilot-hero-kicker sa"><img src="img/Copilot-Icon-FY26.png" alt=""/>Microsoft 365 Copilot Training</div>
+        <h1 class="sa" style="--delay:80ms">Your teams have Copilot.<br>Now make it <em>count</em>.</h1>
+        <p class="sa" style="--delay:160ms">Licensing isn't adoption. We train your teams on the workflows that make Copilot a daily habit — from prompting fundamentals to Cowork, agents and Copilot inside every app they already use.</p>
+        <div class="copilot-hero-btns sa" style="--delay:240ms">
+          <a class="btn-primary" href="index.html#signup">Book a Discovery Call</a>
+          <a class="btn-secondary" href="#training-areas">Explore the Training ↓</a>
+        </div>
+      </div>
+
+      <div class="cp-chat sa-right" style="--delay:200ms" aria-hidden="true">
+        <div class="cp-chat-side">
+          <div class="cp-chat-side-head">
+            <span class="cp-chat-wordmark">Copilot</span>
+            <span class="cp-chat-side-glyphs">⧉ ⋮⋮</span>
+          </div>
+          <div class="cp-chat-tabs"><span class="on">Chat</span><span>Cowork</span></div>
+          <div class="cp-chat-side-item">⊕&ensp;New chat</div>
+          <div class="cp-chat-side-item">⌕&ensp;Search</div>
+          <div class="cp-chat-side-item">▤&ensp;Library</div>
+          <div class="cp-chat-side-item">⟨/⟩&ensp;Agents</div>
+          <div class="cp-chat-side-item">▢&ensp;Notebooks</div>
+          <div class="cp-chat-side-list">
+            <span>Q3 budget breakdown</span>
+            <span>Supplier follow-up draft</span>
+            <span>Project Aurora recap</span>
+            <span>Leadership call actions</span>
+            <span>Onboarding plan ideas</span>
+          </div>
+        </div>
+        <div class="cp-chat-main">
+          <div class="cp-chat-top">
+            <span class="cp-chat-auto">Auto ⌄</span>
+            <span class="cp-chat-top-dots">···</span>
+          </div>
+          <div class="cp-chat-centre">
+            <div class="cp-chat-greet"><strong>Hi,</strong> how can I help?</div>
+            <div class="cp-chat-ask">
+              <svg class="cp-chat-glyph" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><circle cx="9" cy="8" r="2.4" fill="currentColor" stroke="none"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="15" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>
+              <span class="cp-chat-plus">+</span>
+              <span class="cp-chat-prompt"><span id="cpChatPrompt"></span><span class="cp-chat-caret" id="cpChatCaret"></span></span>
+              <span class="cp-chat-ask-icons">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 18v4"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10v4"/><path d="M8 7v10"/><path d="M12 4v16"/><path d="M16 7v10"/><path d="M20 10v4"/></svg>
+              </span>
+            </div>
+            <div class="cp-chat-pills">
+              <span><i class="cp-pill-org-ico"></i>My org</span>
+              <span>Trending</span>
+              <span>Rewrite</span>
+              <span>Explain</span>
+              <span>…</span>
+              <span class="cp-chat-pills-search">⌕</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING AREAS -->
+<section class="cp-section cp-areas cp-snap" id="training-areas">
+  <div class="cp-section-inner">
+    <div class="cp-kicker sa">The training</div>
+    <h2 class="cp-title sa" style="--delay:60ms">Six dedicated Copilot sessions</h2>
+    <p class="cp-sub sa" style="--delay:120ms">Every session is hands-on and built around the workflows your teams already have — bookable individually, combined into workshops, or delivered as an ongoing adoption programme.</p>
+
+    <div class="cp-bento stagger">
+
+      <a href="apps/copilot-chat.html" class="cp-bento-tile cp-bento-lg sa" style="--delay:0ms">
+        <div class="cp-bento-glow"></div>
+        <div class="cp-bento-kicker">Start here</div>
+        <div class="cp-bento-icons"><img src="img/Copilot-Icon-FY26.png" alt="Copilot"/></div>
+        <h3>Introduction to Microsoft 365 Copilot Chat</h3>
+        <p>The foundations — prompting that works first time, Work vs Web grounding, and the daily habits that make Copilot stick.</p>
+        <div class="cp-bento-chips">
+          <span>Prompting</span><span>Grounding</span><span>Daily habits</span>
+        </div>
+        <span class="cp-bento-cta">Explore training →</span>
+      </a>
+
+      <a href="apps/copilot-agents.html" class="cp-bento-tile cp-bento-lg sa" style="--delay:80ms">
+        <div class="cp-bento-glow"></div>
+        <div class="cp-bento-kicker">Build &amp; research</div>
+        <div class="cp-bento-icons"><img src="img/Copilot-Icon-FY26.png" alt="Copilot"/></div>
+        <h3>Copilot Agents and Notebooks</h3>
+        <p>Custom AI assistants built on your own content — plus persistent Notebooks that turn scattered sources into answers.</p>
+        <div class="cp-bento-chips">
+          <span>Agents</span><span>Notebooks</span><span>Researcher &amp; Analyst</span>
+        </div>
+        <span class="cp-bento-cta">Explore training →</span>
+      </a>
+
+      <a href="apps/copilot-excel-powerpoint.html" class="cp-bento-tile sa" style="--delay:160ms">
+        <div class="cp-bento-icons"><img src="img/Excel-Icon-FY26.png" alt="Excel"/></div>
+        <h3>Working with Excel Agent</h3>
+        <p>Natural-language analysis, formulas and charts — Agent Mode does the heavy lifting.</p>
+        <div class="cp-bento-chips"><span>Analysis</span><span>Agent Mode</span></div>
+        <span class="cp-bento-cta">Explore →</span>
+      </a>
+
+      <a href="apps/copilot-teams-outlook.html" class="cp-bento-tile sa" style="--delay:220ms">
+        <div class="cp-bento-icons"><img src="img/Teams-Icon-FY26.png" alt="Teams"/><img src="img/Outlook-Icon-FY26.png" alt="Outlook"/></div>
+        <h3>Copilot in Teams and Outlook</h3>
+        <p>Meetings recapped, inboxes triaged, follow-ups drafted.</p>
+        <div class="cp-bento-chips"><span>Recaps</span><span>Drafting</span></div>
+        <span class="cp-bento-cta">Explore →</span>
+      </a>
+
+      <a href="apps/copilot-notebooks.html" class="cp-bento-tile sa" style="--delay:280ms">
+        <div class="cp-bento-icons"><img src="img/Cowork-Icon-FY26.png" alt="Copilot Cowork"/></div>
+        <h3>Agentic flows with Copilot Cowork</h3>
+        <p>Describe the outcome — Cowork plans the steps and does the work.</p>
+        <div class="cp-bento-chips"><span>Cowork</span><span>Multi-step</span></div>
+        <span class="cp-bento-cta">Explore →</span>
+      </a>
+
+      <a href="apps/copilot-word-apps.html" class="cp-bento-tile sa" style="--delay:340ms">
+        <div class="cp-bento-icons"><img src="img/SharePoint-Icon-FY26.png" alt="SharePoint"/></div>
+        <h3>Copilot across SharePoint</h3>
+        <p>Pages, sites, summaries and agents across your intranet and libraries.</p>
+        <div class="cp-bento-chips"><span>Sites</span><span>Libraries</span></div>
+        <span class="cp-bento-cta">Explore →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP BUILDER -->
+<section class="cp-section cp-why cp-snap" id="workshop-builder">
+  <div class="cp-section-inner">
+    <div class="cp-kicker sa">Build your own</div>
+    <h2 class="cp-title sa" style="--delay:60ms">Drag together the workshop your team actually needs</h2>
+    <p class="cp-sub sa" style="--delay:120ms">Pick the Copilot modules that matter to your team — drag them into the workshop canvas, or just click to add. Your selection comes with you to the booking form, so the discovery call starts from what you actually need.</p>
+
+    <div class="cp-builder-wrap sa" style="--delay:180ms">
+      <div class="cp-builder-palette" id="cpPalette" aria-label="Available Copilot modules"></div>
+
+      <div class="cp-builder-board">
+        <div class="cp-dropzone" id="cpDropzone" aria-label="Your workshop selection" aria-live="polite">
+          <div class="cp-dropzone-title">Your workshop <span class="cp-dropzone-count" id="cpCount"></span></div>
+          <div class="cp-dropzone-hint" id="cpHint"><strong>Drag modules here</strong><br>— or click any module to add it.</div>
+          <div class="cp-dropzone-list" id="cpPicked"></div>
+        </div>
+
+        <textarea class="cp-builder-notes" id="cpNotes" rows="3" aria-label="Notes for your workshop enquiry" placeholder="Any notes? Team size, experience level, what you'd like to focus on… (optional)"></textarea>
+
+        <a class="cp-builder-book" id="cpBook" href="index.html#signup">Book this workshop →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="copilot-banner">
+  <div>
+    <h2>Ready to turn Copilot licences into daily habits?</h2>
+    <p>Book a free discovery call. No commitment, no pressure.</p>
+    <div class="copilot-banner-btns">
+      <a class="btn-white" href="index.html#signup">Book a Discovery Call</a>
+      <a class="btn-ghost" href="apps.html">Browse All App Training →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
+  <p>© 2026 Haedlern. All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var MODULES = [
+    { id: 'chat-fundamentals', area: 'Copilot essentials',        label: 'Copilot Chat fundamentals', short: 'Chat fundamentals' },
+    { id: 'prompting',         area: 'Copilot essentials',        label: 'Prompting — the four-part framework', short: 'Prompting' },
+    { id: 'daily-habits',      area: 'Copilot essentials',        label: 'Daily habits — catch-up, meeting prep & drafting', short: 'Daily habits' },
+    { id: 'cowork',            area: 'Cowork, Notebooks & Create', label: 'Cowork — outcome-driven AI workflows', short: 'Cowork' },
+    { id: 'notebooks',         area: 'Cowork, Notebooks & Create', label: 'Notebooks — persistent research workspaces', short: 'Notebooks' },
+    { id: 'create',            area: 'Cowork, Notebooks & Create', label: 'Create — AI images & video', short: 'Create' },
+    { id: 'prebuilt-agents',   area: 'Agents',                    label: 'Researcher & Analyst — the reasoning agents', short: 'Researcher & Analyst' },
+    { id: 'build-agents',      area: 'Agents',                    label: 'Building agents in SharePoint & Chat', short: 'Agent building' },
+    { id: 'copilot-studio',    area: 'Agents',                    label: 'Copilot Studio — governed custom agents', short: 'Copilot Studio' },
+    { id: 'teams',             area: 'Communication',             label: 'Teams — meetings, recaps & Facilitator', short: 'Teams' },
+    { id: 'outlook',           area: 'Communication',             label: 'Outlook — inbox triage & drafting', short: 'Outlook' },
+    { id: 'word',              area: 'Documents & data',          label: 'Word — drafting & Agent Mode', short: 'Word' },
+    { id: 'excel',             area: 'Documents & data',          label: 'Excel — natural-language data analysis', short: 'Excel' },
+    { id: 'powerpoint',        area: 'Documents & data',          label: 'PowerPoint — decks from a prompt', short: 'PowerPoint' },
+    { id: 'onenote',           area: 'Documents & data',          label: 'OneNote — note summaries & insights', short: 'OneNote' },
+    { id: 'onedrive',          area: 'Files & sites',             label: 'OneDrive — file summaries & comparisons', short: 'OneDrive' },
+    { id: 'sharepoint',        area: 'Files & sites',             label: 'SharePoint — pages, sites & agents', short: 'SharePoint' },
+    { id: 'planner',           area: 'Everyday apps',             label: 'Planner — task & project automation', short: 'Planner' },
+    { id: 'forms',             area: 'Everyday apps',             label: 'Forms — AI-drafted surveys & quizzes', short: 'Forms' },
+    { id: 'loop',              area: 'Everyday apps',             label: 'Loop — co-creation & brainstorming', short: 'Loop' },
+    { id: 'whiteboard',        area: 'Everyday apps',             label: 'Whiteboard — ideation & visualisation', short: 'Whiteboard' },
+    { id: 'clipchamp',         area: 'Everyday apps',             label: 'Clipchamp & Stream — video summaries', short: 'Clipchamp & Stream' },
+    { id: 'edge',              area: 'Everyday apps',             label: 'Edge — AI-assisted browsing & research', short: 'Edge' }
+  ];
+
+  var palette = document.getElementById('cpPalette');
+  var dropzone = document.getElementById('cpDropzone');
+  var pickedEl = document.getElementById('cpPicked');
+  var hintEl = document.getElementById('cpHint');
+  var countEl = document.getElementById('cpCount');
+  var bookEl = document.getElementById('cpBook');
+  var notesEl = document.getElementById('cpNotes');
+  var selected = [];
+
+  // Build the palette, grouped by area
+  var areas = [];
+  MODULES.forEach(function (m) { if (areas.indexOf(m.area) === -1) areas.push(m.area); });
+  areas.forEach(function (area) {
+    var group = document.createElement('div');
+    group.className = 'cp-builder-group';
+    var label = document.createElement('div');
+    label.className = 'cp-builder-group-label';
+    label.textContent = area;
+    group.appendChild(label);
+    var chips = document.createElement('div');
+    chips.className = 'cp-builder-chips';
+    MODULES.filter(function (m) { return m.area === area; }).forEach(function (m) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'cp-module';
+      chip.id = 'cpmod-' + m.id;
+      chip.draggable = true;
+      chip.setAttribute('aria-pressed', 'false');
+      chip.innerHTML = '<span class="cp-module-dot"></span>' + m.label;
+      chip.addEventListener('click', function () { toggle(m.id); });
+      chip.addEventListener('dragstart', function (e) {
+        e.dataTransfer.setData('text/plain', m.id);
+        e.dataTransfer.effectAllowed = 'copy';
+        chip.classList.add('dragging');
+      });
+      chip.addEventListener('dragend', function () { chip.classList.remove('dragging'); });
+      chips.appendChild(chip);
+    });
+    group.appendChild(chips);
+    palette.appendChild(group);
+  });
+
+  // Drop zone
+  dropzone.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    dropzone.classList.add('dragover');
+  });
+  dropzone.addEventListener('dragleave', function () { dropzone.classList.remove('dragover'); });
+  dropzone.addEventListener('drop', function (e) {
+    e.preventDefault();
+    dropzone.classList.remove('dragover');
+    var id = e.dataTransfer.getData('text/plain');
+    if (id && selected.indexOf(id) === -1) { selected.push(id); render(); }
+  });
+
+  function toggle(id) {
+    var i = selected.indexOf(id);
+    if (i === -1) selected.push(id); else selected.splice(i, 1);
+    render();
+  }
+
+  function moduleById(id) {
+    for (var i = 0; i < MODULES.length; i++) if (MODULES[i].id === id) return MODULES[i];
+    return null;
+  }
+
+  function render() {
+    // palette states
+    MODULES.forEach(function (m) {
+      var chip = document.getElementById('cpmod-' + m.id);
+      var on = selected.indexOf(m.id) !== -1;
+      chip.classList.toggle('selected', on);
+      chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    // picked chips
+    pickedEl.innerHTML = '';
+    selected.forEach(function (id) {
+      var m = moduleById(id);
+      var chip = document.createElement('span');
+      chip.className = 'cp-picked';
+      chip.title = m.label;
+      chip.textContent = m.short || m.label;
+      var x = document.createElement('button');
+      x.type = 'button';
+      x.setAttribute('aria-label', 'Remove ' + m.label);
+      x.innerHTML = '&times;';
+      x.addEventListener('click', function () { toggle(id); });
+      chip.appendChild(x);
+      pickedEl.appendChild(chip);
+    });
+    hintEl.style.display = selected.length ? 'none' : '';
+    countEl.textContent = selected.length ? selected.length + ' module' + (selected.length > 1 ? 's' : '') : '';
+    updateBook();
+  }
+
+  function getNotes() {
+    return notesEl ? notesEl.value.trim() : '';
+  }
+
+  function updateBook() {
+    bookEl.classList.toggle('active', selected.length > 0 || getNotes().length > 0);
+  }
+
+  if (notesEl) notesEl.addEventListener('input', updateBook);
+
+  // Carry selection + notes to the booking form
+  bookEl.addEventListener('click', function () {
+    var notes = getNotes();
+    if (!selected.length && !notes) return;
+    var msg = 'Copilot workshop enquiry';
+    if (selected.length) {
+      var lines = selected.map(function (id) { return '• ' + moduleById(id).label; });
+      msg += ' — modules I\'m interested in:\n' + lines.join('\n');
+    }
+    if (notes) msg += '\n\nNotes:\n' + notes;
+    try { localStorage.setItem('haedlernWorkshopMsg', msg); } catch (e) {}
+  });
+
+  render();
+})();
+</script>
+<script>
+// Hero mock — types rotating workplace prompts into the "Ask Copilot" input
+(function () {
+  'use strict';
+  var promptEl = document.getElementById('cpChatPrompt');
+  var caretEl = document.getElementById('cpChatCaret');
+  if (!promptEl) return;
+
+  var PROMPTS = [
+    'Catch me up on Project Aurora — what changed while I was off?',
+    'Draft a follow-up email to the supplier — friendly but firm.',
+    'Build a deck from this quarter\'s ops report.',
+    'What decisions came out of yesterday\'s leadership call?',
+    'Summarise this contract and flag anything unusual.'
+  ];
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    promptEl.textContent = PROMPTS[0];
+    if (caretEl) caretEl.style.display = 'none';
+    return;
+  }
+
+  var pi = 0, ci = 0, deleting = false;
+
+  function tick() {
+    var full = PROMPTS[pi];
+    if (!deleting) {
+      ci++;
+      promptEl.textContent = full.slice(0, ci);
+      if (ci === full.length) { deleting = true; setTimeout(tick, 2400); return; }
+      setTimeout(tick, 34 + Math.random() * 40);
+    } else {
+      ci -= 3;
+      if (ci <= 0) {
+        ci = 0; deleting = false;
+        promptEl.textContent = '';
+        pi = (pi + 1) % PROMPTS.length;
+        setTimeout(tick, 900);
+        return;
+      }
+      promptEl.textContent = full.slice(0, ci);
+      setTimeout(tick, 14);
+    }
+  }
+  setTimeout(tick, 1400);
+})();
+</script>
+</body>
+</html>

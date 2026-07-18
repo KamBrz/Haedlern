@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -67,10 +67,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About Power BI</h2>
-    <p>Microsoft Power BI is M365's business-intelligence platform — a tool for pulling data from dozens of sources, modelling it and publishing interactive dashboards that stay live and governed. It covers everything from quick personal reports to enterprise-scale data models, with row-level security, scheduled refresh and AI-assisted insights.</p>
-    <p>It's best used for KPI dashboards, executive reporting, finance and operations reporting, sales analytics and any recurring report currently rebuilt in Excel every month. Analysts, finance teams, operations, sales leadership and executives benefit most, with IT owning the underlying data infrastructure. Power BI solves the perennial business-reporting problem of numbers taking days to produce and being out of date by the time they arrive — replacing it with always-on dashboards everyone trusts.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About Power BI</h2>
+      <p>Microsoft Power BI is M365's business-intelligence platform — a tool for pulling data from dozens of sources, modelling it and publishing interactive dashboards that stay live and governed. It covers everything from quick personal reports to enterprise-scale data models, with row-level security, scheduled refresh and AI-assisted insights.</p>
+      <p>It's best used for KPI dashboards, executive reporting, finance and operations reporting, sales analytics and any recurring report currently rebuilt in Excel every month. Analysts, finance teams, operations, sales leadership and executives benefit most, with IT owning the underlying data infrastructure. Power BI solves the perennial business-reporting problem of numbers taking days to produce and being out of date by the time they arrive — replacing it with always-on dashboards everyone trusts.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_POWERBI_PAGE.png" alt="Illustration of a person working in Power BI" loading="lazy"/>
   </div>
 </section>
 
@@ -83,31 +86,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">Power BI</div>
-      <ul class="session-bullets">
-        <li>What Power BI is — service, Desktop and mobile app</li>
-        <li>Key concepts — semantic models, reports, dashboards, workspaces and apps</li>
-        <li>Navigating the Power BI service — Home, Browse, Workspaces and Apps</li>
-        <li>Opening and navigating reports — pages, visuals and the Filters pane</li>
-        <li>Interacting with visuals — cross-filtering, cross-highlighting and tooltips</li>
-        <li>Using slicers and filters to explore data</li>
-        <li>Drill-down and drill-up within visual hierarchies</li>
-        <li>Drill-through to detail pages</li>
-        <li>Focus mode and full screen for presenting visuals</li>
-        <li>Bookmarks — saving and returning to a specific report view</li>
-        <li>Q&amp;A — asking natural language questions about your data</li>
-        <li>Dashboards — consuming tiles and navigating to underlying reports</li>
-        <li>Subscribing to reports and setting data alerts</li>
-        <li>Exporting visuals and reports — Excel, PDF and PowerPoint</li>
-        <li>Sharing reports and dashboards with colleagues</li>
-        <li>Viewing Power BI reports embedded in Teams and SharePoint</li>
-        <li>Connecting to data — Excel, SharePoint and other sources</li>
-        <li>Shaping data with Power Query — basic cleaning and transformations</li>
-        <li>Building your first report — charts, cards, slicers and KPI visuals</li>
-        <li>Publishing a report to the Power BI service</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Finding your way</h4>
+          <p>What Power BI is across the service, Desktop and mobile app, and the key concepts that hold it together — semantic models, reports, dashboards, workspaces and apps. We navigate the service through Home, Browse, Workspaces and Apps, then open a report and get comfortable with pages, visuals and the Filters pane.</p>
+          <div class="ses-chips"><span>Key concepts</span><span>The service</span><span>Report anatomy</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Exploring the data</h4>
+          <p>Turning a static report into an interactive conversation — cross-filtering, cross-highlighting and tooltips, plus slicers and filters for exploring the data on your own terms. We drill down and up within visual hierarchies, drill through to detail pages, and use focus mode and full screen when presenting a single visual.</p>
+          <div class="ses-chips"><span>Slicers</span><span>Drill-down</span><span>Drill-through</span><span>Focus mode</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Insights on demand</h4>
+          <p>Saving and returning to a specific report view with bookmarks, and asking natural-language questions of your data with Q&amp;A. We consume dashboard tiles and navigate to their underlying reports, then subscribe to reports and set data alerts so the numbers come to you.</p>
+          <div class="ses-chips"><span>Bookmarks</span><span>Q&amp;A</span><span>Dashboards</span><span>Alerts</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Sharing everywhere</h4>
+          <p>Getting insights out of Power BI and in front of people — exporting visuals and reports to Excel, PDF and PowerPoint, and sharing reports and dashboards with colleagues. We also view reports embedded in Teams and SharePoint, where most people will actually consume them.</p>
+          <div class="ses-chips"><span>Export</span><span>Sharing</span><span>Teams embed</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Building your own</h4>
+          <p>From consumer to creator: connecting to data in Excel, SharePoint and other sources, then shaping it with Power Query through basic cleaning and transformations. We build a first report with charts, cards, slicers and KPI visuals, and publish it to the Power BI service for others to use.</p>
+          <div class="ses-chips"><span>Data sources</span><span>Power Query</span><span>First report</span><span>Publishing</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

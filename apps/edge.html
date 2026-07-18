@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -68,10 +68,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About Microsoft Edge for Business</h2>
-    <p>Microsoft Edge for Business is a secure, enterprise-grade browser purpose-built to work with Microsoft 365. It integrates with Entra ID, enforces policies through Intune and surfaces Copilot, Teams, Outlook and SharePoint features natively in the browser — separating work browsing from personal browsing with a dedicated work profile.</p>
-    <p>It's best used as the everyday browser for any M365-licensed workforce, where speed, security, productivity tooling and AI-assisted research matter. IT, security, compliance and procurement teams benefit from centralised management; end users benefit from faster SharePoint access, integrated Copilot and built-in PDF tooling. Edge solves the common enterprise problem of employees using a patchwork of personal browsers that leak corporate data and miss M365 integrations — replacing it with a single, governable, AI-aware browsing experience.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About Microsoft Edge for Business</h2>
+      <p>Microsoft Edge for Business is a secure, enterprise-grade browser purpose-built to work with Microsoft 365. It integrates with Entra ID, enforces policies through Intune and surfaces Copilot, Teams, Outlook and SharePoint features natively in the browser — separating work browsing from personal browsing with a dedicated work profile.</p>
+      <p>It's best used as the everyday browser for any M365-licensed workforce, where speed, security, productivity tooling and AI-assisted research matter. IT, security, compliance and procurement teams benefit from centralised management; end users benefit from faster SharePoint access, integrated Copilot and built-in PDF tooling. Edge solves the common enterprise problem of employees using a patchwork of personal browsers that leak corporate data and miss M365 integrations — replacing it with a single, governable, AI-aware browsing experience.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_EDGE_PAGE.png" alt="Illustration of a person working in Microsoft Edge for Business" loading="lazy"/>
   </div>
 </section>
 
@@ -84,31 +87,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">Microsoft Edge for Business</div>
-      <ul class="session-bullets">
-        <li>What Microsoft Edge for Business is and why it's the recommended browser for M365 users</li>
-        <li>Navigating the Edge interface — address bar, toolbar, tabs and settings</li>
-        <li>Setting up and signing in to your work profile</li>
-        <li>Automatic profile switching — routing work URLs to your work profile</li>
-        <li>Syncing favourites, passwords and history across devices</li>
-        <li>Managing tabs — pinning, grouping, muting and sleeping inactive tabs</li>
-        <li>Vertical tabs — enabling and using a side tab bar for easier navigation</li>
-        <li>Tab Groups — organising open tabs by project with colour coding</li>
-        <li>Edge Workspaces — saving and sharing a named set of tabs with colleagues</li>
-        <li>Collections — gathering web pages, images and notes for a project and exporting to Word or Excel</li>
-        <li>Immersive Reader — distraction-free reading with text preferences, Read Aloud and focus tools</li>
-        <li>Built-in PDF reader — annotating, highlighting, commenting and filling forms in PDFs</li>
-        <li>Microsoft Password Manager — saving, autofilling and managing passwords</li>
-        <li>The Edge sidebar — accessing Copilot, Microsoft Search and M365 apps without leaving the page</li>
-        <li>Copilot in Edge — summarising pages, drafting content and asking questions about what you're reading</li>
-        <li>Microsoft Search from the address bar — finding people, files and SharePoint sites across your organisation</li>
-        <li>Web Capture — taking and annotating screenshots of web pages</li>
-        <li>IE Mode — opening legacy internal web applications inside Edge</li>
-        <li>Tracking prevention and SmartScreen — understanding Edge's built-in security features</li>
-        <li>InPrivate browsing — what it protects and when to use it</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Your work browser, set up right</h4>
+          <p>What Microsoft Edge for Business is and why it's the recommended browser for M365 users, with a tour of the interface — address bar, toolbar, tabs and settings. We set up and sign in to the work profile, enable automatic profile switching so work URLs open in the right place, and sync favourites, passwords and history across devices.</p>
+          <div class="ses-chips"><span>Work profile</span><span>Profile switching</span><span>Sync</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Taming your tabs</h4>
+          <p>Bringing order to tab chaos: pinning, grouping, muting and sleeping inactive tabs, plus vertical tabs for easier side-bar navigation. We organise open tabs by project with colour-coded Tab Groups and use Edge Workspaces to save and share a named set of tabs with colleagues.</p>
+          <div class="ses-chips"><span>Vertical tabs</span><span>Tab Groups</span><span>Workspaces</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Research &amp; reading tools</h4>
+          <p>Collections for gathering web pages, images and notes for a project and exporting them to Word or Excel, alongside Immersive Reader for distraction-free reading with text preferences, Read Aloud and focus tools. We also annotate, highlight, comment and fill forms with the built-in PDF reader, and capture and mark up screenshots with Web Capture.</p>
+          <div class="ses-chips"><span>Collections</span><span>Immersive Reader</span><span>PDF tools</span><span>Web Capture</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Copilot &amp; search built in</h4>
+          <p>The Edge sidebar puts Copilot, Microsoft Search and M365 apps a click away without leaving the page. We use Copilot in Edge to summarise pages, draft content and ask questions about what you're reading, and search from the address bar to find people, files and SharePoint sites across your organisation.</p>
+          <div class="ses-chips"><span>Sidebar</span><span>Copilot in Edge</span><span>Microsoft Search</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Staying safe &amp; compatible</h4>
+          <p>Microsoft Password Manager for saving, autofilling and managing passwords, and IE Mode for opening legacy internal web applications inside Edge. We finish with the built-in protections — tracking prevention and SmartScreen — and what InPrivate browsing does and doesn't protect, and when to use it.</p>
+          <div class="ses-chips"><span>Password Manager</span><span>IE Mode</span><span>SmartScreen</span><span>InPrivate</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

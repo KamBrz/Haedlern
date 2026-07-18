@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -67,10 +67,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About Outlook</h2>
-    <p>Microsoft Outlook is M365's email and calendar hub — now powered by Copilot, with deep integrations into Teams, To Do and SharePoint. Modern Outlook is far more than an inbox; it's where most people manage their day, triage communication, schedule meetings and turn email into action.</p>
-    <p>It's best used for disciplined inbox management, calendar scheduling, meeting prep, delegate access and group mailbox handling — especially when combined with Copilot's summarisation and drafting. Every employee benefits, but managers, executives, executive assistants, sales and customer-facing teams gain the most from structured Outlook practice. Outlook solves the eternal knowledge-worker problem of drowning in email — with rules, categories, quick steps, Copilot summaries and calendar-blocking turning a cluttered inbox into a functional, time-respecting command centre.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About Outlook</h2>
+      <p>Microsoft Outlook is M365's email and calendar hub — now powered by Copilot, with deep integrations into Teams, To Do and SharePoint. Modern Outlook is far more than an inbox; it's where most people manage their day, triage communication, schedule meetings and turn email into action.</p>
+      <p>It's best used for disciplined inbox management, calendar scheduling, meeting prep, delegate access and group mailbox handling — especially when combined with Copilot's summarisation and drafting. Every employee benefits, but managers, executives, executive assistants, sales and customer-facing teams gain the most from structured Outlook practice. Outlook solves the eternal knowledge-worker problem of drowning in email — with rules, categories, quick steps, Copilot summaries and calendar-blocking turning a cluttered inbox into a functional, time-respecting command centre.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_OUTLOOK_PAGE.png" alt="Illustration of a person working in Outlook" loading="lazy"/>
   </div>
 </section>
 
@@ -83,30 +86,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">Outlook</div>
-      <ul class="session-bullets">
-        <li>Navigating the Outlook interface — mail, calendar, people and tasks</li>
-        <li>Composing emails — formatting, attachments, @mentions and OneDrive links</li>
-        <li>Scheduling emails to send later and recalling sent messages</li>
-        <li>Focused Inbox — managing the Focused vs. Other split</li>
-        <li>Creating folders, categories and flags to organise your inbox</li>
-        <li>Rules — automatically sorting, categorising and moving emails</li>
-        <li>Quick Steps — multi-action shortcuts for repetitive tasks</li>
-        <li>Setting up automatic replies (Out of Office)</li>
-        <li>Creating and managing email signatures</li>
-        <li>Email templates for repetitive communications</li>
-        <li>Advanced search — filters, search folders and finding attachments</li>
-        <li>Sharing your calendar and viewing colleagues' calendars</li>
-        <li>Scheduling meetings — Scheduling Assistant and Room Finder</li>
-        <li>Creating and managing recurring appointments</li>
-        <li>Responding to, updating and cancelling meeting invitations</li>
-        <li>Creating contact groups for emailing multiple people at once</li>
-        <li>Delegation and shared mailboxes</li>
-        <li>Managing tasks and integration with Microsoft To Do</li>
-        <li>Outlook and Teams — joining meetings, sharing to channels</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Mastering mail</h4>
+          <p>A grounding in the Outlook interface across mail, calendar, people and tasks, then composing emails properly — formatting, attachments, @mentions and OneDrive links instead of bulky copies. We also schedule emails to send later, recall sent messages, and make sense of the Focused vs. Other inbox split.</p>
+          <div class="ses-chips"><span>@mentions</span><span>Scheduled send</span><span>Focused Inbox</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>An inbox under control</h4>
+          <p>Organising with folders, categories and flags, then letting Outlook do the filing for you — rules that automatically sort, categorise and move emails, and Quick Steps that bundle repetitive multi-action tasks into a single click. Advanced search with filters, search folders and attachment-finding means nothing stays buried.</p>
+          <div class="ses-chips"><span>Rules</span><span>Quick Steps</span><span>Search folders</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Automate the routine</h4>
+          <p>The small set-ups that pay off daily: automatic replies for when you are out of office, professional email signatures created and managed properly, and email templates that turn repetitive communications into a two-second job.</p>
+          <div class="ses-chips"><span>Out of Office</span><span>Signatures</span><span>Templates</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Calendar confidence</h4>
+          <p>Sharing your calendar and viewing colleagues' calendars, then scheduling meetings the painless way with the Scheduling Assistant and Room Finder. We also create and manage recurring appointments, and handle meeting invitations gracefully — responding, updating and cancelling without confusion.</p>
+          <div class="ses-chips"><span>Scheduling Assistant</span><span>Room Finder</span><span>Recurring meetings</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Working as a team</h4>
+          <p>Emailing groups of people at once with contact groups, and running delegation and shared mailboxes so team inboxes stay covered. We finish by managing tasks with the Microsoft To Do integration and connecting Outlook to Teams — joining meetings and sharing emails to channels.</p>
+          <div class="ses-chips"><span>Shared mailboxes</span><span>To Do</span><span>Teams</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

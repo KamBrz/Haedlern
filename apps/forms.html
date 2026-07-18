@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -67,10 +67,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About Forms</h2>
-    <p>Microsoft Forms is M365's built-in survey, quiz and data-collection tool — a lightweight web app for designing forms that work on any device and plug directly into the rest of the M365 stack. Responses flow into Excel, Teams channels and Power Automate flows with no extra setup.</p>
-    <p>It's best used for staff surveys, customer feedback, event registrations, training quizzes, polls in Teams meetings, and any structured data capture that would otherwise land in ad-hoc email threads. HR, L&amp;D, internal comms, event organisers, managers and trainers benefit most. Forms solves the classic problem of collecting information in messy, unstructured ways — replacing paper, PDF attachments and free-text emails with a single, governed capture experience that produces clean, analysable data from the moment the form is filled in.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About Forms</h2>
+      <p>Microsoft Forms is M365's built-in survey, quiz and data-collection tool — a lightweight web app for designing forms that work on any device and plug directly into the rest of the M365 stack. Responses flow into Excel, Teams channels and Power Automate flows with no extra setup.</p>
+      <p>It's best used for staff surveys, customer feedback, event registrations, training quizzes, polls in Teams meetings, and any structured data capture that would otherwise land in ad-hoc email threads. HR, L&amp;D, internal comms, event organisers, managers and trainers benefit most. Forms solves the classic problem of collecting information in messy, unstructured ways — replacing paper, PDF attachments and free-text emails with a single, governed capture experience that produces clean, analysable data from the moment the form is filled in.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_FORMS_PAGE.png" alt="Illustration of a person working in Forms" loading="lazy"/>
   </div>
 </section>
 
@@ -83,31 +86,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">Forms</div>
-      <ul class="session-bullets">
-        <li>What Microsoft Forms is and common use cases — surveys, quizzes, polls and registrations</li>
-        <li>Accessing Forms from the Microsoft 365 app launcher and forms.office.com</li>
-        <li>Navigating the Forms home page — My Forms, Shared with Me and Group Forms</li>
-        <li>Creating a form from scratch and from a template</li>
-        <li>Question types — Choice, Text, Rating, Date, Ranking, Likert, File Upload and NPS</li>
-        <li>Making questions required, adding descriptions and shuffling answer options</li>
-        <li>Adding images and videos to questions</li>
-        <li>Using Sections to divide a form into pages</li>
-        <li>Branching logic — directing respondents to different questions based on their answers</li>
-        <li>Form and Quiz settings — limiting to one response, opening/closing responses, custom thank-you message</li>
-        <li>Applying themes and customising the form appearance</li>
-        <li>Sharing a form — link, QR code, email, Teams message and SharePoint embed</li>
-        <li>Collaborating on a form with co-authors</li>
-        <li>Sharing a form as a template for others to copy and reuse</li>
-        <li>Viewing the Responses summary — charts, individual responses and completion stats</li>
-        <li>Exporting responses to Excel for deeper analysis</li>
-        <li>Adding a Forms tab to a Teams channel</li>
-        <li>Running a live poll during a Teams meeting</li>
-        <li>Adding a Forms web part to a SharePoint page</li>
-        <li>Creating a Quiz — point values, correct answers and instant feedback</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Getting started</h4>
+          <p>What Microsoft Forms is and where it earns its keep — surveys, quizzes, polls and event registrations. We access Forms from the Microsoft 365 app launcher and forms.office.com, tour the home page across My Forms, Shared with Me and Group Forms, and create a first form from scratch and from a template.</p>
+          <div class="ses-chips"><span>Use cases</span><span>forms.office.com</span><span>Templates</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Crafting great questions</h4>
+          <p>Choosing the right question type for the job — Choice, Text, Rating, Date, Ranking, Likert, File Upload and NPS. We make questions required, add descriptions, shuffle answer options and bring questions to life with images and videos, then use Sections to divide longer forms into pages.</p>
+          <div class="ses-chips"><span>Question types</span><span>Images &amp; video</span><span>Sections</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Smart flow &amp; styling</h4>
+          <p>Branching logic that directs respondents to different questions based on their answers, so nobody wades through irrelevant pages. We work through form and quiz settings — limiting to one response, opening and closing responses, custom thank-you messages — and apply themes to customise the form's appearance.</p>
+          <div class="ses-chips"><span>Branching logic</span><span>Response settings</span><span>Themes</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Sharing everywhere</h4>
+          <p>Getting the form in front of people — by link, QR code, email, Teams message or SharePoint embed — and collaborating on it with co-authors, including sharing it as a template for others to copy and reuse. We add a Forms tab to a Teams channel, run a live poll during a Teams meeting and place a Forms web part on a SharePoint page.</p>
+          <div class="ses-chips"><span>QR &amp; links</span><span>Co-authoring</span><span>Live polls</span><span>SharePoint embed</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Results &amp; quizzes</h4>
+          <p>Reading the Responses summary — charts, individual responses and completion stats — and exporting responses to Excel for deeper analysis. We finish by building a proper quiz, with point values, correct answers and instant feedback for respondents.</p>
+          <div class="ses-chips"><span>Response analytics</span><span>Excel export</span><span>Quiz builder</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

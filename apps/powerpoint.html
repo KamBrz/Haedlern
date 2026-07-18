@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -67,10 +67,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About PowerPoint</h2>
-    <p>Microsoft PowerPoint is the standard for business presentations — now enhanced with Designer for automatic layouts, Presenter Coach for rehearsal and Copilot for generating entire decks from a prompt. Modern PowerPoint is far more than bullet lists on slides; it's a storytelling, design and live-presenting platform.</p>
-    <p>It's best used for leadership updates, sales pitches, internal training, town halls, client-facing proposals and any story that benefits from visual structure. Leadership, sales, marketing, L&amp;D, HR and anyone presenting regularly benefits most. PowerPoint solves the widespread problem of decks that are slow to build, inconsistent in brand, and painful to present — by combining templates, design intelligence and Copilot into a faster, more polished way to build and deliver presentations that actually land.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About PowerPoint</h2>
+      <p>Microsoft PowerPoint is the standard for business presentations — now enhanced with Designer for automatic layouts, Presenter Coach for rehearsal and Copilot for generating entire decks from a prompt. Modern PowerPoint is far more than bullet lists on slides; it's a storytelling, design and live-presenting platform.</p>
+      <p>It's best used for leadership updates, sales pitches, internal training, town halls, client-facing proposals and any story that benefits from visual structure. Leadership, sales, marketing, L&amp;D, HR and anyone presenting regularly benefits most. PowerPoint solves the widespread problem of decks that are slow to build, inconsistent in brand, and painful to present — by combining templates, design intelligence and Copilot into a faster, more polished way to build and deliver presentations that actually land.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_POWERPOINT_PAGE.png" alt="Illustration of a person working in PowerPoint" loading="lazy"/>
   </div>
 </section>
 
@@ -83,31 +86,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">PowerPoint</div>
-      <ul class="session-bullets">
-        <li>Navigating the PowerPoint interface and views (Normal, Outline, Slide Sorter, Presenter)</li>
-        <li>Creating presentations from scratch and from templates</li>
-        <li>Working with slides — inserting, duplicating, reordering, hiding and sections</li>
-        <li>Applying and customising themes — colours, fonts and backgrounds</li>
-        <li>Slide layouts and the Slide Master — ensuring consistent branding</li>
-        <li>Working with text — formatting, alignment, bullets and text boxes</li>
-        <li>Inserting and formatting images, icons and stock photos</li>
-        <li>Removing image backgrounds and applying picture styles</li>
-        <li>Working with shapes, SmartArt and tables</li>
-        <li>Inserting and formatting charts — including linking from Excel</li>
-        <li>Slide transitions — types, timing and best practices</li>
-        <li>Animations — entrance, emphasis, exit and motion paths</li>
-        <li>Using the Animation Pane to sequence and control animations</li>
-        <li>Speaker notes — adding, formatting and using during delivery</li>
-        <li>Presenter View — speaker notes, slide preview and timer</li>
-        <li>Hyperlinks and action buttons for interactive presentations</li>
-        <li>Accessibility checker and adding alt text</li>
-        <li>Collaboration — co-authoring, comments and version history</li>
-        <li>Exporting — PDF, video, images and PowerPoint Show</li>
-        <li>Presenting in Microsoft Teams</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Getting around</h4>
+          <p>We begin with the PowerPoint interface and its views — Normal, Outline, Slide Sorter and Presenter — so you always know the fastest way to work. Then we create presentations from scratch and from templates, and manage slides fluently by inserting, duplicating, reordering, hiding and grouping them into sections.</p>
+          <div class="ses-chips"><span>Views</span><span>Templates</span><span>Slide sections</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Design that stays on brand</h4>
+          <p>Applying and customising themes — colours, fonts and backgrounds — then stepping up to slide layouts and the Slide Master, the single biggest lever for consistent branding across a deck. We also tidy up text with proper formatting, alignment, bullets and text boxes.</p>
+          <div class="ses-chips"><span>Themes</span><span>Slide Master</span><span>Text boxes</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Visuals that carry the story</h4>
+          <p>Bringing slides to life with images, icons and stock photos — including removing image backgrounds and applying picture styles for a polished look. We add structure with shapes, SmartArt and tables, and insert and format charts, linking them from Excel where the data already lives.</p>
+          <div class="ses-chips"><span>Images &amp; icons</span><span>SmartArt</span><span>Charts from Excel</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Motion &amp; interactivity</h4>
+          <p>Using movement with intent: slide transitions with sensible types and timing, then entrance, emphasis, exit and motion-path animations sequenced and controlled through the Animation Pane. We also add hyperlinks and action buttons to build genuinely interactive presentations.</p>
+          <div class="ses-chips"><span>Transitions</span><span>Animation Pane</span><span>Action buttons</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Delivering with confidence</h4>
+          <p>Preparing to present with speaker notes and Presenter View — notes, slide preview and timer — including presenting live in Microsoft Teams. We finish responsibly: running the Accessibility Checker and adding alt text, collaborating through co-authoring, comments and version history, and exporting to PDF, video, images or a PowerPoint Show.</p>
+          <div class="ses-chips"><span>Presenter View</span><span>Teams</span><span>Accessibility</span><span>Exporting</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -67,10 +67,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About OneDrive</h2>
-    <p>Microsoft OneDrive is your personal cloud home in Microsoft 365 — a secure, always-available file store that syncs across every device, handles versioning automatically and keeps documents accessible offline. It's the backbone for personal work files, attachments in Outlook, and any file shared from a 1:1 Teams chat.</p>
-    <p>It's best used for any work file that doesn't yet belong to a team — drafts, templates, personal reference documents, attachments from email — with selective sync, sharing links and restore points built in. Every employee benefits, but especially mobile workers, knowledge workers and anyone who previously relied on local drives or USB sticks. OneDrive solves the everyday problem of files being lost, out of date, or trapped on a single device — replacing it with a secure, backed-up, shareable workspace that follows the person, not the machine.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About OneDrive</h2>
+      <p>Microsoft OneDrive is your personal cloud home in Microsoft 365 — a secure, always-available file store that syncs across every device, handles versioning automatically and keeps documents accessible offline. It's the backbone for personal work files, attachments in Outlook, and any file shared from a 1:1 Teams chat.</p>
+      <p>It's best used for any work file that doesn't yet belong to a team — drafts, templates, personal reference documents, attachments from email — with selective sync, sharing links and restore points built in. Every employee benefits, but especially mobile workers, knowledge workers and anyone who previously relied on local drives or USB sticks. OneDrive solves the everyday problem of files being lost, out of date, or trapped on a single device — replacing it with a secure, backed-up, shareable workspace that follows the person, not the machine.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_ONEDRIVE_PAGE.png" alt="Illustration of a person working in OneDrive" loading="lazy"/>
   </div>
 </section>
 
@@ -83,28 +86,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">OneDrive</div>
-      <ul class="session-bullets">
-        <li>What OneDrive for Business is and how it differs from SharePoint and Teams Files</li>
-        <li>Navigating the OneDrive interface — My Files, Shared, Recent and Favourites</li>
-        <li>Uploading, creating, moving, copying and deleting files and folders</li>
-        <li>Setting up the OneDrive sync client on your PC or Mac</li>
-        <li>Files On-Demand — keeping files cloud-only vs. always available offline</li>
-        <li>PC Folder Backup — automatically backing up Desktop, Documents and Pictures</li>
-        <li>Syncing SharePoint libraries to your desktop via OneDrive</li>
-        <li>Adding SharePoint library shortcuts to your OneDrive</li>
-        <li>Sharing files and folders — anyone, internal and specific people links</li>
-        <li>Setting link permissions, expiry dates and password protection</li>
-        <li>Managing and revoking access to shared files</li>
-        <li>Real-time co-authoring in Word, Excel and PowerPoint</li>
-        <li>Version history — viewing, restoring and recovering files</li>
-        <li>Restoring your entire OneDrive to a previous point in time</li>
-        <li>Searching for files by name, content and people</li>
-        <li>Attaching OneDrive links in Outlook instead of copying files</li>
-        <li>Storage management — checking quota and freeing up space</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Finding your feet</h4>
+          <p>What OneDrive for Business is and how it differs from SharePoint and Teams Files, so everyone knows where each file belongs. We tour the interface — My Files, Shared, Recent and Favourites — and cover the everyday essentials of uploading, creating, moving, copying and deleting files and folders.</p>
+          <div class="ses-chips"><span>My Files &amp; Shared</span><span>OneDrive vs. SharePoint</span><span>File basics</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Sync on every device</h4>
+          <p>Setting up the sync client on PC or Mac and using Files On-Demand to choose which files stay cloud-only and which are always available offline. We switch on PC Folder Backup for Desktop, Documents and Pictures, then bring SharePoint libraries into the mix with desktop sync and library shortcuts.</p>
+          <div class="ses-chips"><span>Sync client</span><span>Files On-Demand</span><span>Folder backup</span><span>Library shortcuts</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Sharing done safely</h4>
+          <p>How to share files and folders with the right link type — anyone, internal or specific people — and lock links down with permissions, expiry dates and passwords. We practise managing and revoking access after the fact, and replace email attachments with OneDrive links in Outlook.</p>
+          <div class="ses-chips"><span>Sharing links</span><span>Expiry &amp; passwords</span><span>Revoking access</span><span>Outlook links</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Collaborate &amp; recover</h4>
+          <p>Real-time co-authoring in Word, Excel and PowerPoint, so a shared link means working together rather than emailing copies. We then explore the safety net — viewing and restoring versions of a document, recovering deleted files and rolling your entire OneDrive back to a previous point in time.</p>
+          <div class="ses-chips"><span>Co-authoring</span><span>Version history</span><span>Full restore</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Staying in control</h4>
+          <p>Finding anything fast by searching on file name, content or the people connected to a document. We finish with storage management — checking your quota and freeing up space so OneDrive keeps working smoothly for the long term.</p>
+          <div class="ses-chips"><span>Smart search</span><span>Storage quota</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

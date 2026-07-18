@@ -159,7 +159,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="color:var(--blue)">Home</a></li><li><a href="apps.html">Apps</a></li>
+      <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="color:var(--blue)">Home</a></li><li><a href="copilot.html" class="nav-copilot">Copilot</a></li><li><a href="apps.html">Apps</a></li>
       <li><a href="themes.html">Themes</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="calculator.html">Package Advisor</a></li>
@@ -593,6 +593,18 @@
   }
 
   window.addEventListener('scroll', check, { passive: true });
+})();
+</script>
+<script>
+// Prefill the discovery-call message with a Copilot workshop selection, if one was built on copilot.html
+(function () {
+  try {
+    var msg = localStorage.getItem('haedlernWorkshopMsg');
+    if (!msg) return;
+    var ta = document.getElementById('msg');
+    if (ta && !ta.value) ta.value = msg;
+    localStorage.removeItem('haedlernWorkshopMsg');
+  } catch (e) {}
 })();
 </script>
 </body>

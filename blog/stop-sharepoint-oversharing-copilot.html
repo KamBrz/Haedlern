@@ -1,22 +1,18 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8"><script>try{if(localStorage.getItem('themePref')==='dark')document.documentElement.dataset.theme='dark';}catch(e){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to stop SharePoint from leaking everything to Copilot | Haedlern</title>
-<meta name="description" content="Copilot only surfaces content the user already had access to. The problem is that &#x27;already had access to&#x27; is doing far more work in that sentence than it sounds.">
+<meta name="description" content="Copilot only surfaces content the user already had access to. The problem is that 'already had access to' is doing far more work in that sentence than it sounds.">
 <link rel="canonical" href="https://haedlern.com/blog/stop-sharepoint-oversharing-copilot.html">
 <link rel="icon" type="image/svg+xml" href="../img/haedlern-ladder-iso-cobalt.svg">
 <link rel="stylesheet" href="../styles.css">
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to stop SharePoint from leaking everything to Copilot">
-<meta property="og:description" content="Copilot only surfaces content the user already had access to. The problem is that &#x27;already had access to&#x27; is doing far more work in that sentence than it sounds.">
+<meta property="og:description" content="Copilot only surfaces content the user already had access to. The problem is that 'already had access to' is doing far more work in that sentence than it sounds.">
 <meta property="og:url" content="https://haedlern.com/blog/stop-sharepoint-oversharing-copilot.html">
 <meta property="og:image" content="https://haedlern.com/img/blog/stop-sharepoint-oversharing.jpg">
 <meta property="og:site_name" content="Haedlern">
@@ -29,7 +25,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to stop SharePoint from leaking everything to Copilot">
-<meta name="twitter:description" content="Copilot only surfaces content the user already had access to. The problem is that &#x27;already had access to&#x27; is doing far more work in that sentence than it sounds.">
+<meta name="twitter:description" content="Copilot only surfaces content the user already had access to. The problem is that 'already had access to' is doing far more work in that sentence than it sounds.">
 <meta name="twitter:image" content="https://haedlern.com/img/blog/stop-sharepoint-oversharing.jpg">
 
 <!-- JSON-LD: BlogPosting -->
@@ -50,15 +46,18 @@
   "publisher": {
     "@type": "Organization",
     "name": "Haedlern",
-    "logo": {"@type": "ImageObject", "url": "https://haedlern.com/img/haedlern-ladder-iso-cobalt.svg"}
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://haedlern.com/img/haedlern-ladder-iso-cobalt.svg"
+    }
   },
-  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://haedlern.com/blog/stop-sharepoint-oversharing-copilot.html"},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://haedlern.com/blog/stop-sharepoint-oversharing-copilot.html"
+  },
   "image": "https://haedlern.com/img/blog/stop-sharepoint-oversharing.jpg",
   "keywords": "Copilot, SharePoint, Governance"
 }
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://haedlern.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://haedlern.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to stop SharePoint from leaking everything to Copilot","item":"https://haedlern.com/blog/stop-sharepoint-oversharing-copilot.html"}]}
 </script>
 </head>
 <body>
@@ -71,16 +70,16 @@
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
       <li><a href="../index.html">Home</a></li>
+      <li><a href="../copilot.html" class="nav-copilot">Copilot</a></li>
       <li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
-      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../index.html#pricing">Packages</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
       <li><a href="../about.html">About</a></li>
       <li><a href="../blog.html" style="color:var(--blue)">Blog</a></li>
     </ul>
     <div class="nav-controls">
       <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
-      <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Open navigation"><span></span><span></span><span></span></button>
       <button class="nav-cta" onclick="window.location.href='../index.html#signup'">Book a Call</button>
     </div>
   </nav>
@@ -91,43 +90,44 @@
     <a href="../blog.html" class="blog-post-back">← All posts</a>
     <div class="blog-post-meta">
       <time datetime="2026-03-04T09:00:00.000Z">4 March 2026</time>
-      <span> &middot; </span>
+      <span> · </span>
       <span>3 min read</span>
     </div>
     <h1>How to stop SharePoint from leaking everything to Copilot</h1>
-    <p class="blog-post-excerpt">Copilot only surfaces content the user already had access to. The problem is that &#x27;already had access to&#x27; is doing far more work in that sentence than it sounds.</p>
+    <p class="blog-post-excerpt">Copilot only surfaces content the user already had access to. The problem is that 'already had access to' is doing far more work in that sentence than it sounds.</p>
     <div class="blog-post-tags"><span class="blog-tag">Copilot</span><span class="blog-tag">SharePoint</span><span class="blog-tag">Governance</span></div>
   </header>
 
   <div class="blog-post-body">
-    <h2>The reassurance that doesn't reassure</h2>
-<p>Every Microsoft 365 Copilot deployment conversation eventually arrives at the same statement, usually delivered briskly by someone from IT: <em>don't worry, Copilot only surfaces content the user already has access to.</em> Technically, that's correct. Practically, it's the start of the problem rather than the end of it.</p>
-<p>Most large organisations have spent fifteen years building up a SharePoint estate that nobody fully understands. Sites get inherited from people who've left. Permissions get widened <em>just to make it easier this once</em>. Documents get shared with <em>Everyone except external users</em> because someone in 2017 didn't know what else to click. The contents of that estate were technically accessible to everyone in the company already — but the only thing standing between <em>technically accessible</em> and <em>anyone could find it</em> was the fact that nobody could possibly search through it all.</p>
-<p>Copilot can search through it all. That's the bit nobody warns you about until your CFO sees salary information appear in a polite drafting suggestion.</p>
+    <h2>The reassurance that doesn&#39;t reassure</h2>
+<p>Every Microsoft 365 Copilot deployment conversation eventually arrives at the same statement, usually delivered briskly by someone from IT: <em>don&#39;t worry, Copilot only surfaces content the user already has access to.</em> Technically, that&#39;s correct. Practically, it&#39;s the start of the problem rather than the end of it.</p>
+<p>Most large organisations have spent fifteen years building up a SharePoint estate that nobody fully understands. Sites get inherited from people who&#39;ve left. Permissions get widened <em>just to make it easier this once</em>. Documents get shared with <em>Everyone except external users</em> because someone in 2017 didn&#39;t know what else to click. The contents of that estate were technically accessible to everyone in the company already — but the only thing standing between <em>technically accessible</em> and <em>anyone could find it</em> was the fact that nobody could possibly search through it all.</p>
+<p>Copilot can search through it all. That&#39;s the bit nobody warns you about until your CFO sees salary information appear in a polite drafting suggestion.</p>
 <h2>What Microsoft has built to deal with this</h2>
-<p>Three pieces of the M365 governance stack matter here, and they've matured significantly across 2025 and into 2026. They sit at different levels of the problem.</p>
+<p>Three pieces of the M365 governance stack matter here, and they&#39;ve matured significantly across 2025 and into 2026. They sit at different levels of the problem.</p>
 <h3>1. Visibility — Data Access Governance reports and DSPM for AI</h3>
-<p><strong>SharePoint Advanced Management (SAM)</strong> is now included with every Microsoft 365 Copilot licence, having previously been a separate add-on. The single most useful thing it ships is <strong>Data Access Governance reports</strong> — a set of dashboards that surface oversharing baselines: which sites have the most unique permissions, which contain sensitive content, which are accessible to <em>Everyone except external users</em> (the most common silent leak), and which haven't been touched in years.</p>
-<p>Sitting alongside it is <strong>Microsoft Purview's DSPM for AI</strong> — Data Security Posture Management — which gives you visibility into prompts, responses and sensitive-data interactions across Copilot and other generative AI tools. Together they answer the two questions every CISO eventually asks: <em>what's exposed, and what's actually being touched.</em></p>
+<p><strong>SharePoint Advanced Management (SAM)</strong> is now included with every Microsoft 365 Copilot licence, having previously been a separate add-on. The single most useful thing it ships is <strong>Data Access Governance reports</strong> — a set of dashboards that surface oversharing baselines: which sites have the most unique permissions, which contain sensitive content, which are accessible to <em>Everyone except external users</em> (the most common silent leak), and which haven&#39;t been touched in years.</p>
+<p>Sitting alongside it is <strong>Microsoft Purview&#39;s DSPM for AI</strong> — Data Security Posture Management — which gives you visibility into prompts, responses and sensitive-data interactions across Copilot and other generative AI tools. Together they answer the two questions every CISO eventually asks: <em>what&#39;s exposed, and what&#39;s actually being touched.</em></p>
 <h3>2. Protection — sensitivity labels, RAC, and Restricted Content Discovery</h3>
 <p>Once you can see the problem, you have three tools to limit the blast radius.</p>
 <p><strong>Sensitivity labels</strong>, applied via Microsoft Purview Information Protection, are honoured by Copilot — labelled content surfaced in a response retains its highest sensitivity label, including any encryption.</p>
 <p><strong>Restricted Access Control (RAC)</strong> policies let you say <em>only members of group X can access this site at all</em>, regardless of any older sharing decisions buried in its history.</p>
-<p><strong>Restricted Content Discovery (RCD)</strong> is the most underused of the three. It excludes specific sites from Copilot and search entirely, even for users who have technical access. Use it on the half-dozen sites you're not yet ready to clean up — HR, Legal, M&amp;A — and you've taken the most likely embarrassments off the table while you do the broader work.</p>
+<p><strong>Restricted Content Discovery (RCD)</strong> is the most underused of the three. It excludes specific sites from Copilot and search entirely, even for users who have technical access. Use it on the half-dozen sites you&#39;re not yet ready to clean up — HR, Legal, M&amp;A — and you&#39;ve taken the most likely embarrassments off the table while you do the broader work.</p>
 <h3>3. Monitoring — Insider Risk Management for AI</h3>
-<p>Microsoft Purview now includes <strong>Insider Risk Management policies for risky AI usage</strong> — detecting when employees paste sensitive data into Copilot or third-party AI tools, and when sensitive content is being surfaced repeatedly to users who probably shouldn't be touching it. It's the safety net under the safety net.</p>
+<p>Microsoft Purview now includes <strong>Insider Risk Management policies for risky AI usage</strong> — detecting when employees paste sensitive data into Copilot or third-party AI tools, and when sensitive content is being surfaced repeatedly to users who probably shouldn&#39;t be touching it. It&#39;s the safety net under the safety net.</p>
 <h2>The order to do it in</h2>
-<p>If you're starting cold, the deployment pattern that works in practice is:</p>
+<p>If you&#39;re starting cold, the deployment pattern that works in practice is:</p>
 <ol>
-<li><strong>Run the Data Access Governance reports.</strong> You will be unhappy with what you see. That's the point.</li>
-<li><strong>Apply RCD to the obvious time-bombs</strong> — HR, Legal, Finance, M&amp;A — even if you haven't classified anything inside them yet. This is your fast-acting brake.</li>
+<li><strong>Run the Data Access Governance reports.</strong> You will be unhappy with what you see. That&#39;s the point.</li>
+<li><strong>Apply RCD to the obvious time-bombs</strong> — HR, Legal, Finance, M&amp;A — even if you haven&#39;t classified anything inside them yet. This is your fast-acting brake.</li>
 <li><strong>Roll out sensitivity labels</strong> to the documents that matter most. Default labels for new content first; bulk classification for old content second.</li>
-<li><strong>Turn on DSPM for AI and Insider Risk</strong> so you can see what's actually being touched.</li>
+<li><strong>Turn on DSPM for AI and Insider Risk</strong> so you can see what&#39;s actually being touched.</li>
 <li><strong>Close the <em>Everyone except external users</em> sharing loopholes</strong> systematically. SAM gives you the sites; the rest is a project, not a button.</li>
 </ol>
 <h2>The training conversation this enables</h2>
-<p>The interesting thing about doing this work is that it changes the conversation you can have with users. Most early Copilot training avoids data security entirely — it's awkward, it spooks people, it slows down adoption. Once your governance estate is healthy, you can be <em>more</em> open with users: <em>Copilot can see your team's content. Here's what we've put in place so it doesn't see what it shouldn't. Here's what to do if it surfaces something odd.</em></p>
-<p>That's a far better message than <em>don't worry about it,</em> and it's the only message that holds up after the first uncomfortable surfacing.</p>
+<p>The interesting thing about doing this work is that it changes the conversation you can have with users. Most early Copilot training avoids data security entirely — it&#39;s awkward, it spooks people, it slows down adoption. Once your governance estate is healthy, you can be <em>more</em> open with users: <em>Copilot can see your team&#39;s content. Here&#39;s what we&#39;ve put in place so it doesn&#39;t see what it shouldn&#39;t. Here&#39;s what to do if it surfaces something odd.</em></p>
+<p>That&#39;s a far better message than <em>don&#39;t worry about it,</em> and it&#39;s the only message that holds up after the first uncomfortable surfacing.</p>
+
   </div>
 
   <footer class="blog-post-footer">
@@ -141,11 +141,9 @@
 
 <footer>
   <div class="f-logo"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</div>
-  <p>© 2026 Haedlern. All rights reserved. · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p>
+  <p>© 2026 Haedlern. All rights reserved.</p>
 </footer>
 
 <script src="../script.js"></script>
-<!-- Microsoft Clarity -->
-<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","whovnhgjm9");</script>
 </body>
 </html>

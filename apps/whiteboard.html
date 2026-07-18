@@ -38,7 +38,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../apps.html">Apps</a></li>
+      <li><a href="../index.html">Home</a></li><li><a href="../copilot.html" class="nav-copilot">Copilot</a></li><li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Pricing</a></li>
       <li><a href="../calculator.html">Package Advisor</a></li>
@@ -68,10 +68,13 @@
 
 <!-- ABOUT THIS APP -->
 <section class="app-about">
-  <div class="app-about-inner sa">
-    <h2>About Whiteboard</h2>
-    <p>Microsoft Whiteboard is M365's infinite digital canvas for collaborative thinking — a visual space for brainstorms, retrospectives, workshops, design sprints and live meeting co-creation. It works in Teams meetings, on touch devices and in the browser, with templates, sticky notes, inking, reactions and real-time co-authoring.</p>
-    <p>It's best used for workshops, brainstorming sessions, retrospectives, design thinking, planning sessions and any meeting where "whiteboard in the room" is part of the pattern. Facilitators, agile teams, product teams, strategy, HR, L&amp;D and design teams benefit most. Whiteboard solves the classic hybrid-working problem of in-person staff gathering around a whiteboard while remote colleagues watch from a tiny camera feed — by giving everyone, everywhere, the same canvas, inputs and visibility.</p>
+  <div class="app-about-inner app-about-split sa">
+    <div class="app-about-text">
+      <h2>About Whiteboard</h2>
+      <p>Microsoft Whiteboard is M365's infinite digital canvas for collaborative thinking — a visual space for brainstorms, retrospectives, workshops, design sprints and live meeting co-creation. It works in Teams meetings, on touch devices and in the browser, with templates, sticky notes, inking, reactions and real-time co-authoring.</p>
+      <p>It's best used for workshops, brainstorming sessions, retrospectives, design thinking, planning sessions and any meeting where "whiteboard in the room" is part of the pattern. Facilitators, agile teams, product teams, strategy, HR, L&amp;D and design teams benefit most. Whiteboard solves the classic hybrid-working problem of in-person staff gathering around a whiteboard while remote colleagues watch from a tiny camera feed — by giving everyone, everywhere, the same canvas, inputs and visibility.</p>
+    </div>
+    <img class="app-about-hero" src="../img/app_images/MS_WHITEBOARD_PAGE.png" alt="Illustration of a person working in Whiteboard" loading="lazy"/>
   </div>
 </section>
 
@@ -84,27 +87,54 @@
     </div>
   </div>
 
-  <div class="session-card-wrap">
-    <div class="session-card sa" style="--delay:0ms">
-      <div class="session-title">Whiteboard</div>
-      <ul class="session-bullets">
-        <li>What Microsoft Whiteboard is and when to use it</li>
-        <li>Navigating the Whiteboard interface — canvas, toolbar and object panel</li>
-        <li>Creating a new whiteboard and opening existing ones</li>
-        <li>Sticky notes — adding, editing, grouping and colour-coding</li>
-        <li>Inking tools — pen, highlighter and eraser</li>
-        <li>Shapes, text boxes and connectors</li>
-        <li>Inserting images, documents and links onto the canvas</li>
-        <li>Using built-in templates — brainstorming, retrospective, kanban, journey map and more</li>
-        <li>Saving a whiteboard as a custom template</li>
-        <li>Sharing a custom template with your team</li>
-        <li>Reactions — using emoji reactions and voting to prioritise ideas</li>
-        <li>Real-time collaboration — seeing other participants' cursors and presence</li>
-        <li>Using Whiteboard in a Teams meeting — sharing and co-editing live</li>
-        <li>Sharing a whiteboard — permissions and access settings</li>
-        <li>Exporting a whiteboard — PNG and SVG</li>
-        <li>Accessing whiteboards from Teams and the Whiteboard app</li>
-      </ul>
+  <div class="ses-list">
+    <div class="ses">
+
+      <div class="ses-step sa" style="--delay:0ms">
+        <div class="ses-num">1</div>
+        <div class="ses-body">
+          <h4>Finding your feet</h4>
+          <p>What Microsoft Whiteboard is and when it's the right tool for the job. We tour the interface — canvas, toolbar and object panel — then create a fresh whiteboard and open existing ones so everyone is comfortable moving around the space.</p>
+          <div class="ses-chips"><span>Interface tour</span><span>New boards</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:80ms">
+        <div class="ses-num">2</div>
+        <div class="ses-body">
+          <h4>Filling the canvas</h4>
+          <p>The core building blocks of any board: sticky notes you can add, edit, group and colour-code, and inking tools including pen, highlighter and eraser. We add shapes, text boxes and connectors, then bring in images, documents and links to enrich the canvas.</p>
+          <div class="ses-chips"><span>Sticky notes</span><span>Inking</span><span>Shapes &amp; media</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:160ms">
+        <div class="ses-num">3</div>
+        <div class="ses-body">
+          <h4>Templates that save time</h4>
+          <p>Getting a head start with built-in templates for brainstorming, retrospectives, kanban boards, journey maps and more. We also save a whiteboard as a custom template and share it with the team, so your best session formats become repeatable.</p>
+          <div class="ses-chips"><span>Built-in templates</span><span>Custom templates</span><span>Team sharing</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:240ms">
+        <div class="ses-num">4</div>
+        <div class="ses-body">
+          <h4>Running live sessions</h4>
+          <p>Facilitating real collaboration: emoji reactions and voting to prioritise ideas, and real-time presence that shows every participant's cursor as they work. We then run Whiteboard inside a Teams meeting, sharing the board and co-editing live with the whole group.</p>
+          <div class="ses-chips"><span>Reactions &amp; voting</span><span>Live cursors</span><span>Teams meetings</span></div>
+        </div>
+      </div>
+
+      <div class="ses-step sa" style="--delay:320ms">
+        <div class="ses-num">5</div>
+        <div class="ses-body">
+          <h4>Sharing &amp; wrapping up</h4>
+          <p>Sharing a whiteboard with the right permissions and access settings, exporting finished boards as PNG or SVG, and knowing where to find your whiteboards afterwards — from Teams and the Whiteboard app alike.</p>
+          <div class="ses-chips"><span>Permissions</span><span>Export</span><span>Access anywhere</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

@@ -105,6 +105,7 @@ ${tagsOg}
     <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit;"><img src="../img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
       <li><a href="../index.html">Home</a></li>
+      <li><a href="../copilot.html" class="nav-copilot">Copilot</a></li>
       <li><a href="../apps.html">Apps</a></li>
       <li><a href="../themes.html">Themes</a></li>
       <li><a href="../index.html#pricing">Packages</a></li>
@@ -167,6 +168,7 @@ for (const post of posts) {
 const topLevel = [
   { path: '',               priority: '1.0', changefreq: 'monthly' },
   { path: 'about.html',     priority: '0.7', changefreq: 'monthly' },
+  { path: 'copilot.html',   priority: '0.9', changefreq: 'monthly' },
   { path: 'apps.html',      priority: '0.8', changefreq: 'monthly' },
   { path: 'themes.html',    priority: '0.7', changefreq: 'monthly' },
   { path: 'calculator.html',priority: '0.6', changefreq: 'monthly' },

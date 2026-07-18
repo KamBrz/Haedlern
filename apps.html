@@ -6,23 +6,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Microsoft 365 App Workshops — Word, Excel, Teams, Copilot | Haedlern</title>
-<meta name="description" content="Bite-sized, hands-on workshops for every Microsoft 365 app — Word, Excel, Teams, Copilot, SharePoint, Power Platform and more. Built around real workflows, not feature tours.">
+<title>Microsoft 365 App Workshops — Word, Excel, Teams, SharePoint | Haedlern</title>
+<meta name="description" content="Bite-sized, hands-on workshops for every Microsoft 365 app — Word, Excel, Teams, SharePoint, Power Platform and more. Built around real workflows, not feature tours.">
 <link rel="canonical" href="https://haedlern.com/apps.html">
 <link rel="icon" type="image/svg+xml" href="img/haedlern-ladder-iso-cobalt.svg">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="stylesheet" href="styles.css">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Microsoft 365 App Workshops — Word, Excel, Teams, Copilot | Haedlern">
-<meta property="og:description" content="Bite-sized, hands-on workshops for every Microsoft 365 app — Word, Excel, Teams, Copilot, SharePoint, Power Platform and more. Built around real workflows, not feature tours.">
+<meta property="og:title" content="Microsoft 365 App Workshops — Word, Excel, Teams, SharePoint | Haedlern">
+<meta property="og:description" content="Bite-sized, hands-on workshops for every Microsoft 365 app — Word, Excel, Teams, SharePoint, Power Platform and more. Built around real workflows, not feature tours.">
 <meta property="og:url" content="https://haedlern.com/apps.html">
 <meta property="og:image" content="https://haedlern.com/img/og-default.png">
 <meta property="og:site_name" content="Haedlern">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Microsoft 365 App Workshops — Word, Excel, Teams, Copilot | Haedlern">
-<meta name="twitter:description" content="Bite-sized, hands-on workshops for every Microsoft 365 app — Word, Excel, Teams, Copilot, SharePoint, Power Platform and more. Built around real workflows, not feature tours.">
+<meta name="twitter:title" content="Microsoft 365 App Workshops — Word, Excel, Teams, SharePoint | Haedlern">
+<meta name="twitter:description" content="Bite-sized, hands-on workshops for every Microsoft 365 app — Word, Excel, Teams, SharePoint, Power Platform and more. Built around real workflows, not feature tours.">
 <meta name="twitter:image" content="https://haedlern.com/img/og-default.png">
 <style>
 /* ── APPS PAGE HERO ── */
@@ -112,6 +112,33 @@
 }
 .juggle-apps.visible { transform: translateY(0); opacity: 1; }
 @media (max-width: 760px) { .juggle-apps { display: none; } }
+
+/* Copilot pointer strip */
+.apps-copilot-pointer {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 24px; text-decoration: none; color: inherit;
+  border: 1px solid transparent; border-radius: var(--r-xl);
+  background: linear-gradient(var(--card), var(--card)) padding-box,
+              linear-gradient(135deg, #7c3aed, var(--cyan)) border-box;
+  box-shadow: 0 6px 24px rgba(124,58,237,0.14);
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.apps-copilot-pointer:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(124,58,237,0.22); }
+.apps-copilot-pointer-icon { flex-shrink: 0; width: 40px; height: 40px; }
+.apps-copilot-pointer-icon img { width: 40px; height: 40px; object-fit: contain; }
+.apps-copilot-pointer-text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.apps-copilot-pointer-text strong { font-size: 15px; font-weight: 900; letter-spacing: -0.3px; color: var(--text); }
+.apps-copilot-pointer-text span { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.apps-copilot-pointer-cta {
+  flex-shrink: 0; font-size: 13px; font-weight: 800; white-space: nowrap;
+  background: linear-gradient(135deg, #7c3aed, var(--cyan));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+@media (max-width: 760px) {
+  .apps-copilot-pointer { flex-wrap: wrap; padding: 16px 18px; }
+  .apps-copilot-pointer-cta { margin-left: 56px; }
+}
 </style>
 <!-- Microsoft Clarity -->
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","whovnhgjm9");</script>
@@ -125,7 +152,7 @@
   <nav id="mainNav">
     <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;"><img src="img/haedlern-ladder-iso-cobalt.svg" style="width:22px;height:22px;" alt=""/>Haedlern.</a></div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">Home</a></li><li><a href="copilot.html" class="nav-copilot">Copilot</a></li>
       <li><a href="apps.html" style="color:var(--blue)">Apps</a></li>
       <li><a href="themes.html">Themes</a></li>
       <li><a href="index.html#pricing">Pricing</a></li>
@@ -154,92 +181,15 @@
 <section class="apps-section">
   <div class="apps-categories">
 
-    <!-- ─── COPILOT & AI (featured) ─── -->
-    <details class="apps-category apps-category--ai" open>
-      <summary class="apps-category-header">
-        <div class="apps-category-meta">
-          <div class="apps-category-label">Microsoft Copilot &amp; AI <span class="apps-category-tag">Most in demand</span></div>
-          <div class="apps-category-title">Practical AI for daily knowledge work</div>
-          <div class="apps-category-sub">From the standalone Copilot app to embedded Copilot across M365 and custom agents — train your teams to actually use it.</div>
-        </div>
-        <div class="apps-category-toggle" aria-hidden="true">+</div>
-      </summary>
-      <div class="apps-grid-rich">
-
-        <a href="apps/copilot-chat.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
-          <div class="app-card-rich-head">
-            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="Copilot M365 Chat"/></div>
-            <div>
-              <div class="app-name">Copilot M365 Chat</div>
-              <div class="app-tagline">Conversational AI grounded in your organisation's data</div>
-            </div>
-          </div>
-          <p class="app-card-rich-desc">The natural-language interface at the heart of Microsoft 365 Copilot — available in the Copilot app and the Teams sidebar, grounded in your emails, meetings, files and chats. Best for quick lookups, catch-me-ups, drafting and cross-app tasks without switching windows. The highest-frequency entry point for most Copilot users.</p>
-          <span class="app-card-rich-cta">Explore training →</span>
-        </a>
-
-        <a href="apps/copilot-notebooks.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
-          <div class="app-card-rich-head">
-            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="Cowork + Copilot Notebooks"/></div>
-            <div>
-              <div class="app-name">Cowork + Copilot Notebooks</div>
-              <div class="app-tagline">AI that takes action — and workspaces that build understanding</div>
-            </div>
-          </div>
-          <p class="app-card-rich-desc">Cowork goes beyond prompting: describe a goal, Copilot builds a step-by-step plan grounded in your emails, meetings and files, then executes it across M365 — producing briefing packs, Excel workbooks, decks and resolved calendar conflicts with your approval at each stage. Notebooks complement this by giving teams a persistent research workspace to aggregate sources and query across them over time.</p>
-          <span class="app-card-rich-cta">Explore training →</span>
-        </a>
-
-        <a href="apps/copilot-agents.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
-          <div class="app-card-rich-head">
-            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="Copilot Agents"/></div>
-            <div>
-              <div class="app-name">Copilot Agents</div>
-              <div class="app-tagline">Custom AI assistants — SharePoint, M365 Copilot and Copilot Studio</div>
-            </div>
-          </div>
-          <p class="app-card-rich-desc">Build custom AI assistants grounded in specific SharePoint sites, team content or business data — from lightweight agents created directly in SharePoint or the Copilot app, through to governed, branded agents built in Copilot Studio. Ideal for HR helpdesks, IT support triage, onboarding assistants and policy lookup tools that need to answer role-specific questions from your own content.</p>
-          <span class="app-card-rich-cta">Explore training →</span>
-        </a>
-
-        <a href="apps/copilot-teams-outlook.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
-          <div class="app-card-rich-head">
-            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="Copilot in Teams &amp; Outlook"/></div>
-            <div>
-              <div class="app-name">Teams &amp; Outlook</div>
-              <div class="app-tagline">Copilot inside your two most-used communication tools</div>
-            </div>
-          </div>
-          <p class="app-card-rich-desc">Summarise long meeting recordings, draft replies, recap missed threads and generate meeting agendas — without leaving the apps your teams already live in. Copilot in Teams and Outlook delivers the highest visible time-saving for anyone who spends a significant part of their day managing email, running meetings or following up on actions.</p>
-          <span class="app-card-rich-cta">Explore training →</span>
-        </a>
-
-        <a href="apps/copilot-excel-powerpoint.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
-          <div class="app-card-rich-head">
-            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="Copilot in Excel &amp; PowerPoint"/></div>
-            <div>
-              <div class="app-name">Excel &amp; PowerPoint</div>
-              <div class="app-tagline">AI-powered data analysis and slide creation</div>
-            </div>
-          </div>
-          <p class="app-card-rich-desc">In Excel, ask natural-language questions of your data, generate formulas, spot trends and create charts — without writing a single function. In PowerPoint, generate full decks from a prompt, transform documents into presentations and refine layouts with AI-powered Designer suggestions. Covers the two creative and analytical workhorses where Copilot cuts the most time from output-heavy tasks.</p>
-          <span class="app-card-rich-cta">Explore training →</span>
-        </a>
-
-        <a href="apps/copilot-word-apps.html" class="app-card-rich copilot-card" style="--app-glow:rgba(124,58,237,0.22)">
-          <div class="app-card-rich-head">
-            <div class="app-icon-img"><img src="img/Copilot-Icon-FY26.png" alt="Copilot in Word and other apps"/></div>
-            <div>
-              <div class="app-name">Word and other apps</div>
-              <div class="app-tagline">Copilot across Edge, Forms, OneDrive, SharePoint, Loop and Whiteboard</div>
-            </div>
-          </div>
-          <p class="app-card-rich-desc">Covers the full breadth of places Copilot surfaces across the M365 ecosystem — drafting, rewriting and summarising in Word; AI-assisted research in Edge; smart summarisation in OneDrive and SharePoint; and ideation support in Loop and Whiteboard. Ideal for teams that want to go beyond the headline apps and unlock Copilot across every surface they already use.</p>
-          <span class="app-card-rich-cta">Explore training →</span>
-        </a>
-
+    <!-- Copilot pointer — Copilot & AI training lives on its own page -->
+    <a href="copilot.html" class="apps-copilot-pointer sa">
+      <div class="apps-copilot-pointer-icon"><img src="img/Copilot-Icon-FY26.png" alt=""/></div>
+      <div class="apps-copilot-pointer-text">
+        <strong>Looking for Copilot &amp; AI training?</strong>
+        <span>Chat, prompting, Cowork, Notebooks, custom agents and Copilot across every app — it now has a dedicated page.</span>
       </div>
-    </details>
+      <span class="apps-copilot-pointer-cta">Explore Copilot Training →</span>
+    </a>
 
     <!-- ─── COMMUNICATION & COLLABORATION ─── -->
     <details class="apps-category">
@@ -248,6 +198,12 @@
           <div class="apps-category-label">Communication &amp; Collaboration</div>
           <div class="apps-category-title">How teams actually talk and work together</div>
           <div class="apps-category-sub">Chat, meetings, email and shared canvases — the daily fabric of a hybrid workforce.</div>
+        </div>
+        <div class="apps-category-icons" aria-hidden="true">
+          <img src="img/Teams-Icon-FY26.png" alt=""/>
+          <img src="img/Outlook-Icon-FY26.png" alt=""/>
+          <img src="img/Loop-Icon-FY26.png" alt=""/>
+          <img src="img/Whiteboard-Icon-FY26.png" alt=""/>
         </div>
         <div class="apps-category-toggle" aria-hidden="true">+</div>
       </summary>
@@ -263,11 +219,10 @@
           </div>
           <p class="app-card-rich-desc">Combines persistent chat, meetings, calls, channels, files, apps and webinars in one platform. For most M365 organisations, Teams is the digital front door to daily work — the delivery surface for M365 apps, Copilot and custom agents.</p>
           <div class="app-card-rich-sessions">
-            <span class="app-card-rich-sessions-label">5 sessions:</span>
+            <span class="app-card-rich-sessions-label">4 sessions:</span>
             <span class="session-pill">Teams for Beginners</span>
             <span class="session-pill">Chats &amp; Channels</span>
             <span class="session-pill">Meetings &amp; Webinars</span>
-            <span class="session-pill">Teams Phone &amp; Calling</span>
             <span class="session-pill">Managers &amp; Owners</span>
           </div>
           <span class="app-card-rich-cta">Explore training →</span>
@@ -319,6 +274,12 @@
           <div class="apps-category-label">File &amp; Knowledge Management</div>
           <div class="apps-category-title">Where your team's content lives and grows</div>
           <div class="apps-category-sub">Files, notes, lists and intranets — the structured side of M365.</div>
+        </div>
+        <div class="apps-category-icons" aria-hidden="true">
+          <img src="img/OneDrive-Icon-FY26.png" alt=""/>
+          <img src="img/SharePoint-Icon-FY26.png" alt=""/>
+          <img src="img/OneNote-Icon-FY26.png" alt=""/>
+          <img src="img/Lists-Icon-FY26.png" alt=""/>
         </div>
         <div class="apps-category-toggle" aria-hidden="true">+</div>
       </summary>
@@ -394,6 +355,14 @@
           <div class="apps-category-label">Productivity &amp; Planning</div>
           <div class="apps-category-title">Get more done in less time</div>
           <div class="apps-category-sub">Spreadsheets, tasks, plans, forms and the browser — the workhorses of daily output.</div>
+        </div>
+        <div class="apps-category-icons" aria-hidden="true">
+          <img src="img/Excel-Icon-FY26.png" alt=""/>
+          <img src="img/Planner-Icon-FY26.png" alt=""/>
+          <img src="img/ToDo-Icon-FY26.png" alt=""/>
+          <img src="img/Forms-Icon-FY26.png" alt=""/>
+          <img src="img/Visio-Icon-FY26.png" alt=""/>
+          <img src="img/Edge-Icon-FY26.png" alt=""/>
         </div>
         <div class="apps-category-toggle" aria-hidden="true">+</div>
       </summary>
@@ -482,6 +451,11 @@
           <div class="apps-category-title">Polished documents, decks and visuals</div>
           <div class="apps-category-sub">The tools your team uses to write, design and present.</div>
         </div>
+        <div class="apps-category-icons" aria-hidden="true">
+          <img src="img/Word-Icon-FY26.png" alt=""/>
+          <img src="img/PowerPoint-Icon-FY26.png" alt=""/>
+          <img src="img/Clipchamp-Icon-FY26.png" alt=""/>
+        </div>
         <div class="apps-category-toggle" aria-hidden="true">+</div>
       </summary>
       <div class="apps-grid-rich">
@@ -532,6 +506,10 @@
           <div class="apps-category-label">Power Platform</div>
           <div class="apps-category-title">Low-code automation and reporting</div>
           <div class="apps-category-sub">Connect, automate and visualise — without writing code.</div>
+        </div>
+        <div class="apps-category-icons" aria-hidden="true">
+          <img src="img/PowerAutomate-Icon-FY26.png" alt=""/>
+          <img src="img/PowerBi-Icon-FY26.png" alt=""/>
         </div>
         <div class="apps-category-toggle" aria-hidden="true">+</div>
       </summary>
