@@ -253,7 +253,7 @@
     }
     // Sort: newest first
     posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-    const featured = posts.find(p => p.featured) || posts[0];
+    const featured = posts[0];
     const rest = posts.filter(p => p !== featured);
 
     listEl.className = '';
